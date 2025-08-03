@@ -11,6 +11,7 @@ import {
   WagmiProvider
 } from 'wagmi';
 import { mainnet } from 'wagmi/chains';
+import '../../src/components/wallet.css';
 
 declare const APP_NAME: string;
 declare const WALLET_CONNECT_PROJECT_ID: string;
