@@ -19,10 +19,12 @@
     "skipLibCheck": true,
     "strict": true,
     "rootDir": "./src",
-    "outDir": "dist"
+    "outDir": "dist",
+    "resolveJsonModule": true
   },
   "include": [
     "./src",
+    "src/components/parts/**/*.json"
   ],
   "exclude": [
     "node_modules",
