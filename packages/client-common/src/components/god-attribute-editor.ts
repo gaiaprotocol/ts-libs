@@ -170,7 +170,7 @@ function createAttributeSelector<T>(label: string, values: T[], selected: T, onS
       onclick: () => onSelect(value),
     },
       el('ion-label', String(value)),
-      value === selected ? el('sl-icon', { name: 'check', style: 'margin-left: 4px;' }) : undefined
+      value === selected ? el('sl-icon', { name: 'check', style: 'margin-left: 4px;' }) : null
     );
     content.append(item);
   }
