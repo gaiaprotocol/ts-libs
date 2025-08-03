@@ -1,4 +1,14 @@
 {
   "name": "@gaiaprotocol/client-common",
-  "version": "0.0.1"
+  "version": "0.0.1",
+  "types": "./dist/index.d.ts",
+  "main": "./dist/index.js",
+  "devDependencies": {
+    "@ionic/core": "^8.7.1",
+    "@shoelace-style/shoelace": "^2.20.1",
+    "@types/node": "^24.1.0"
+  },
+  "dependencies": {
+    "@webtaku/el": "^0.0.16"
+  }
 }
