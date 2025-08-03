@@ -10,6 +10,15 @@ const BLACKLIST_NAMES = ['gaia', 'gaiaprotocol', 'admin', 'null', 'root'];
 async function createNameSearchResultContent(query: string): Promise<HTMLElement> {
   const container = el('div.name-search-result-content');
 
+  if (query.trim().length < 2) {
+    container.append(
+      el('sl-alert', { variant: 'neutral', open: true },
+        'Please enter at least 2 characters.'
+      )
+    );
+    return container;
+  }
+
   const spinner = el('sl-spinner', {
     style: 'margin: 1rem auto; display: block;',
   });
@@ -77,7 +86,7 @@ async function createNameSearchResultContent(query: string): Promise<HTMLElement
     if (names.length === 0 && !availableName) {
       container.append(
         el('sl-alert', { variant: 'neutral', open: true },
-          el('span', { slot: 'message' }, 'No matching names found.')
+          'No matching names found.'
         )
       );
     }
@@ -85,7 +94,7 @@ async function createNameSearchResultContent(query: string): Promise<HTMLElement
   } catch (e) {
     container.append(
       el('sl-alert', { variant: 'danger', open: true },
-        el('span', { slot: 'message' }, 'Failed to fetch search results.')
+        'Failed to fetch search results.'
       )
     );
   } finally {
