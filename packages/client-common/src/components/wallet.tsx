@@ -24,7 +24,7 @@ const { connectors } = getDefaultWallets({
   projectId: WALLET_CONNECT_PROJECT_ID,
 });
 
-const config = createConfig({
+const config: any = createConfig({
   chains: [mainnet],
   transports: {
     [mainnet.id]: http(), // RPC를 설정

@@ -1,2 +1,3 @@
 export { createNameSearchResultContent } from "./components/name-search-result";
-export { createRainbowKit, createConnectButton } from "./components/wallet";
+export { createConnectButton, createRainbowKit, openWalletConnectModal, wagmiConfig } from "./components/wallet";
+
