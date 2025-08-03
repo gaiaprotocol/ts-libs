@@ -1,7 +1,7 @@
 import '@ionic/core';
 import '@shoelace-style/shoelace';
 import { el } from '@webtaku/el';
-import '../../src/components/name-search-result.less';
+import '../../src/components/name-search-result.css';
 
 declare const API_BASE_URL: string;
 
