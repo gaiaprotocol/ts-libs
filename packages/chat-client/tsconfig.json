@@ -1,0 +1,34 @@
+{
+  "compilerOptions": {
+    "jsx": "react",
+    "target": "ESNext",
+    "module": "ESNext",
+    "noImplicitAny": true,
+    "preserveConstEnums": true,
+    "inlineSources": true,
+    "sourceMap": true,
+    "esModuleInterop": true,
+    "lib": [
+      "DOM",
+      "ESNext",
+      "ScriptHost"
+    ],
+    "declaration": true,
+    "declarationMap": true,
+    "composite": true,
+    "moduleResolution": "node",
+    "skipLibCheck": true,
+    "strict": true,
+    "rootDir": "./src",
+    "outDir": "dist",
+    "resolveJsonModule": true
+  },
+  "include": [
+    "./src",
+    "src/components/parts/**/*.json"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/dist/**"
+  ],
+}

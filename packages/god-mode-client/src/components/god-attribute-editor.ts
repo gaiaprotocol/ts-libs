@@ -1,12 +1,12 @@
 import '@ionic/core';
 import '@shoelace-style/shoelace';
 import { el } from '@webtaku/el';
-import fireManParts from './parts/fire-man-parts.json';
-import fireWomanParts from './parts/fire-woman-parts.json';
-import stoneManParts from './parts/stone-man-parts.json';
-import stoneWomanParts from './parts/stone-woman-parts.json';
-import waterManParts from './parts/water-man-parts.json';
-import waterWomanParts from './parts/water-woman-parts.json';
+import fireManParts from './parts/fire-man-parts.json' assert { type: 'json' };
+import fireWomanParts from './parts/fire-woman-parts.json' assert { type: 'json' };
+import stoneManParts from './parts/stone-man-parts.json' assert { type: 'json' };
+import stoneWomanParts from './parts/stone-woman-parts.json' assert { type: 'json' };
+import waterManParts from './parts/water-man-parts.json' assert { type: 'json' };
+import waterWomanParts from './parts/water-woman-parts.json' assert { type: 'json' };
 
 type ElementType = 'Stone' | 'Fire' | 'Water';
 type GenderType = 'Man' | 'Woman';
