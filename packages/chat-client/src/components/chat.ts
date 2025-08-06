@@ -57,6 +57,7 @@ function createChatComponent({ roomId, myAccount }: Options): Component & {
   scrollToBottom: () => void;
 } {
   const pendingAttachments: { file: File, blobUrl: string }[] = [];
+  const observedAccounts = new Set<string>();
 
   const root = el('div.chat-component');
   const list = el('div.message-list');
@@ -68,15 +69,13 @@ function createChatComponent({ roomId, myAccount }: Options): Component & {
   const fileInput = el('input', { type: 'file', accept: 'image/*', multiple: true, style: 'display:none' });
 
   const composer = el('div.composer', input, fileInput, attachBtn, sendBtn);
-
   const thumbBar = el('div.thumb-bar');
-
   root.append(list, thumbBar, composer);
 
   const service = new ChatService(roomId);
   service.connect();
 
-  chatProfileService.addEventListener('profilechange', (e) => {
+  chatProfileService.addEventListener('chatprofilechange', (e) => {
     const { account, profile } = (e as CustomEvent<{
       account: `0x${string}`, profile: ChatProfile,
     }>).detail;
@@ -107,9 +106,6 @@ function createChatComponent({ roomId, myAccount }: Options): Component & {
   attachBtn.onclick = () => fileInput.click();
 
   fileInput.onchange = () => {
-
-    console.log(fileInput.files);
-
     Array.from(fileInput.files || []).forEach(f => {
       const blobUrl = URL.createObjectURL(f);
       pendingAttachments.push({ file: f, blobUrl });
@@ -118,25 +114,26 @@ function createChatComponent({ roomId, myAccount }: Options): Component & {
     fileInput.value = '';
   };
 
-  /* ---------- view builders ---------- */
+  const ensureProfile = (account: string) => {
+    if (!chatProfileService.getCached(account)) {
+      chatProfileService.preload([account]);
+    }
+  };
+
   function buildNode(msg: ChatMessage, pending = false): HTMLElement {
     const account = getAddress(msg.account);
+    ensureProfile(account);
 
     const wrapper = el('div.message', {
       className: `${pending ? 'pending' : ''} ${account === myAccount ? 'own' : ''}`.trim(),
-      dataset: { id: String(msg.id) }
+      dataset: { id: String(msg.id) },
     });
 
     const avatar = createJazzicon(account);
     avatar.classList.add('avatar');
 
-    // 이름 표기
     const cachedName = chatProfileService.getCached(account)?.nickname || shortenAddress(account);
-    const meta = el(
-      'div.meta',
-      el('span.name', { dataset: { account } }, cachedName),
-      el('time.time', new Date(msg.timestamp).toLocaleTimeString())
-    );
+    const meta = el('div.meta', el('span.name', { dataset: { account } }, cachedName), el('time.time', new Date(msg.timestamp).toLocaleTimeString()));
 
     const body = el('div.msg-body', meta);
 
@@ -166,14 +163,9 @@ function createChatComponent({ roomId, myAccount }: Options): Component & {
     }
 
     wrapper.append(avatar, body);
-
-    // 프로필 요청
-    chatProfileService.preload([account]);
-
     return wrapper;
   }
 
-  /* ---------- optimistic UI helpers ---------- */
   function renderOptimistic(text: string, attachments: Attachment[], localId: string) {
     const temp: ChatMessage = {
       id: -1,
@@ -188,9 +180,7 @@ function createChatComponent({ roomId, myAccount }: Options): Component & {
     node.dataset.localId = localId;
     list.append(node);
 
-    waitForImages(node).then(() => {
-      scrollToBottom();
-    });
+    waitForImages(node).then(() => scrollToBottom());
 
     return node;
   }
@@ -208,24 +198,37 @@ function createChatComponent({ roomId, myAccount }: Options): Component & {
     list.scrollTop = list.scrollHeight;
   }
 
-  /* ---------- incoming messages ---------- */
+  /* ---------- 메시지 수신 ---------- */
   service.addEventListener('message', (e) => {
     const msg = (e as CustomEvent<ChatMessage>).detail;
 
     if (msg.account === myAccount && msg.localId) {
       const ph = list.querySelector<HTMLElement>(`.message.pending[data-local-id="${msg.localId}"]`);
-      if (ph) { overwritePlaceholder(ph, msg); scrollToBottom(); return; }
+      if (ph) {
+        overwritePlaceholder(ph, msg);
+        scrollToBottom();
+        return;
+      }
     }
 
-    if (list.querySelector(`[data-id="${msg.id}"]`)) return;
-    list.append(buildNode(msg));
+    if (list.querySelector(`[data-id="${msg.id}"]`)) return; // dup guard
 
-    waitForImages(list).then(() => {
-      scrollToBottom();
-    });
+    list.append(buildNode(msg));
+    waitForImages(list).then(scrollToBottom);
   });
 
-  /* ---------- outgoing messages ---------- */
+  /* ---------- 초기 메시지 일괄 처리 후 preload ---------- */
+  service.addEventListener('init', (e) => {
+    const initialMessages = (e as CustomEvent<ChatMessage[]>).detail;
+    initialMessages.forEach((msg) => {
+      observedAccounts.add(getAddress(msg.account));
+      list.append(buildNode(msg));
+    });
+    chatProfileService.preload([...observedAccounts]);
+    waitForImages(list).then(scrollToBottom);
+  });
+
+  /* ---------- 전송 ---------- */
   async function sendCurrentInput() {
     const text = (input.value as string).trim();
     if (!text && pendingAttachments.length === 0) return;
@@ -253,7 +256,6 @@ function createChatComponent({ roomId, myAccount }: Options): Component & {
       );
 
       const saved = await service.send(text, uploaded, localId);
-
       overwritePlaceholder(placeholder, saved);
     } catch {
       markFailed(placeholder);
@@ -279,10 +281,7 @@ function createChatComponent({ roomId, myAccount }: Options): Component & {
     { capture: true },
   );
 
-  const onResize = () => {
-    scrollToBottom();
-  };
-
+  const onResize = () => scrollToBottom();
   if (window.visualViewport) {
     window.visualViewport.addEventListener('resize', onResize);
   }
@@ -293,7 +292,6 @@ function createChatComponent({ roomId, myAccount }: Options): Component & {
     remove() {
       service.disconnect();
       root.remove();
-
       if (window.visualViewport) {
         window.visualViewport.removeEventListener('resize', onResize);
       }

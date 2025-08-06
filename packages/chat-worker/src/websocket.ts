@@ -1,43 +1,36 @@
-import { WebSocket, WebSocketPair } from '@cloudflare/workers-types';
+import { WebSocket } from '@cloudflare/workers-types';
 import { ChatMessage } from './types/chat';
 
-interface Client {
-  account: string;
-  socket: WebSocket;
-}
+interface Client { account: string; socket: WebSocket }
 
 export class WebSocketManager {
   #clients: Client[] = [];
 
   handleConnection(socket: WebSocket, account: string, getHistory: () => Promise<ChatMessage[]>) {
     socket.accept();
-
     const client: Client = { account, socket };
     this.#clients.push(client);
 
     socket.addEventListener('close', () => {
-      this.#clients = this.#clients.filter(c => c !== client);
+      this.#clients = this.#clients.filter((c) => c !== client);
     });
-
     socket.addEventListener('error', () => {
-      this.#clients = this.#clients.filter(c => c !== client);
+      this.#clients = this.#clients.filter((c) => c !== client);
     });
 
     queueMicrotask(async () => {
-      const history = await getHistory();
-      for (const msg of history) {
-        try {
-          socket.send(JSON.stringify(msg));
-        } catch (err) {
-          console.error(`Error sending history to ${account}`, err);
-        }
+      try {
+        const history = await getHistory();
+        socket.send(JSON.stringify({ type: 'init', messages: history }));
+      } catch (err) {
+        console.error(`Error sending history to ${account}`, err);
       }
     });
   }
 
   broadcast(message: ChatMessage) {
     const json = JSON.stringify(message);
-    this.#clients.forEach(({ account, socket }) => {
+    this.#clients.forEach(({ socket, account }) => {
       try {
         socket.send(json);
       } catch (err) {

@@ -67,6 +67,7 @@ class ChatProfileService extends EventTarget {
       return true;
     });
 
+
     if (!targets.length) return;
 
     targets.forEach(a => this.#inflight.add(a));

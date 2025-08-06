@@ -3,6 +3,8 @@ import { Attachment, ChatMessage } from '../types/chat';
 
 declare const API_URI: string;
 
+type InitPayload = { type: 'init'; messages: ChatMessage[] };
+
 class ChatService extends EventTarget {
   private roomId: string;
   private socket: WebSocket | null = null;
@@ -14,18 +16,16 @@ class ChatService extends EventTarget {
     this.roomId = roomId;
   }
 
-  /** WebSocket 연결 시작 */
+  /* -------------------------- public -------------------------- */
   connect() {
     this.#connectWS();
   }
 
-  /** 연결 중단(페이지 언마운트 시 호출) */
   disconnect() {
     this.stopped = true;
     this.socket?.close();
   }
 
-  /** 텍스트 메시지 전송 → 서버가 확정한 ChatMessage 반환 */
   async send(text: string, attachments: Attachment[] = [], localId: string): Promise<ChatMessage> {
     const token = tokenManager.getToken();
     const resp = await fetch(`${API_URI}/chat/${this.roomId}/send`, {
@@ -43,14 +43,10 @@ class ChatService extends EventTarget {
       throw err;
     }
 
-    const msg: ChatMessage = await resp.json();
-    return msg;
+    return resp.json() as Promise<ChatMessage>;
   }
 
-  /* ------------------------------------------------------------------ */
-  /*                         내부 WebSocket 구현부                        */
-  /* ------------------------------------------------------------------ */
-
+  /* ---------------------- private helpers --------------------- */
   #connectWS() {
     if (this.stopped) return;
 
@@ -60,22 +56,30 @@ class ChatService extends EventTarget {
       return;
     }
 
-    const wsUrl = new URL(`${API_URI}/chat/${this.roomId}/stream`, location.origin.replace(/^http/, 'ws'));
+    const wsUrl = new URL(
+      `${API_URI}/chat/${this.roomId}/stream`,
+      location.origin.replace(/^http/, 'ws'),
+    );
     wsUrl.searchParams.set('token', token);
 
     const socket = new WebSocket(wsUrl.toString());
     this.socket = socket;
 
     socket.addEventListener('open', () => {
-      this.reconnectDelay = 3000; // 연결 성공 시 딜레이 초기화
+      this.reconnectDelay = 3000;
     });
 
-    socket.addEventListener('message', (e) => {
+    socket.addEventListener('message', (ev) => {
       try {
-        const msg: ChatMessage = JSON.parse(e.data);
-        this.dispatchEvent(new CustomEvent('message', { detail: msg }));
+        const data = JSON.parse(ev.data) as InitPayload | ChatMessage;
+        if ('type' in data && data.type === 'init') {
+          // History batch from server
+          this.dispatchEvent(new CustomEvent('init', { detail: data.messages }));
+        } else {
+          this.dispatchEvent(new CustomEvent('message', { detail: data as ChatMessage }));
+        }
       } catch (err) {
-        console.error('Invalid message from server:', e.data);
+        console.error('Invalid WS payload', ev.data);
       }
     });
 
@@ -85,7 +89,7 @@ class ChatService extends EventTarget {
 
     socket.addEventListener('error', (e) => {
       this.dispatchEvent(new CustomEvent('error', { detail: e }));
-      socket.close(); // 에러 시 강제 종료
+      socket.close();
     });
   }
 
