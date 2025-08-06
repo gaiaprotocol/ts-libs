@@ -1,14 +1,14 @@
+import { createJazzicon, shortenAddress, tokenManager } from '@gaiaprotocol/client-common';
 import '@shoelace-style/shoelace';
 import { el } from '@webtaku/el';
 import { getAddress } from 'viem';
-import { TokenManager } from '../auth/token-mananger';
+import '../../src/components/chat.css';
 import { ChatMessage, ChatService } from '../services/chat';
-import { nameService } from '../services/name';
+import { ChatProfile, chatProfileService } from '../services/chat-profile';
 import { Attachment } from '../types/chat';
-import { shortenAddress } from '../utils/address';
-import { createAddressAvatar } from './address-avatar';
-import './chat.css';
 import { Component } from './component';
+
+declare const API_URI: string;
 
 interface Options {
   roomId: string;
@@ -59,7 +59,7 @@ function createChatComponent({ roomId, myAccount }: Options): Component & {
 
   const root = el('div.chat-component');
   const list = el('div.message-list');
-  const input: any = el('sl-input', { placeholder: 'Type a message…', pill: true, autocorrect: 'off', autocapitalize: 'off', autocomplete: 'off' });
+  const input = el('sl-input', { placeholder: 'Type a message…', pill: true });
   const sendBtn = el('sl-button', { variant: 'primary', pill: true }, 'Send');
   const attachBtn = el('sl-button', { variant: 'default', circle: true },
     el('sl-icon', { name: 'paperclip' })
@@ -75,11 +75,13 @@ function createChatComponent({ roomId, myAccount }: Options): Component & {
   const service = new ChatService(roomId);
   service.connect();
 
-  nameService.addEventListener('namechange', (e) => {
-    const { account, name } = (e as CustomEvent<any>).detail;
+  chatProfileService.addEventListener('profilechange', (e) => {
+    const { account, profile } = (e as CustomEvent<{
+      account: `0x${string}`, profile: ChatProfile,
+    }>).detail;
     list.querySelectorAll<HTMLElement>(`.message .name[data-account="${account}"]`)
       .forEach(node => {
-        node.textContent = name;
+        node.textContent = profile.nickname ?? shortenAddress(account);
       });
   });
 
@@ -124,11 +126,11 @@ function createChatComponent({ roomId, myAccount }: Options): Component & {
       dataset: { id: String(msg.id) }
     });
 
-    const avatar = createAddressAvatar(account);
+    const avatar = createJazzicon(account);
     avatar.classList.add('avatar');
 
     // 이름 표기
-    const cachedName = nameService.getCached(account) || shortenAddress(account);
+    const cachedName = chatProfileService.getCached(account)?.nickname || shortenAddress(account);
     const meta = el(
       'div.meta',
       el('span.name', { dataset: { account } }, cachedName),
@@ -160,8 +162,8 @@ function createChatComponent({ roomId, myAccount }: Options): Component & {
 
     wrapper.append(avatar, body);
 
-    // 이름 요청
-    nameService.preload([account]);
+    // 프로필 요청
+    chatProfileService.preload([account]);
 
     return wrapper;
   }
@@ -235,10 +237,10 @@ function createChatComponent({ roomId, myAccount }: Options): Component & {
       const uploaded: Attachment[] = await Promise.all(
         pendingAttachments.map(async (p) => {
           const fd = new FormData(); fd.append('image', p.file);
-          const res = await fetch('/api/upload-image', {
+          const res = await fetch(`${API_URI}/upload-image`, {
             method: 'POST',
             body: fd,
-            headers: { Authorization: `Bearer ${TokenManager.getToken()}` }
+            headers: { Authorization: `Bearer ${tokenManager.getToken()}` }
           });
           const { imageUrl, thumbnailUrl } = await res.json();
           return { kind: 'image', url: imageUrl, thumb: thumbnailUrl };
