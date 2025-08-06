@@ -7,6 +7,7 @@ import { ChatMessage, ChatService } from '../services/chat';
 import { ChatProfile, chatProfileService } from '../services/chat-profile';
 import { Attachment } from '../types/chat';
 import { Component } from './component';
+import { parseTextWithLinks } from '../utils/text';
 
 declare const API_URI: string;
 
@@ -139,7 +140,11 @@ function createChatComponent({ roomId, myAccount }: Options): Component & {
 
     const body = el('div.msg-body', meta);
 
-    if (msg.text) body.append(el('div.text', msg.text));
+    if (msg.text) {
+      const textNode = el('div.text');
+      textNode.append(parseTextWithLinks(msg.text));
+      body.append(textNode);
+    }
 
     if (msg.attachments.length) {
       const gallery = el('div.attachments',

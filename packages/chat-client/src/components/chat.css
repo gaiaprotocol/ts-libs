@@ -74,6 +74,12 @@
     .text {
       font-size: 14px;
     }
+
+    .msg-link {
+      color: var(--sl-color-primary-600);
+      text-decoration: underline;
+      word-break: break-word;
+    }
   }
 
   .thumb-bar {
