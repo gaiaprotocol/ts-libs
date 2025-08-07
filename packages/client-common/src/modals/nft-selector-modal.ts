@@ -1,12 +1,16 @@
-/*import { el } from "@webtaku/el";
-import { fetchNftsForAddress } from "../api/nft"; // 🔷 당신의 API에 맞게 수정
-import type { NftItem } from "../types/nft"; // 🔷 NFT 타입 선언 필요
+import '@ionic/core';
+import { el } from "@webtaku/el";
+import type { NftItem } from "../types/nft"; // 🔷 Define your NFT type
 
-export function createNftSelectorModal(address: string, onSelect: (nft: NftItem) => void) {
+export function createNftSelectorModal(
+  address: string,
+  onSelect: (nft: NftItem) => void,
+  fetchNfts: (address: string) => Promise<NftItem[]>
+) {
   const modal = el("ion-modal");
   const loading = el("ion-spinner", { name: "crescent" });
   const list = el("ion-list");
-  const errorText = el("ion-text", { color: "danger", style: "display: none;" }, "NFT 불러오기 실패");
+  const errorText = el("ion-text", { color: "danger", style: "display: none;" }, "Failed to load NFTs");
 
   const content = el("ion-content.ion-padding",
     loading,
@@ -16,20 +20,20 @@ export function createNftSelectorModal(address: string, onSelect: (nft: NftItem)
 
   const modalHeader = el("ion-header",
     el("ion-toolbar",
-      el("ion-title", "NFT 선택"),
+      el("ion-title", "Select NFT"),
       el("ion-buttons", { slot: "end" },
-        el("ion-button", { onclick: () => modal.dismiss() }, "닫기")
+        el("ion-button", { onclick: () => modal.dismiss() }, "Close")
       ),
     )
   );
 
   modal.append(modalHeader, content);
 
-  fetchNftsForAddress(address)
+  fetchNfts(address)
     .then(nfts => {
       loading.remove();
       if (!nfts.length) {
-        list.append(el("ion-item", "표시할 NFT가 없습니다."));
+        list.append(el("ion-item", "No NFTs to display."));
         return;
       }
 
@@ -48,7 +52,7 @@ export function createNftSelectorModal(address: string, onSelect: (nft: NftItem)
           }
         },
           img,
-          el("ion-label", nft.name || "이름 없음")
+          el("ion-label", nft.name || "Unnamed")
         );
 
         list.append(item);
@@ -62,4 +66,3 @@ export function createNftSelectorModal(address: string, onSelect: (nft: NftItem)
 
   return modal;
 }
-*/
