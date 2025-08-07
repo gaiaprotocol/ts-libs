@@ -1,9 +1,9 @@
 import { D1Database } from '@cloudflare/workers-types';
 import {
+  erc721Abi,
   getAddress,
   parseAbiItem,
   PublicClient,
-  erc721Abi,
 } from 'viem';
 
 const ERC721_TRANSFER_EVENT = parseAbiItem(
@@ -14,52 +14,35 @@ type TokenRange = { start: number; end: number };
 type TokenRangeMap = Record<string, TokenRange>;
 
 /**
- * 초기 상태에서 모든 토큰에 대해 ownerOf 호출 → 보유자 정보 수집
+ * 특정 NFT 컬렉션의 지정된 tokenId 범위(start~end)에 대해 ownerOf 호출 후 DB에 저장
  */
-async function initializeNftOwnershipFromChain(
+async function fetchAndStoreNftOwnershipRange(
   env: { DB: D1Database },
   client: PublicClient,
-  tokenRanges: TokenRangeMap
+  nftAddress: string,
+  start: number,
+  end: number
 ): Promise<void> {
-  for (const [nftAddress, range] of Object.entries(tokenRanges)) {
-    if (!range || typeof range !== 'object') continue;
+  const promises: Promise<void>[] = [];
 
-    const { start, end } = range;
+  for (let tokenId = start; tokenId <= end; tokenId++) {
+    const promise = ((async () => {
+      const owner = await client.readContract({
+        address: nftAddress as `0x${string}`,
+        abi: erc721Abi,
+        functionName: 'ownerOf',
+        args: [BigInt(tokenId)],
+      });
 
-    for (let tokenId = start; tokenId <= end; tokenId++) {
-      // 이미 존재하는지 확인
-      const exists = await env.DB.prepare(
-        `SELECT 1 FROM nfts WHERE nft_address = ? AND token_id = ? LIMIT 1`
-      ).bind(nftAddress, tokenId).first();
+      await env.DB.prepare(
+        `INSERT OR REPLACE INTO nfts (nft_address, token_id, holder) VALUES (?, ?, ?)`
+      ).bind(nftAddress, tokenId, owner).run();
+    })());
 
-      if (exists) {
-        continue; // 패싱
-      }
-
-      try {
-        const owner = await client.readContract({
-          address: nftAddress as `0x${string}`,
-          abi: erc721Abi,
-          functionName: 'ownerOf',
-          args: [BigInt(tokenId)],
-        });
-
-        await env.DB.prepare(
-          `INSERT INTO nfts (nft_address, token_id, holder) VALUES (?, ?, ?)`
-        ).bind(nftAddress, tokenId, owner).run();
-      } catch (err) {
-        console.warn(`Failed to fetch owner for ${nftAddress}#${tokenId}:`, err);
-      }
-    }
+    promises.push(promise);
   }
 
-  const currentBlock = await client.getBlockNumber();
-
-  await env.DB.prepare(
-    `INSERT OR REPLACE INTO contract_event_sync_status (
-      contract_type, last_synced_block_number, last_synced_at
-    ) VALUES (?, ?, strftime('%s','now'))`
-  ).bind('ERC721', Number(currentBlock)).run();
+  await Promise.all(promises);
 }
 
 /**
@@ -127,24 +110,4 @@ async function syncNftOwnershipFromEvents(
   ).bind(Number(toBlock), 'ERC721').run();
 }
 
-async function syncNftOwnership(
-  env: { DB: D1Database },
-  client: PublicClient,
-  tokenRanges: TokenRangeMap,
-  blockStep: number
-): Promise<void> {
-  const statusRow = await env.DB.prepare(
-    `SELECT last_synced_block_number FROM contract_event_sync_status WHERE contract_type = ?`
-  )
-    .bind('ERC721')
-    .first();
-
-  if (!statusRow) {
-    console.log('No sync status found. Performing initial holder sync...');
-    await initializeNftOwnershipFromChain(env, client, tokenRanges);
-  } else {
-    await syncNftOwnershipFromEvents(env, client, tokenRanges, blockStep);
-  }
-}
-
-export { syncNftOwnership, syncNftOwnershipFromEvents };
+export { fetchAndStoreNftOwnershipRange, syncNftOwnershipFromEvents };
