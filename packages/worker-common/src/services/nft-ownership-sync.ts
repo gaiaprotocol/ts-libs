@@ -117,3 +117,23 @@ export async function syncNftOwnershipFromEvents(
      WHERE contract_type = ?`
   ).bind(Number(toBlock), 'ERC721').run();
 }
+
+export async function syncNftOwnership(
+  env: { DB: D1Database },
+  client: PublicClient,
+  tokenRanges: TokenRangeMap,
+  blockStep: number
+): Promise<void> {
+  const statusRow = await env.DB.prepare(
+    `SELECT last_synced_block_number FROM contract_event_sync_status WHERE contract_type = ?`
+  )
+    .bind('ERC721')
+    .first();
+
+  if (!statusRow) {
+    console.log('No sync status found. Performing initial holder sync...');
+    await initializeNftOwnershipFromChain(env, client, tokenRanges);
+  } else {
+    await syncNftOwnershipFromEvents(env, client, tokenRanges, blockStep);
+  }
+}
