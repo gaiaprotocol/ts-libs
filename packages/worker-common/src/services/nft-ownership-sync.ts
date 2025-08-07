@@ -16,7 +16,7 @@ type TokenRangeMap = Record<string, TokenRange>;
 /**
  * 초기 상태에서 모든 토큰에 대해 ownerOf 호출 → 보유자 정보 수집
  */
-export async function initializeNftOwnershipFromChain(
+async function initializeNftOwnershipFromChain(
   env: { DB: D1Database },
   client: PublicClient,
   tokenRanges: TokenRangeMap
@@ -56,7 +56,7 @@ export async function initializeNftOwnershipFromChain(
 /**
  * Transfer 이벤트 기반으로 소유자 업데이트
  */
-export async function syncNftOwnershipFromEvents(
+async function syncNftOwnershipFromEvents(
   env: { DB: D1Database },
   client: PublicClient,
   tokenRanges: TokenRangeMap,
@@ -118,7 +118,7 @@ export async function syncNftOwnershipFromEvents(
   ).bind(Number(toBlock), 'ERC721').run();
 }
 
-export async function syncNftOwnership(
+async function syncNftOwnership(
   env: { DB: D1Database },
   client: PublicClient,
   tokenRanges: TokenRangeMap,
@@ -137,3 +137,5 @@ export async function syncNftOwnership(
     await syncNftOwnershipFromEvents(env, client, tokenRanges, blockStep);
   }
 }
+
+export { syncNftOwnership, syncNftOwnershipFromEvents };
