@@ -27,6 +27,15 @@ async function initializeNftOwnershipFromChain(
     const { start, end } = range;
 
     for (let tokenId = start; tokenId <= end; tokenId++) {
+      // 이미 존재하는지 확인
+      const exists = await env.DB.prepare(
+        `SELECT 1 FROM nfts WHERE nft_address = ? AND token_id = ? LIMIT 1`
+      ).bind(nftAddress, tokenId).first();
+
+      if (exists) {
+        continue; // 패싱
+      }
+
       try {
         const owner = await client.readContract({
           address: nftAddress as `0x${string}`,
@@ -36,7 +45,7 @@ async function initializeNftOwnershipFromChain(
         });
 
         await env.DB.prepare(
-          `INSERT OR REPLACE INTO nfts (nft_address, token_id, holder) VALUES (?, ?, ?)`
+          `INSERT INTO nfts (nft_address, token_id, holder) VALUES (?, ?, ?)`
         ).bind(nftAddress, tokenId, owner).run();
       } catch (err) {
         console.warn(`Failed to fetch owner for ${nftAddress}#${tokenId}:`, err);
