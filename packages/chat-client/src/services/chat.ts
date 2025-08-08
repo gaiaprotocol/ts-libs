@@ -1,7 +1,7 @@
 import { tokenManager } from '@gaiaprotocol/client-common';
 import { Attachment, ChatMessage } from '../types/chat';
 
-declare const API_URI: string;
+declare const API_BASE_URI: string;
 
 type InitPayload = { type: 'init'; messages: ChatMessage[] };
 
@@ -28,7 +28,7 @@ class ChatService extends EventTarget {
 
   async send(text: string, attachments: Attachment[] = [], localId: string): Promise<ChatMessage> {
     const token = tokenManager.getToken();
-    const resp = await fetch(`${API_URI}/chat/${this.roomId}/send`, {
+    const resp = await fetch(`${API_BASE_URI}/chat/${this.roomId}/send`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -57,7 +57,7 @@ class ChatService extends EventTarget {
     }
 
     const wsUrl = new URL(
-      `${API_URI}/chat/${this.roomId}/stream`,
+      `${API_BASE_URI}/chat/${this.roomId}/stream`,
       location.origin.replace(/^http/, 'ws'),
     );
     wsUrl.searchParams.set('token', token);

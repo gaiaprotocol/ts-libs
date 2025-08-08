@@ -1,4 +1,4 @@
-import { createJazzicon, shortenAddress, tokenManager } from '@gaiaprotocol/client-common';
+import { createAddressAvatar, createJazzicon, shortenAddress, tokenManager } from '@gaiaprotocol/client-common';
 import '@shoelace-style/shoelace';
 import { el } from '@webtaku/el';
 import { getAddress } from 'viem';
@@ -6,14 +6,15 @@ import '../../src/components/chat.css';
 import { ChatMessage, ChatService } from '../services/chat';
 import { ChatProfile, chatProfileService } from '../services/chat-profile';
 import { Attachment } from '../types/chat';
-import { Component } from './component';
 import { parseTextWithLinks } from '../utils/text';
+import { Component } from './component';
 
-declare const API_URI: string;
+declare const API_BASE_URI: string;
 
 interface Options {
   roomId: string;
   myAccount: string;
+  useAddressAvatar?: boolean;
 }
 
 async function waitForImages(node: HTMLElement) {
@@ -53,7 +54,7 @@ function replaceWithFallback(img: HTMLImageElement) {
   img.replaceWith(wrapper);
 }
 
-function createChatComponent({ roomId, myAccount }: Options): Component & {
+function createChatComponent({ roomId, myAccount, useAddressAvatar }: Options): Component & {
   scrollToBottom: () => void;
 } {
   const pendingAttachments: { file: File, blobUrl: string }[] = [];
@@ -129,7 +130,7 @@ function createChatComponent({ roomId, myAccount }: Options): Component & {
       dataset: { id: String(msg.id) },
     });
 
-    const avatar = createJazzicon(account);
+    const avatar = useAddressAvatar ? createAddressAvatar(account) : createJazzicon(account);
     avatar.classList.add('avatar');
 
     const cachedName = chatProfileService.getCached(account)?.nickname || shortenAddress(account);
@@ -245,7 +246,7 @@ function createChatComponent({ roomId, myAccount }: Options): Component & {
       const uploaded: Attachment[] = await Promise.all(
         pendingAttachments.map(async (p) => {
           const fd = new FormData(); fd.append('image', p.file);
-          const res = await fetch(`${API_URI}/upload-image`, {
+          const res = await fetch(`${API_BASE_URI}/upload-image`, {
             method: 'POST',
             body: fd,
             headers: { Authorization: `Bearer ${tokenManager.getToken()}` }
