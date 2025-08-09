@@ -23,11 +23,11 @@ class ChatProfileService extends EventTarget {
     this.#fetchFn = fetchFn;
   }
 
-  preload(accounts: string[]) {
+  async preload(accounts: string[]) {
     const toFetch = accounts
       .map(a => getAddress(a))
       .filter(a => this.#needsRefresh(a));
-    if (toFetch.length) this.#fetchBatch(toFetch);
+    if (toFetch.length) await this.#fetchBatch(toFetch);
   }
 
   async resolve(account: string): Promise<ChatProfile | undefined> {
@@ -66,7 +66,6 @@ class ChatProfileService extends EventTarget {
       if (!this.#needsRefresh(a)) return false;
       return true;
     });
-
 
     if (!targets.length) return;
 

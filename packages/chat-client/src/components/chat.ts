@@ -80,9 +80,31 @@ function createChatComponent({ roomId, myAccount, useAddressAvatar }: Options): 
     const { account, profile } = (e as CustomEvent<{
       account: `0x${string}`, profile: ChatProfile,
     }>).detail;
+
     list.querySelectorAll<HTMLElement>(`.message .name[data-account="${account}"]`)
       .forEach(node => {
         node.textContent = profile.nickname ?? shortenAddress(account);
+
+        const messageEl = node.closest('.message');
+        const avatarContainer = messageEl?.querySelector<HTMLElement>('.avatar-container') ?? null;
+
+        if (avatarContainer) {
+          // 배경 이미지 교체
+          if (profile.profileImage) {
+            avatarContainer.style.backgroundImage = `url("${profile.profileImage}")`;
+            // 기존 자식(재즈아이콘/어바타)이 있다면 가려주기/비워주기
+            avatarContainer.innerHTML = '';
+          } else {
+            // 이미지가 없어지면 기본 아바타로 복원 (선택)
+            if (!avatarContainer.querySelector('.avatar')) {
+              const fallback = useAddressAvatar ? createAddressAvatar(account) : createJazzicon(account);
+              fallback.classList.add('avatar');
+              avatarContainer.innerHTML = '';
+              avatarContainer.append(fallback);
+            }
+            avatarContainer.style.backgroundImage = '';
+          }
+        }
       });
   });
 
@@ -130,8 +152,23 @@ function createChatComponent({ roomId, myAccount, useAddressAvatar }: Options): 
       dataset: { id: String(msg.id) },
     });
 
-    const avatar = useAddressAvatar ? createAddressAvatar(account) : createJazzicon(account);
-    avatar.classList.add('avatar');
+    const avatarContainer = el('div.avatar-container', {
+      style: `
+      width:40px;
+      height:40px;
+      background-size: cover;
+      background-position: center;
+      border-radius: 50%;
+      `,
+    });
+    const cachedProfileImage = chatProfileService.getCached(account)?.profileImage;
+    if (cachedProfileImage) {
+      avatarContainer.style.backgroundImage = `url(${cachedProfileImage})`;
+    } else {
+      const avatar = useAddressAvatar ? createAddressAvatar(account) : createJazzicon(account);
+      avatar.classList.add('avatar');
+      avatarContainer.append(avatar);
+    }
 
     const cachedName = chatProfileService.getCached(account)?.nickname || shortenAddress(account);
     const meta = el('div.meta', el('span.name', { dataset: { account } }, cachedName), el('time.time', new Date(msg.timestamp).toLocaleTimeString()));
@@ -163,7 +200,7 @@ function createChatComponent({ roomId, myAccount, useAddressAvatar }: Options): 
       body.append(gallery);
     }
 
-    wrapper.append(avatar, body);
+    wrapper.append(avatarContainer, body);
     return wrapper;
   }
 
