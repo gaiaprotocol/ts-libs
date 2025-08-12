@@ -12,7 +12,7 @@ type Env = {
   JWT_SECRET: string;
 };
 
-export async function handleLogin(request: Request, env: Env) {
+export async function handleLogin(request: Request, chainId: number, env: Env) {
   const schema = z.object({
     address: z.string().regex(/^0x[a-fA-F0-9]{40}$/, 'Invalid Ethereum address'),
     signature: z.string().regex(/^0x[a-fA-F0-9]+$/, 'Invalid signature'),
@@ -25,6 +25,7 @@ export async function handleLogin(request: Request, env: Env) {
   const valid = await validateSiwe(
     normalizedAddress,
     signature as `0x${string}`,
+    chainId,
     env
   );
 
