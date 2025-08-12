@@ -1,5 +1,6 @@
 import { getAddress } from 'viem';
 import { z } from 'zod';
+import { jsonWithCors } from '../services/cors';
 import { isHolder } from "../services/nft";
 
 const GOD_NFT_CONTRACT = '0x134590ACB661Da2B318BcdE6b39eF5cF8208E372';
@@ -22,5 +23,5 @@ export async function handleGodModeCheck(request: Request): Promise<Response> {
   const normalizedAddress = getAddress(address);
   const holder = await isHolder(normalizedAddress, GOD_NFT_CONTRACT);
 
-  return Response.json({ godMode: holder || WHITELIST.includes(normalizedAddress) });
+  return jsonWithCors({ godMode: holder || WHITELIST.includes(normalizedAddress) });
 }

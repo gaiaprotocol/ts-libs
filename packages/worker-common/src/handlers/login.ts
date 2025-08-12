@@ -1,6 +1,7 @@
 import { KVNamespace } from '@cloudflare/workers-types';
 import { getAddress } from 'viem';
 import { z } from 'zod';
+import { jsonWithCors } from '../services/cors';
 import { generateToken } from '../services/jwt';
 import { validateSiwe } from '../services/siwe';
 
@@ -30,9 +31,9 @@ export async function handleLogin(request: Request, chainId: number, env: Env) {
   );
 
   if (!valid) {
-    return new Response('Invalid signature or nonce', { status: 401 });
+    return jsonWithCors('Invalid signature or nonce', 401);
   }
 
   const token = await generateToken(address, env);
-  return Response.json({ token });
+  return jsonWithCors({ token });
 }

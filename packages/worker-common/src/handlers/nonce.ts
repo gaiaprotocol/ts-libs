@@ -2,6 +2,7 @@ import { KVNamespace } from '@cloudflare/workers-types';
 import { customAlphabet } from 'nanoid';
 import { getAddress } from 'viem';
 import { z } from 'zod';
+import { jsonWithCors } from '../services/cors';
 
 // 알파벳: alphanumeric only
 const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -24,5 +25,5 @@ export async function handleNonce(request: Request, env: { SIWE_NONCES: KVNamesp
 
   await env.SIWE_NONCES.put(`nonce:${normalizedAddress}`, JSON.stringify({ nonce, issuedAt }), { expirationTtl: 300 });
 
-  return Response.json({ nonce, issuedAt });
+  return jsonWithCors({ nonce, issuedAt });
 }
