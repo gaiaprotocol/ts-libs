@@ -14,13 +14,13 @@ const partsData: Record<ElementType, Record<GenderType, PartCategory[]>> = {
   Water: { Man: waterManParts, Woman: waterWomanParts },
 } as const;
 
-type GodMetadata = {
+export type GodMetadata = {
   type: ElementType;
   gender: GenderType;
   parts: { [category: string]: string };
 };
 
-type ImageInfo = {
+export type ImageInfo = {
   path: string;
   drawOrder: number;
 };
