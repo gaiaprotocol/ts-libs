@@ -21,15 +21,17 @@ const testData: NftData = {
   },
 };
 
+const editor = await createNftAttributeEditor({
+  partOptions: parts,
+  baseData: testData,
+  keyToFrame: keyToFrame,
+  spritesheet,
+  spritesheetImagePath:
+    'https://api.matedevdao.workers.dev/babyping/spritesheet/spritesheet.png',
+});
+
 document.body.appendChild(el(
   'ion-app.babyping-view',
   //new BabypingDisplay(testData.parts),
-  createNftAttributeEditor({
-    partOptions: parts,
-    baseData: testData,
-    keyToFrame: keyToFrame,
-    spritesheet,
-    spritesheetImagePath:
-      'https://api.matedevdao.workers.dev/babyping/spritesheet/spritesheet.png',
-  }).el,
+  editor.el,
 ));

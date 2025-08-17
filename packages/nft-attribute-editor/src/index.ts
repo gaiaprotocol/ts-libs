@@ -1,2 +1,2 @@
-export { createNftAttributeEditor } from "./components/editor";
+export { createNftAttributeEditor } from "./editor";
 export { NftData } from "./types/nft";
