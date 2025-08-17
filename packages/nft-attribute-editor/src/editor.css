@@ -61,17 +61,14 @@
 
 /* 128×128(가변) 썸네일 박스 */
 .nft-thumb-128 {
-  width: calc(var(--thumb-size) * 1px);
-  height: calc(var(--thumb-size) * 1px);
+  width: 128px;
+  height: 128px;
   position: relative;
   border-radius: 12px;
   background: #0c0c0f;
   overflow: hidden;
-  margin: 6px auto 4px;
-
-  * {
-    transform: scale(calc(var(--thumb-size) / 128));
-  }
+  margin: calc((128px - calc(var(--thumb-size) * 1px)) / -2 + 6px) auto calc((128px - calc(var(--thumb-size) * 1px)) / -2 + 4px);
+  transform: scale(calc(var(--thumb-size) / 128));
 }
 
 /* 체크 배지: 우하단 고정 */
