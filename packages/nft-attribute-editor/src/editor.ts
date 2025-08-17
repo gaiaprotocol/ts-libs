@@ -145,20 +145,15 @@ export async function createNftAttributeEditor(options: NftAttributeEditorOption
     const header = el('ion-card-header', el('ion-card-title', label));
     const content = el('ion-card-content');
 
-    // 현재 카탈로그(이 label이 파츠인지 트레잇인지 판별)
     const { categories: currentCategories } = getPartCategoriesAndFrames(
       partOptions, keyToFrame, data.traits
     );
     const isPartLabel = currentCategories.some(c => c.name === label);
 
     for (const value of values) {
-      // 작은 썸네일(원하지 않으면 아예 제거 가능)
-      const thumbContainer = el('div.nft-thumb');
-
-      // 이 칩을 적용했을 때의 "가상 데이터" 만들기
+      // 이 값이 적용된 "가상 데이터" 준비
       const makePreviewData = () => {
         let previewData = cloneData(data);
-
         if (isPartLabel) {
           previewData.parts[label] = value as any;
           previewData = cleanData(previewData, partOptions, keyToFrame);
@@ -173,38 +168,34 @@ export async function createNftAttributeEditor(options: NftAttributeEditorOption
         return previewData;
       };
 
-      // 썸네일은 현재 데이터로 간단히 렌더(비용 줄이려면 스킵 가능)
+      // 128×128 썸네일 컨테이너
+      const thumbContainer = el('div.nft-thumb-128');
+
       try {
+        const pd = makePreviewData();
         const { categories: previewCategories } = getPartCategoriesAndFrames(
-          partOptions, keyToFrame, data.traits
+          partOptions, keyToFrame, pd.traits
         );
         const thumbPreview = createPreview(
-          previewCategories, keyToFrame, data, spritesheet, spritesheetImagePath
+          previewCategories, keyToFrame, pd, spritesheet, spritesheetImagePath
         );
         thumbPreview.attachToDom(thumbContainer);
-      } catch { /* 썸네일 실패 무시 */ }
+      } catch { /* 썸네일 실패는 무시 */ }
 
+      // 칩(타일) 구성: 위 썸네일 + 라벨
       const chip = el(
-        'ion-chip.attribute-item',
-        {
-          outline: true,
-          color: value === selected ? 'primary' : 'medium',
-          onclick: () => {
-            onSelect(value);
-            updatePreview(data); // 확정 상태 반영
-          },
-          onmouseenter: () => {
-            const pd = makePreviewData();
-            updatePreview(pd);   // 가상 상태 미리보기
-          },
-          onmouseleave: () => {
-            updatePreview(data); // 원복
-          },
-        },
+        'ion-chip.attribute-item.tile',
+        { outline: true, color: value === selected ? 'primary' : 'medium' },
         thumbContainer,
         el('ion-label', String(value)),
         value === selected ? el('sl-icon', { name: 'check', style: 'margin-left:4px;' }) : null
       );
+
+      // 클릭만 반영 (호버 프리뷰 제거)
+      chip.addEventListener('click', () => {
+        onSelect(value);
+        updatePreview(data);
+      });
 
       content.append(chip);
     }
