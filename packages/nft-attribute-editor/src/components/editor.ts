@@ -2,6 +2,7 @@ import '@ionic/core';
 import { defineCustomElements } from '@ionic/core/loader';
 import '@shoelace-style/shoelace';
 import { el } from '@webtaku/el';
+import { DomGameObject } from 'kiwiengine';
 import { KeyToFrame } from '../types/frame';
 import { NftData, PartOptions } from '../types/nft';
 import { SpritesheetData } from '../types/spritesheet';
@@ -39,6 +40,10 @@ function createAttributeSelector<T extends string | number>(
   const content = el('ion-card-content');
 
   for (const value of values) {
+    const previewContainer = el();
+    const preview = new DomGameObject(); //TODO
+    preview.attachToDom(previewContainer);
+
     const chip = el(
       'ion-chip.attribute-item',
       {
@@ -46,6 +51,7 @@ function createAttributeSelector<T extends string | number>(
         color: value === selected ? 'primary' : 'medium',
         onclick: () => onSelect(value),
       },
+      previewContainer,
       el('ion-label', String(value)),
       value === selected ? el('sl-icon', { name: 'check', style: 'margin-left:4px;' }) : null
     );

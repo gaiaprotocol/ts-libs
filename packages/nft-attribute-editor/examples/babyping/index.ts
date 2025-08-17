@@ -22,7 +22,7 @@ const testData: NftData = {
 };
 
 document.body.appendChild(el(
-  '.babyping-view',
+  'ion-app.babyping-view',
   //new BabypingDisplay(testData.parts),
   createNftAttributeEditor({
     partOptions: parts,
