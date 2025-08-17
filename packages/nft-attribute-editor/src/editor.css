@@ -33,39 +33,69 @@
   border-radius: 6px;
 }
 
-/* 그리드로 보기 좋게 */
+/* 그리드는 그대로 */
 .nft-attribute-editor ion-card.attribute-selector ion-card-content {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(168px, 1fr));
   gap: 12px;
 }
 
+/* 타일(칩) 자체 크기/패딩 일관 */
+.nft-attribute-editor ion-chip.attribute-item.tile {
+  width: 168px;
+  box-sizing: border-box;
+  padding: 12px 10px;
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
 /* 128×128 썸네일 박스 */
 .nft-thumb-128 {
   width: 128px;
   height: 128px;
+  position: relative;
   border-radius: 12px;
   background: #0c0c0f;
   overflow: hidden;
-  position: relative;
-  display: block;
-  margin: 6px auto 8px;
-  /* 가운데 정렬 + 라벨 여백 */
+  margin: 6px auto 4px;
 }
 
-/* 칩을 타일처럼 */
-.nft-attribute-editor ion-chip.attribute-item.tile {
-  width: 168px;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  padding: 10px 8px;
-  border-radius: 14px;
+/* 체크 배지: 썸네일 우하단에 고정, 레이아웃에 영향 X */
+.nft-thumb-128 .check-badge {
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: var(--ion-color-primary);
+  color: var(--ion-color-primary-contrast);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .35);
+  pointer-events: none;
+  font-size: 16px;
+  z-index: 1;
 }
 
-/* 라벨 중앙 정렬 */
+/* 라벨은 2줄 고정 높이 + 중앙정렬 */
 .nft-attribute-editor ion-chip.attribute-item.tile ion-label {
   display: block;
   text-align: center;
-  margin-top: 2px;
+  line-height: 16px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  /* 두 줄까지만 */
+  word-break: keep-all;
+}
+
+/* 선택된 타일의 테두리 강조(선택사항) */
+.nft-attribute-editor ion-chip.attribute-item.tile.selected {
+  border: 1px solid var(--ion-color-primary);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--ion-color-primary) 20%, transparent);
 }

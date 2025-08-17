@@ -41,7 +41,7 @@ function createPreview(
   spritesheet: SpritesheetData,
   spritesheetImagePath: string,
 ) {
-  const preview = new DomGameObject();
+  const preview = new DomGameObject({ x: 64, y: 64 });
 
   for (const [partName, partValue] of Object.entries(data.parts)) {
     const category = categories.find((cat) => cat.name === partName);
@@ -182,16 +182,23 @@ export async function createNftAttributeEditor(options: NftAttributeEditorOption
         thumbPreview.attachToDom(thumbContainer);
       } catch { /* 썸네일 실패는 무시 */ }
 
-      // 칩(타일) 구성: 위 썸네일 + 라벨
+      // chip 생성부 (핵심만 발췌)
+      const isSelected = value === selected;
+
+      // 체크 배지 (레이아웃에서 제외)
+      const checkBadge =
+        el('sl-icon', { name: 'check', class: 'check-badge', 'aria-hidden': 'true' });
+
+      if (isSelected) thumbContainer.append(checkBadge);
+
       const chip = el(
-        'ion-chip.attribute-item.tile',
-        { outline: true, color: value === selected ? 'primary' : 'medium' },
+        `ion-chip.attribute-item.tile${isSelected ? '.selected' : ''}`,
+        { outline: true, color: isSelected ? 'primary' : 'medium' },
         thumbContainer,
-        el('ion-label', String(value)),
-        value === selected ? el('sl-icon', { name: 'check', style: 'margin-left:4px;' }) : null
+        el('ion-label', String(value))  // ← 아이콘은 더 이상 여기 두지 않습니다
       );
 
-      // 클릭만 반영 (호버 프리뷰 제거)
+      // 클릭 시 선택 토글 반영
       chip.addEventListener('click', () => {
         onSelect(value);
         updatePreview(data);
