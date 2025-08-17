@@ -1,7 +1,19 @@
+/* ===== 공통 변수 ===== */
+.nft-attribute-editor {
+  --tile-width: 168px;
+  /* 데스크톱 기본 타일 너비 */
+  --thumb-size: 128;
+  /* 데스크톱 썸네일 한 변 */
+  --tile-gap: 12px;
+}
+
+/* 레이아웃: 좌(리스트)/우(프리뷰) */
 .nft-attribute-editor .nft-editor-layout {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 420px;
   gap: 16px;
+  padding-bottom: env(safe-area-inset-bottom, 0);
+  /* iOS 하단 홈바 여유 */
 }
 
 .nft-attribute-editor .nft-selectors {
@@ -16,6 +28,7 @@
   height: fit-content;
 }
 
+/* 우측 큰 프리뷰 */
 .nft-attribute-editor .nft-preview-mount {
   width: 100%;
   height: 420px;
@@ -24,25 +37,16 @@
   overflow: hidden;
 }
 
-/* 칩 썸네일 (필요 없으면 아래 블록을 삭제하고 코드에서 thumbContainer 제거) */
-.nft-attribute-editor ion-chip.attribute-item>div.nft-thumb {
-  width: 48px;
-  height: 32px;
-  margin-right: 6px;
-  overflow: hidden;
-  border-radius: 6px;
-}
-
-/* 그리드는 그대로 */
+/* ===== 선택 그리드 & 타일 ===== */
 .nft-attribute-editor ion-card.attribute-selector ion-card-content {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(168px, 1fr));
-  gap: 12px;
+  grid-template-columns: repeat(auto-fill, minmax(var(--tile-width), 1fr));
+  gap: var(--tile-gap);
 }
 
-/* 타일(칩) 자체 크기/패딩 일관 */
+/* 타일 자체 */
 .nft-attribute-editor ion-chip.attribute-item.tile {
-  width: 168px;
+  width: var(--tile-width);
   box-sizing: border-box;
   padding: 12px 10px;
   border-radius: 14px;
@@ -50,20 +54,27 @@
   flex-direction: column;
   align-items: center;
   gap: 8px;
+  user-select: none;
+  /* 텍스트 선택 방지 */
+  -webkit-tap-highlight-color: transparent;
 }
 
-/* 128×128 썸네일 박스 */
+/* 128×128(가변) 썸네일 박스 */
 .nft-thumb-128 {
-  width: 128px;
-  height: 128px;
+  width: calc(var(--thumb-size) * 1px);
+  height: calc(var(--thumb-size) * 1px);
   position: relative;
   border-radius: 12px;
   background: #0c0c0f;
   overflow: hidden;
   margin: 6px auto 4px;
+
+  * {
+    transform: scale(calc(var(--thumb-size) / 128));
+  }
 }
 
-/* 체크 배지: 썸네일 우하단에 고정, 레이아웃에 영향 X */
+/* 체크 배지: 우하단 고정 */
 .nft-thumb-128 .check-badge {
   position: absolute;
   right: 8px;
@@ -81,7 +92,7 @@
   z-index: 1;
 }
 
-/* 라벨은 2줄 고정 높이 + 중앙정렬 */
+/* 두 줄 라벨 고정 높이 */
 .nft-attribute-editor ion-chip.attribute-item.tile ion-label {
   display: block;
   text-align: center;
@@ -90,12 +101,83 @@
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
-  /* 두 줄까지만 */
   word-break: keep-all;
 }
 
-/* 선택된 타일의 테두리 강조(선택사항) */
+/* 선택 강조 */
 .nft-attribute-editor ion-chip.attribute-item.tile.selected {
   border: 1px solid var(--ion-color-primary);
   box-shadow: 0 0 0 3px color-mix(in srgb, var(--ion-color-primary) 20%, transparent);
+}
+
+/* ---- (기존 소형 썸네일 스타일은 더 이상 사용 안 하므로 제거해도 됨) ---- */
+.nft-attribute-editor ion-chip.attribute-item>div.nft-thumb {
+  display: none;
+}
+
+/* ===== 반응형 브레이크포인트 ===== */
+
+/* 큰 태블릿(<= 1024px): 우측 프리뷰 높이/썸네일 살짝 축소 */
+@media (max-width: 1024px) {
+  .nft-attribute-editor {
+    --tile-width: 156px;
+    --thumb-size: 112;
+  }
+
+  .nft-attribute-editor .nft-editor-layout {
+    grid-template-columns: minmax(0, 1fr) 360px;
+  }
+
+  .nft-attribute-editor .nft-preview-mount {
+    height: 360px;
+  }
+}
+
+/* 태블릿/폰 가로(<= 900px): 우측 프리뷰를 아래로, sticky 해제 */
+@media (max-width: 900px) {
+  .nft-attribute-editor .nft-editor-layout {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .nft-attribute-editor .nft-preview-col {
+    position: static;
+    /* sticky 비활성 (iOS 점프 방지) */
+    order: 2;
+    /* 목록 다음에 오도록 */
+  }
+
+  .nft-attribute-editor .nft-preview-mount {
+    height: 300px;
+  }
+}
+
+/* 폰(<= 600px): 2열 그리드 느낌, 더 작게 */
+@media (max-width: 600px) {
+  .nft-attribute-editor {
+    --tile-width: 148px;
+    --thumb-size: 104;
+    --tile-gap: 10px;
+  }
+
+  .nft-attribute-editor .nft-preview-mount {
+    height: 260px;
+  }
+}
+
+/* 작은 폰(<= 420px): 1~2열, 터치 목표 확대 */
+@media (max-width: 420px) {
+  .nft-attribute-editor {
+    --tile-width: 130px;
+    --thumb-size: 96;
+    --tile-gap: 8px;
+  }
+
+  .nft-attribute-editor ion-chip.attribute-item.tile {
+    padding: 14px 10px;
+  }
+
+  .nft-attribute-editor .nft-preview-mount {
+    height: 224px;
+  }
 }
