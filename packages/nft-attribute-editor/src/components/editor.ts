@@ -1,10 +1,14 @@
 import '@ionic/core';
+import { defineCustomElements } from '@ionic/core/loader';
 import '@shoelace-style/shoelace';
 import { el } from '@webtaku/el';
 import { KeyToFrame } from '../types/frame';
 import { NftData, PartOptions } from '../types/nft';
+import { SpritesheetData } from '../types/spritesheet';
 import { buildDefaultParts, cleanData, cloneData, getPartCategoriesAndFrames, partItemAvailable } from '../utils/derive';
 import { Component } from './component';
+
+defineCustomElements(window);
 
 type NftAttributeEditorOptions = {
   traitOptions?: { [traitName: string]: string[] };

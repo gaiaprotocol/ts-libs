@@ -1,4 +1,5 @@
 const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   entry: {
@@ -8,7 +9,7 @@ module.exports = {
     'babyping': './babyping/index.ts',
   },
   output: {
-    filename: '[name]/dist/game.js',
+    filename: '[name]/dist/bundle.js',
     path: path.resolve(__dirname, './'),
     chunkFormat: false
   },
@@ -18,12 +19,26 @@ module.exports = {
         test: /\.tsx?$/,
         use: 'ts-loader',
         exclude: /node_modules/
-      }
+      },
+      {
+        test: /\.css$/,
+        use: [
+          MiniCssExtractPlugin.loader, {
+            loader: "css-loader",
+            options: {
+              url: false,
+            },
+          }
+        ]
+      },
     ]
   },
   resolve: {
     extensions: ['.ts', '.js']
   },
+  plugins: [
+    new MiniCssExtractPlugin({ filename: 'styles.css' }),
+  ],
   devServer: {
     client: {
       overlay: false,

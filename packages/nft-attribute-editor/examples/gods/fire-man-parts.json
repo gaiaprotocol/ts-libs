@@ -1,394 +1,588 @@
-[{
+[
+  {
     "name": "Background",
-    "parts": [{
+    "parts": [
+      {
         "name": "Background",
-        "images": [{
+        "images": [
+          {
             "path": "background.png",
-            "drawingOrder": 0
-        }]
-    }]
-}, {
+            "drawOrder": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
     "name": "Wing",
-    "parts": [{
+    "parts": [
+      {
         "name": "None",
         "percent": 90
-    }, {
+      },
+      {
         "name": "Wing",
-        "images": [{
+        "images": [
+          {
             "path": "man/0wing/0.png",
-            "drawingOrder": 100
-        }]
-    }]
-}, {
+            "drawOrder": 100
+          }
+        ]
+      }
+    ]
+  },
+  {
     "name": "Body",
-    "parts": [{
+    "parts": [
+      {
         "name": "Naked",
-        "images": [{
+        "images": [
+          {
             "path": "man/2body/0.png",
-            "drawingOrder": 300
-        }]
-    }, {
+            "drawOrder": 300
+          }
+        ]
+      },
+      {
         "name": "Cloak",
-        "images": [{
+        "images": [
+          {
             "path": "man/2body/1.png",
-            "drawingOrder": 300
-        }]
-    }, {
+            "drawOrder": 300
+          }
+        ]
+      },
+      {
         "name": "Himation",
-        "images": [{
+        "images": [
+          {
             "path": "man/2body/2.png",
-            "drawingOrder": 300
-        }]
-    }, {
+            "drawOrder": 300
+          }
+        ]
+      },
+      {
         "name": "Chiton",
-        "images": [{
+        "images": [
+          {
             "path": "man/2body/3.png",
-            "drawingOrder": 300
-        }]
-    }, {
+            "drawOrder": 300
+          }
+        ]
+      },
+      {
         "name": "Chains",
-        "images": [{
+        "images": [
+          {
             "path": "man/2body/4.png",
-            "drawingOrder": 300
-        }]
-    }, {
+            "drawOrder": 300
+          }
+        ]
+      },
+      {
         "name": "Leather Belt",
-        "images": [{
+        "images": [
+          {
             "path": "man/2body/5.png",
-            "drawingOrder": 300
-        }]
-    }, {
+            "drawOrder": 300
+          }
+        ]
+      },
+      {
         "name": "Chlamys",
-        "images": [{
+        "images": [
+          {
             "path": "man/2body/6.png",
-            "drawingOrder": 300
-        }]
-    }, {
+            "drawOrder": 300
+          }
+        ]
+      },
+      {
         "name": "Shoulder Armor",
-        "images": [{
+        "images": [
+          {
             "path": "man/2body/7.png",
-            "drawingOrder": 300
-        }]
-    }, {
+            "drawOrder": 300
+          }
+        ]
+      },
+      {
         "name": "Apron",
-        "images": [{
+        "images": [
+          {
             "path": "man/2body/8.png",
-            "drawingOrder": 300
-        }]
-    }, {
+            "drawOrder": 300
+          }
+        ]
+      },
+      {
         "name": "Constraint",
-        "images": [{
+        "images": [
+          {
             "path": "man/2body/9.png",
-            "drawingOrder": 300
-        }]
-    }]
-}, {
+            "drawOrder": 300
+          }
+        ]
+      }
+    ]
+  },
+  {
     "name": "Head",
-    "parts": [{
+    "parts": [
+      {
         "name": "Wound",
-        "images": [{
+        "images": [
+          {
             "path": "man/3head/0.png",
-            "drawingOrder": 400
-        }]
-    }, {
+            "drawOrder": 400
+          }
+        ]
+      },
+      {
         "name": "Teenage",
-        "images": [{
+        "images": [
+          {
             "path": "man/3head/1.png",
-            "drawingOrder": 400
-        }]
-    }, {
+            "drawOrder": 400
+          }
+        ]
+      },
+      {
         "name": "Serious",
-        "images": [{
+        "images": [
+          {
             "path": "man/3head/2.png",
-            "drawingOrder": 400
-        }]
-    }, {
+            "drawOrder": 400
+          }
+        ]
+      },
+      {
         "name": "Madness",
-        "images": [{
+        "images": [
+          {
             "path": "man/3head/3.png",
-            "drawingOrder": 400
-        }]
-    }, {
+            "drawOrder": 400
+          }
+        ]
+      },
+      {
         "name": "Anger",
-        "images": [{
+        "images": [
+          {
             "path": "man/3head/4.png",
-            "drawingOrder": 400
-        }]
-    }, {
+            "drawOrder": 400
+          }
+        ]
+      },
+      {
         "name": "Shy",
-        "images": [{
+        "images": [
+          {
             "path": "man/3head/5.png",
-            "drawingOrder": 400
-        }]
-    }, {
+            "drawOrder": 400
+          }
+        ]
+      },
+      {
         "name": "Amazed",
-        "images": [{
+        "images": [
+          {
             "path": "man/3head/6.png",
-            "drawingOrder": 400
-        }]
-    }, {
+            "drawOrder": 400
+          }
+        ]
+      },
+      {
         "name": "Ridicule",
-        "images": [{
+        "images": [
+          {
             "path": "man/3head/7.png",
-            "drawingOrder": 400
-        }]
-    }, {
+            "drawOrder": 400
+          }
+        ]
+      },
+      {
         "name": "Dark Circles",
-        "images": [{
+        "images": [
+          {
             "path": "man/3head/8.png",
-            "drawingOrder": 400
-        }]
-    }, {
+            "drawOrder": 400
+          }
+        ]
+      },
+      {
         "name": "Skul",
-        "images": [{
+        "images": [
+          {
             "path": "man/3head/9.png",
-            "drawingOrder": 400
-        }]
-    }]
-}, {
+            "drawOrder": 400
+          }
+        ]
+      }
+    ]
+  },
+  {
     "name": "Hair",
-    "parts": [{
+    "parts": [
+      {
         "name": "Bald",
-        "images": [{
+        "images": [
+          {
             "path": "man/4hair/0.png",
-            "drawingOrder": 500
-        }]
-    }, {
+            "drawOrder": 500
+          }
+        ]
+      },
+      {
         "name": "Shaggy",
-        "images": [{
+        "images": [
+          {
             "path": "man/1bhair/1.png",
-            "drawingOrder": 200
-        }, {
+            "drawOrder": 200
+          },
+          {
             "path": "man/4hair/1.png",
-            "drawingOrder": 500
-        }]
-    }, {
+            "drawOrder": 500
+          }
+        ]
+      },
+      {
         "name": "Short Wavy",
-        "images": [{
+        "images": [
+          {
             "path": "man/1bhair/2.png",
-            "drawingOrder": 200
-        }, {
+            "drawOrder": 200
+          },
+          {
             "path": "man/4hair/2.png",
-            "drawingOrder": 500
-        }]
-    }, {
+            "drawOrder": 500
+          }
+        ]
+      },
+      {
         "name": "Wild",
-        "images": [{
+        "images": [
+          {
             "path": "man/1bhair/3.png",
-            "drawingOrder": 200
-        }, {
+            "drawOrder": 200
+          },
+          {
             "path": "man/4hair/3.png",
-            "drawingOrder": 500
-        }]
-    }, {
+            "drawOrder": 500
+          }
+        ]
+      },
+      {
         "name": "Bob",
-        "images": [{
+        "images": [
+          {
             "path": "man/1bhair/4.png",
-            "drawingOrder": 200
-        }, {
+            "drawOrder": 200
+          },
+          {
             "path": "man/4hair/4.png",
-            "drawingOrder": 500
-        }]
-    }, {
+            "drawOrder": 500
+          }
+        ]
+      },
+      {
         "name": "Mohican",
-        "images": [{
+        "images": [
+          {
             "path": "man/4hair/5.png",
-            "drawingOrder": 500
-        }]
-    }, {
+            "drawOrder": 500
+          }
+        ]
+      },
+      {
         "name": "Power",
-        "images": [{
+        "images": [
+          {
             "path": "man/4hair/6.png",
-            "drawingOrder": 500
-        }]
-    }, {
+            "drawOrder": 500
+          }
+        ]
+      },
+      {
         "name": "Monk",
-        "images": [{
+        "images": [
+          {
             "path": "man/1bhair/7.png",
-            "drawingOrder": 200
-        }, {
+            "drawOrder": 200
+          },
+          {
             "path": "man/4hair/7.png",
-            "drawingOrder": 500
-        }]
-    }, {
+            "drawOrder": 500
+          }
+        ]
+      },
+      {
         "name": "Curly Hair",
-        "images": [{
+        "images": [
+          {
             "path": "man/4hair/8.png",
-            "drawingOrder": 500
-        }]
-    }, {
+            "drawOrder": 500
+          }
+        ]
+      },
+      {
         "name": "Ponytail",
-        "images": [{
+        "images": [
+          {
             "path": "man/1bhair/9.png",
-            "drawingOrder": 200
-        }, {
+            "drawOrder": 200
+          },
+          {
             "path": "man/4hair/9.png",
-            "drawingOrder": 500
-        }]
-    }, {
+            "drawOrder": 500
+          }
+        ]
+      },
+      {
         "name": "V",
-        "images": [{
+        "images": [
+          {
             "path": "man/1bhair/10.png",
-            "drawingOrder": 200
-        }, {
+            "drawOrder": 200
+          },
+          {
             "path": "man/4hair/10.png",
-            "drawingOrder": 500
-        }]
-    }, {
+            "drawOrder": 500
+          }
+        ]
+      },
+      {
         "name": "Natural",
-        "images": [{
+        "images": [
+          {
             "path": "man/1bhair/11.png",
-            "drawingOrder": 200
-        }, {
+            "drawOrder": 200
+          },
+          {
             "path": "man/4hair/11.png",
-            "drawingOrder": 500
-        }]
-    }]
-}, {
+            "drawOrder": 500
+          }
+        ]
+      }
+    ]
+  },
+  {
     "name": "Face",
-    "parts": [{
+    "parts": [
+      {
         "name": "Devil Eyes",
-        "images": [{
+        "images": [
+          {
             "path": "man/5face/0.png",
-            "drawingOrder": 600
-        }]
-    }, {
+            "drawOrder": 600
+          }
+        ]
+      },
+      {
         "name": "Eagle Eyes",
-        "images": [{
+        "images": [
+          {
             "path": "man/5face/1.png",
-            "drawingOrder": 600
-        }]
-    }, {
+            "drawOrder": 600
+          }
+        ]
+      },
+      {
         "name": "Tears",
-        "images": [{
+        "images": [
+          {
             "path": "man/5face/2.png",
-            "drawingOrder": 600
-        }]
-    }, {
+            "drawOrder": 600
+          }
+        ]
+      },
+      {
         "name": "Stare",
-        "images": [{
+        "images": [
+          {
             "path": "man/5face/3.png",
-            "drawingOrder": 600
-        }]
-    }, {
+            "drawOrder": 600
+          }
+        ]
+      },
+      {
         "name": "Closed Eyes",
-        "images": [{
+        "images": [
+          {
             "path": "man/5face/4.png",
-            "drawingOrder": 600
-        }]
-    }, {
+            "drawOrder": 600
+          }
+        ]
+      },
+      {
         "name": "Eye Beam",
-        "images": [{
+        "images": [
+          {
             "path": "man/5face/5.png",
-            "drawingOrder": 600
-        }, {
+            "drawOrder": 600
+          },
+          {
             "path": "man/7face_effect/5.png",
-            "drawingOrder": 800
-        }]
-    }, {
+            "drawOrder": 800
+          }
+        ]
+      },
+      {
         "name": "Glance",
-        "images": [{
+        "images": [
+          {
             "path": "man/5face/6.png",
-            "drawingOrder": 600
-        }]
-    }, {
+            "drawOrder": 600
+          }
+        ]
+      },
+      {
         "name": "Glowing Eyes",
-        "images": [{
+        "images": [
+          {
             "path": "man/5face/7.png",
-            "drawingOrder": 600
-        }, {
+            "drawOrder": 600
+          },
+          {
             "path": "man/7face_effect/7.png",
-            "drawingOrder": 800
-        }]
-    }, {
+            "drawOrder": 800
+          }
+        ]
+      },
+      {
         "name": "Psionic",
-        "images": [{
+        "images": [
+          {
             "path": "man/5face/8.png",
-            "drawingOrder": 600
-        }, {
+            "drawOrder": 600
+          },
+          {
             "path": "man/7face_effect/8.png",
-            "drawingOrder": 800
-        }]
-    }, {
+            "drawOrder": 800
+          }
+        ]
+      },
+      {
         "name": "Cyborg Eyes",
-        "images": [{
+        "images": [
+          {
             "path": "man/5face/9.png",
-            "drawingOrder": 600
-        }]
-    }, {
+            "drawOrder": 600
+          }
+        ]
+      },
+      {
         "name": "Burning Eyes",
-        "images": [{
+        "images": [
+          {
             "path": "man/5face/10.png",
-            "drawingOrder": 600
-        }, {
+            "drawOrder": 600
+          },
+          {
             "path": "man/7face_effect/10.png",
-            "drawingOrder": 800
-        }]
-    }, {
+            "drawOrder": 800
+          }
+        ]
+      },
+      {
         "name": "Odd Eyes",
-        "images": [{
+        "images": [
+          {
             "path": "man/5face/11.png",
-            "drawingOrder": 600
-        }]
-    }]
-}, {
+            "drawOrder": 600
+          }
+        ]
+      }
+    ]
+  },
+  {
     "name": "Accessory",
-    "parts": [{
+    "parts": [
+      {
         "name": "None",
         "percent": 60
-    }, {
+      },
+      {
         "name": "Crown",
-        "images": [{
+        "images": [
+          {
             "path": "man/6acce/0.png",
-            "drawingOrder": 700
-        }]
-    }, {
+            "drawOrder": 700
+          }
+        ]
+      },
+      {
         "name": "Long Horns",
-        "images": [{
+        "images": [
+          {
             "path": "man/6acce/1.png",
-            "drawingOrder": 700
-        }]
-    }, {
+            "drawOrder": 700
+          }
+        ]
+      },
+      {
         "name": "Eye Patch",
-        "images": [{
+        "images": [
+          {
             "path": "man/6acce/2.png",
-            "drawingOrder": 700
-        }]
-    }, {
+            "drawOrder": 700
+          }
+        ]
+      },
+      {
         "name": "Short Horns",
-        "images": [{
+        "images": [
+          {
             "path": "man/6acce/3.png",
-            "drawingOrder": 700
-        }]
-    }, {
+            "drawOrder": 700
+          }
+        ]
+      },
+      {
         "name": "Laurel Wreath",
-        "images": [{
+        "images": [
+          {
             "path": "man/6acce/4.png",
-            "drawingOrder": 700
-        }]
-    }, {
+            "drawOrder": 700
+          }
+        ]
+      },
+      {
         "name": "Six Dots",
-        "images": [{
+        "images": [
+          {
             "path": "man/6acce/5.png",
-            "drawingOrder": 700
-        }]
-    }, {
+            "drawOrder": 700
+          }
+        ]
+      },
+      {
         "name": "Goat Horns",
-        "images": [{
+        "images": [
+          {
             "path": "man/6acce/6.png",
-            "drawingOrder": 700
-        }]
-    }, {
+            "drawOrder": 700
+          }
+        ]
+      },
+      {
         "name": "Curved Horns",
-        "images": [{
+        "images": [
+          {
             "path": "man/6acce/7.png",
-            "drawingOrder": 700
-        }]
-    }, {
+            "drawOrder": 700
+          }
+        ]
+      },
+      {
         "name": "Devil Horns",
-        "images": [{
+        "images": [
+          {
             "path": "man/6acce/8.png",
-            "drawingOrder": 700
-        }]
-    }]
-}]
+            "drawOrder": 700
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -1,497 +1,741 @@
-[{
+[
+  {
     "name": "Background",
-    "parts": [{
+    "parts": [
+      {
         "name": "Background",
-        "images": [{
+        "images": [
+          {
             "path": "background.png",
-            "drawingOrder": 100
-        }]
-    }]
-}, {
+            "drawOrder": 100
+          }
+        ]
+      }
+    ]
+  },
+  {
     "name": "Background Accessory",
-    "parts": [{
+    "parts": [
+      {
         "name": "None",
         "percent": 60
-    }, {
+      },
+      {
         "name": "Sun",
-        "images": [{
+        "images": [
+          {
             "path": "woman/1-back-acce/0.png",
-            "drawingOrder": 200
-        }]
-    }, {
+            "drawOrder": 200
+          }
+        ]
+      },
+      {
         "name": "White Circle",
-        "images": [{
+        "images": [
+          {
             "path": "woman/1-back-acce/1.png",
-            "drawingOrder": 200
-        }]
-    }, {
+            "drawOrder": 200
+          }
+        ]
+      },
+      {
         "name": "Wings",
-        "images": [{
+        "images": [
+          {
             "path": "woman/1-back-acce/2.png",
-            "drawingOrder": 200
-        }]
-    }, {
+            "drawOrder": 200
+          }
+        ]
+      },
+      {
         "name": "Gold Moon",
-        "images": [{
+        "images": [
+          {
             "path": "woman/1-back-acce/3.png",
-            "drawingOrder": 200
-        }]
-    }, {
+            "drawOrder": 200
+          }
+        ]
+      },
+      {
         "name": "Crescent Moon",
-        "images": [{
+        "images": [
+          {
             "path": "woman/1-back-acce/4.png",
-            "drawingOrder": 200
-        }]
-    }, {
+            "drawOrder": 200
+          }
+        ]
+      },
+      {
         "name": "Constellation",
-        "images": [{
+        "images": [
+          {
             "path": "woman/1-back-acce/5.png",
-            "drawingOrder": 200
-        }]
-    }, {
+            "drawOrder": 200
+          }
+        ]
+      },
+      {
         "name": "Shine",
-        "images": [{
+        "images": [
+          {
             "path": "woman/1-back-acce/6.png",
-            "drawingOrder": 200
-        }]
-    }, {
+            "drawOrder": 200
+          }
+        ]
+      },
+      {
         "name": "Angel Ring",
-        "images": [{
+        "images": [
+          {
             "path": "woman/1-back-acce/7.png",
-            "drawingOrder": 200
-        }]
-    }, {
+            "drawOrder": 200
+          }
+        ]
+      },
+      {
         "name": "Gold Light",
-        "images": [{
+        "images": [
+          {
             "path": "woman/1-back-acce/8.png",
-            "drawingOrder": 200
-        }]
-    }, {
+            "drawOrder": 200
+          }
+        ]
+      },
+      {
         "name": "Cloth",
-        "images": [{
+        "images": [
+          {
             "path": "woman/1-back-acce/9.png",
-            "drawingOrder": 200
-        }]
-    }, {
+            "drawOrder": 200
+          }
+        ]
+      },
+      {
         "name": "Cupid Wings",
-        "images": [{
+        "images": [
+          {
             "path": "woman/1-back-acce/10.png",
-            "drawingOrder": 200
-        }]
-    }, {
+            "drawOrder": 200
+          }
+        ]
+      },
+      {
         "name": "Pillar",
-        "images": [{
+        "images": [
+          {
             "path": "woman/1-back-acce/11.png",
-            "drawingOrder": 200
-        }]
-    }]
-}, {
+            "drawOrder": 200
+          }
+        ]
+      }
+    ]
+  },
+  {
     "name": "Body",
-    "parts": [{
+    "parts": [
+      {
         "name": "Gowns",
-        "images": [{
+        "images": [
+          {
             "path": "woman/3-outfit/0.png",
-            "drawingOrder": 400
-        }]
-    }, {
+            "drawOrder": 400
+          }
+        ]
+      },
+      {
         "name": "Chiton",
-        "images": [{
+        "images": [
+          {
             "path": "woman/3-outfit/1.png",
-            "drawingOrder": 400
-        }]
-    }, {
+            "drawOrder": 400
+          }
+        ]
+      },
+      {
         "name": "Himation",
-        "images": [{
+        "images": [
+          {
             "path": "woman/3-outfit/2.png",
-            "drawingOrder": 400
-        }]
-    }, {
+            "drawOrder": 400
+          }
+        ]
+      },
+      {
         "name": "Off Shoulder",
-        "images": [{
+        "images": [
+          {
             "path": "woman/3-outfit/3.png",
-            "drawingOrder": 400
-        }]
-    }, {
+            "drawOrder": 400
+          }
+        ]
+      },
+      {
         "name": "Pallium",
-        "images": [{
+        "images": [
+          {
             "path": "woman/3-outfit/4.png",
-            "drawingOrder": 400
-        }]
-    }, {
+            "drawOrder": 400
+          }
+        ]
+      },
+      {
         "name": "Himation with Rope",
-        "images": [{
+        "images": [
+          {
             "path": "woman/3-outfit/5.png",
-            "drawingOrder": 400
-        }]
-    }, {
+            "drawOrder": 400
+          }
+        ]
+      },
+      {
         "name": "Tunic",
-        "images": [{
+        "images": [
+          {
             "path": "woman/3-outfit/6.png",
-            "drawingOrder": 400
-        }]
-    }, {
+            "drawOrder": 400
+          }
+        ]
+      },
+      {
         "name": "One Piece",
-        "images": [{
+        "images": [
+          {
             "path": "woman/3-outfit/7.png",
-            "drawingOrder": 400
-        }]
-    }, {
+            "drawOrder": 400
+          }
+        ]
+      },
+      {
         "name": "Armor",
-        "images": [{
+        "images": [
+          {
             "path": "woman/3-outfit/8.png",
-            "drawingOrder": 400
-        }]
-    }, {
+            "drawOrder": 400
+          }
+        ]
+      },
+      {
         "name": "Shirt",
-        "images": [{
+        "images": [
+          {
             "path": "woman/3-outfit/9.png",
-            "drawingOrder": 400
-        }]
-    }, {
+            "drawOrder": 400
+          }
+        ]
+      },
+      {
         "name": "Towel",
-        "images": [{
+        "images": [
+          {
             "path": "woman/3-outfit/10.png",
-            "drawingOrder": 400
-        }]
-    }, {
+            "drawOrder": 400
+          }
+        ]
+      },
+      {
         "name": "Snake",
-        "images": [{
+        "images": [
+          {
             "path": "woman/3-outfit/11.png",
-            "drawingOrder": 400
-        }]
-    }]
-}, {
+            "drawOrder": 400
+          }
+        ]
+      }
+    ]
+  },
+  {
     "name": "Face",
-    "parts": [{
+    "parts": [
+      {
         "name": "Teenager",
-        "images": [{
+        "images": [
+          {
             "path": "woman/4-face/0.png",
-            "drawingOrder": 500
-        }]
-    }, {
+            "drawOrder": 500
+          }
+        ]
+      },
+      {
         "name": "Mature",
-        "images": [{
+        "images": [
+          {
             "path": "woman/4-face/1.png",
-            "drawingOrder": 500
-        }]
-    }, {
+            "drawOrder": 500
+          }
+        ]
+      },
+      {
         "name": "Graceful",
-        "images": [{
+        "images": [
+          {
             "path": "woman/4-face/2.png",
-            "drawingOrder": 500
-        }]
-    }, {
+            "drawOrder": 500
+          }
+        ]
+      },
+      {
         "name": "Intellectual",
-        "images": [{
+        "images": [
+          {
             "path": "woman/4-face/3.png",
-            "drawingOrder": 500
-        }]
-    }, {
+            "drawOrder": 500
+          }
+        ]
+      },
+      {
         "name": "Closed Eyes",
-        "images": [{
+        "images": [
+          {
             "path": "woman/4-face/4.png",
-            "drawingOrder": 500
-        }]
-    }, {
+            "drawOrder": 500
+          }
+        ]
+      },
+      {
         "name": "Sharp",
-        "images": [{
+        "images": [
+          {
             "path": "woman/4-face/5.png",
-            "drawingOrder": 500
-        }]
-    }, {
+            "drawOrder": 500
+          }
+        ]
+      },
+      {
         "name": "Calm",
-        "images": [{
+        "images": [
+          {
             "path": "woman/4-face/6.png",
-            "drawingOrder": 500
-        }]
-    }, {
+            "drawOrder": 500
+          }
+        ]
+      },
+      {
         "name": "Mysterious",
-        "images": [{
+        "images": [
+          {
             "path": "woman/4-face/7.png",
-            "drawingOrder": 500
-        }]
-    }, {
+            "drawOrder": 500
+          }
+        ]
+      },
+      {
         "name": "Proud",
-        "images": [{
+        "images": [
+          {
             "path": "woman/4-face/8.png",
-            "drawingOrder": 500
-        }]
-    }, {
+            "drawOrder": 500
+          }
+        ]
+      },
+      {
         "name": "Noble",
-        "images": [{
+        "images": [
+          {
             "path": "woman/4-face/9.png",
-            "drawingOrder": 500
-        }]
-    }, {
+            "drawOrder": 500
+          }
+        ]
+      },
+      {
         "name": "Royale",
-        "images": [{
+        "images": [
+          {
             "path": "woman/4-face/10.png",
-            "drawingOrder": 500
-        }]
-    }, {
+            "drawOrder": 500
+          }
+        ]
+      },
+      {
         "name": "Modern",
-        "images": [{
+        "images": [
+          {
             "path": "woman/4-face/11.png",
-            "drawingOrder": 500
-        }]
-    }, {
+            "drawOrder": 500
+          }
+        ]
+      },
+      {
         "name": "White Eyes",
-        "images": [{
+        "images": [
+          {
             "path": "woman/4-face/12.png",
-            "drawingOrder": 500
-        }]
-    }]
-}, {
+            "drawOrder": 500
+          }
+        ]
+      }
+    ]
+  },
+  {
     "name": "Hair",
-    "parts": [{
+    "parts": [
+      {
         "name": "Gaia",
-        "images": [{
+        "images": [
+          {
             "path": "woman/2-back-hair/0.png",
-            "drawingOrder": 300
-        }, {
+            "drawOrder": 300
+          },
+          {
             "path": "woman/5-hair/0.png",
-            "drawingOrder": 600
-        }]
-    }, {
+            "drawOrder": 600
+          }
+        ]
+      },
+      {
         "name": "Short Ponytail",
-        "images": [{
+        "images": [
+          {
             "path": "woman/5-hair/1.png",
-            "drawingOrder": 600
-        }]
-    }, {
+            "drawOrder": 600
+          }
+        ]
+      },
+      {
         "name": "Hippie",
-        "images": [{
+        "images": [
+          {
             "path": "woman/2-back-hair/2.png",
-            "drawingOrder": 300
-        }, {
+            "drawOrder": 300
+          },
+          {
             "path": "woman/5-hair/2.png",
-            "drawingOrder": 600
-        }]
-    }, {
+            "drawOrder": 600
+          }
+        ]
+      },
+      {
         "name": "Short Braid",
-        "images": [{
+        "images": [
+          {
             "path": "woman/5-hair/3.png",
-            "drawingOrder": 600
-        }]
-    }, {
+            "drawOrder": 600
+          }
+        ]
+      },
+      {
         "name": "Justitia",
-        "images": [{
+        "images": [
+          {
             "path": "woman/2-back-hair/4.png",
-            "drawingOrder": 300
-        }, {
+            "drawOrder": 300
+          },
+          {
             "path": "woman/5-hair/4.png",
-            "drawingOrder": 600
-        }]
-    }, {
+            "drawOrder": 600
+          }
+        ]
+      },
+      {
         "name": "Braid",
-        "images": [{
+        "images": [
+          {
             "path": "woman/2-back-hair/5.png",
-            "drawingOrder": 300
-        }, {
+            "drawOrder": 300
+          },
+          {
             "path": "woman/5-hair/5.png",
-            "drawingOrder": 600
-        }]
-    }, {
+            "drawOrder": 600
+          }
+        ]
+      },
+      {
         "name": "Goddess",
-        "images": [{
+        "images": [
+          {
             "path": "woman/2-back-hair/6.png",
-            "drawingOrder": 300
-        }, {
+            "drawOrder": 300
+          },
+          {
             "path": "woman/5-hair/6.png",
-            "drawingOrder": 600
-        }]
-    }, {
+            "drawOrder": 600
+          }
+        ]
+      },
+      {
         "name": "Long Braid",
-        "images": [{
+        "images": [
+          {
             "path": "woman/2-back-hair/7.png",
-            "drawingOrder": 300
-        }, {
+            "drawOrder": 300
+          },
+          {
             "path": "woman/5-hair/7.png",
-            "drawingOrder": 600
-        }]
-    }, {
+            "drawOrder": 600
+          }
+        ]
+      },
+      {
         "name": "Queen",
-        "images": [{
+        "images": [
+          {
             "path": "woman/5-hair/8.png",
-            "drawingOrder": 600
-        }]
-    }, {
+            "drawOrder": 600
+          }
+        ]
+      },
+      {
         "name": "Natural",
-        "images": [{
+        "images": [
+          {
             "path": "woman/2-back-hair/9.png",
-            "drawingOrder": 300
-        }, {
+            "drawOrder": 300
+          },
+          {
             "path": "woman/5-hair/9.png",
-            "drawingOrder": 600
-        }]
-    }, {
+            "drawOrder": 600
+          }
+        ]
+      },
+      {
         "name": "Ancient Greek",
-        "images": [{
+        "images": [
+          {
             "path": "woman/2-back-hair/10.png",
-            "drawingOrder": 300
-        }, {
+            "drawOrder": 300
+          },
+          {
             "path": "woman/5-hair/10.png",
-            "drawingOrder": 600
-        }]
-    }, {
+            "drawOrder": 600
+          }
+        ]
+      },
+      {
         "name": "Shaman",
-        "images": [{
+        "images": [
+          {
             "path": "woman/2-back-hair/11.png",
-            "drawingOrder": 300
-        }, {
+            "drawOrder": 300
+          },
+          {
             "path": "woman/5-hair/11.png",
-            "drawingOrder": 600
-        }]
-    }, {
+            "drawOrder": 600
+          }
+        ]
+      },
+      {
         "name": "Pontiff",
-        "images": [{
+        "images": [
+          {
             "path": "woman/2-back-hair/12.png",
-            "drawingOrder": 300
-        }, {
+            "drawOrder": 300
+          },
+          {
             "path": "woman/5-hair/12.png",
-            "drawingOrder": 600
-        }]
-    }, {
+            "drawOrder": 600
+          }
+        ]
+      },
+      {
         "name": "Lady",
-        "images": [{
+        "images": [
+          {
             "path": "woman/2-back-hair/13.png",
-            "drawingOrder": 300
-        }, {
+            "drawOrder": 300
+          },
+          {
             "path": "woman/5-hair/13.png",
-            "drawingOrder": 600
-        }]
-    }]
-}, {
+            "drawOrder": 600
+          }
+        ]
+      }
+    ]
+  },
+  {
     "name": "Front Accessory",
-    "parts": [{
+    "parts": [
+      {
         "name": "None",
         "percent": 60
-    }, {
+      },
+      {
         "name": "Tiara",
-        "images": [{
+        "images": [
+          {
             "path": "woman/6-front-acce/0.png",
-            "drawingOrder": 700
-        }]
-    }, {
+            "drawOrder": 700
+          }
+        ]
+      },
+      {
         "name": "Hair Band",
-        "images": [{
+        "images": [
+          {
             "path": "woman/6-front-acce/1.png",
-            "drawingOrder": 700
-        }]
-    }, {
+            "drawOrder": 700
+          }
+        ]
+      },
+      {
         "name": "Bubble Gum",
-        "images": [{
+        "images": [
+          {
             "path": "woman/6-front-acce/2.png",
-            "drawingOrder": 700
-        }]
-    }, {
+            "drawOrder": 700
+          }
+        ]
+      },
+      {
         "name": "Laurel Wreath",
-        "images": [{
+        "images": [
+          {
             "path": "woman/6-front-acce/3.png",
-            "drawingOrder": 700
-        }]
-    }, {
+            "drawOrder": 700
+          }
+        ]
+      },
+      {
         "name": "Blindfold",
-        "images": [{
+        "images": [
+          {
             "path": "woman/6-front-acce/4.png",
-            "drawingOrder": 700
-        }]
-    }, {
+            "drawOrder": 700
+          }
+        ]
+      },
+      {
         "name": "Glasses",
-        "images": [{
+        "images": [
+          {
             "path": "woman/6-front-acce/5.png",
-            "drawingOrder": 700
-        }]
-    }, {
+            "drawOrder": 700
+          }
+        ]
+      },
+      {
         "name": "Sun Glasses",
-        "images": [{
+        "images": [
+          {
             "path": "woman/6-front-acce/6.png",
-            "drawingOrder": 700
-        }]
-    }, {
+            "drawOrder": 700
+          }
+        ]
+      },
+      {
         "name": "White Mask",
-        "images": [{
+        "images": [
+          {
             "path": "woman/6-front-acce/7.png",
-            "drawingOrder": 700
-        }]
-    }, {
+            "drawOrder": 700
+          }
+        ]
+      },
+      {
         "name": "Flower",
-        "images": [{
+        "images": [
+          {
             "path": "woman/6-front-acce/8.png",
-            "drawingOrder": 700
-        }]
-    }, {
+            "drawOrder": 700
+          }
+        ]
+      },
+      {
         "name": "VR",
-        "images": [{
+        "images": [
+          {
             "path": "woman/6-front-acce/9.png",
-            "drawingOrder": 700
-        }]
-    }, {
+            "drawOrder": 700
+          }
+        ]
+      },
+      {
         "name": "Flower Crown",
-        "images": [{
+        "images": [
+          {
             "path": "woman/6-front-acce/10.png",
-            "drawingOrder": 700
-        }]
-    }, {
+            "drawOrder": 700
+          }
+        ]
+      },
+      {
         "name": "Earrings",
-        "images": [{
+        "images": [
+          {
             "path": "woman/6-front-acce/11.png",
-            "drawingOrder": 700
-        }]
-    }]
-}, {
+            "drawOrder": 700
+          }
+        ]
+      }
+    ]
+  },
+  {
     "name": "Hand",
-    "parts": [{
+    "parts": [
+      {
         "name": "None",
         "percent": 60
-    }, {
+      },
+      {
         "name": "Elegant",
-        "images": [{
+        "images": [
+          {
             "path": "woman/7-hand/0.png",
-            "drawingOrder": 800
-        }]
-    }, {
+            "drawOrder": 800
+          }
+        ]
+      },
+      {
         "name": "Grabbed",
-        "images": [{
+        "images": [
+          {
             "path": "woman/7-hand/1.png",
-            "drawingOrder": 800
-        }]
-    }, {
+            "drawOrder": 800
+          }
+        ]
+      },
+      {
         "name": "Thinking",
-        "images": [{
+        "images": [
+          {
             "path": "woman/7-hand/2.png",
-            "drawingOrder": 800
-        }]
-    }, {
+            "drawOrder": 800
+          }
+        ]
+      },
+      {
         "name": "Cute",
-        "images": [{
+        "images": [
+          {
             "path": "woman/7-hand/3.png",
-            "drawingOrder": 800
-        }]
-    }, {
+            "drawOrder": 800
+          }
+        ]
+      },
+      {
         "name": "Klaytn",
-        "images": [{
+        "images": [
+          {
             "path": "woman/7-hand/4.png",
-            "drawingOrder": 800
-        }]
-    }, {
+            "drawOrder": 800
+          }
+        ]
+      },
+      {
         "name": "Girlisy",
-        "images": [{
+        "images": [
+          {
             "path": "woman/7-hand/5.png",
-            "drawingOrder": 800
-        }]
-    }, {
+            "drawOrder": 800
+          }
+        ]
+      },
+      {
         "name": "Tongs",
-        "images": [{
+        "images": [
+          {
             "path": "woman/7-hand/6.png",
-            "drawingOrder": 800
-        }]
-    }, {
+            "drawOrder": 800
+          }
+        ]
+      },
+      {
         "name": "Selfpic",
-        "images": [{
+        "images": [
+          {
             "path": "woman/7-hand/7.png",
-            "drawingOrder": 800
-        }]
-    }]
-}
+            "drawOrder": 800
+          }
+        ]
+      }
+    ]
+  }
 ]

@@ -1,855 +1,1364 @@
-[{
+[
+  {
     "name": "Background",
-    "parts": 
-    [{
+    "parts": [
+      {
         "name": "BlueMarble",
-        "images": [{
+        "images": [
+          {
             "path": "man/background/0.png",
-            "drawingOrder": 100
-        }]
-    }, {
+            "drawOrder": 100
+          }
+        ]
+      },
+      {
         "name": "BlueMarble2",
-        "images": [{
+        "images": [
+          {
             "path": "man/background/1.png",
-            "drawingOrder": 100
-        }]
-    }, {
+            "drawOrder": 100
+          }
+        ]
+      },
+      {
         "name": "BlueMarble3",
-        "images": [{
+        "images": [
+          {
             "path": "man/background/2.png",
-            "drawingOrder": 100
-        }]
-    }, {
+            "drawOrder": 100
+          }
+        ]
+      },
+      {
         "name": "BlueMarble4",
-        "images": [{
+        "images": [
+          {
             "path": "man/background/3.png",
-            "drawingOrder": 100
-        }]
-    }, {
+            "drawOrder": 100
+          }
+        ]
+      },
+      {
         "name": "BlueMarble5",
-        "images": [{
+        "images": [
+          {
             "path": "man/background/4.png",
-            "drawingOrder": 100
-        }]
-    }, {
+            "drawOrder": 100
+          }
+        ]
+      },
+      {
         "name": "BlueMarble6",
-        "images": [{
+        "images": [
+          {
             "path": "man/background/5.png",
-            "drawingOrder": 100
-        }]
-    }, {
+            "drawOrder": 100
+          }
+        ]
+      },
+      {
         "name": "BlueMarble7",
-        "images": [{
+        "images": [
+          {
             "path": "man/background/6.png",
-            "drawingOrder": 100
-        }]
-    }, {
+            "drawOrder": 100
+          }
+        ]
+      },
+      {
         "name": "BlueMarble8",
-        "images": [{
+        "images": [
+          {
             "path": "man/background/7.png",
-            "drawingOrder": 100
-        }]
-    }, {
+            "drawOrder": 100
+          }
+        ]
+      },
+      {
         "name": "BlueMarble9",
-        "images": [{
+        "images": [
+          {
             "path": "man/background/8.png",
-            "drawingOrder": 100
-        }]
-    }, {
+            "drawOrder": 100
+          }
+        ]
+      },
+      {
         "name": "BlueMarble10",
-        "images": [{
+        "images": [
+          {
             "path": "man/background/9.png",
-            "drawingOrder": 100
-        }]
-    }]
-},
-{
+            "drawOrder": 100
+          }
+        ]
+      }
+    ]
+  },
+  {
     "name": "Body",
-    "parts": 
-        [{
+    "parts": [
+      {
         "name": "Light",
-        "images": [{
+        "images": [
+          {
             "path": "man/body/0.png",
-            "drawingOrder": 300
-        }]
-    }, {
+            "drawOrder": 300
+          }
+        ]
+      },
+      {
         "name": "Dark",
         "percent": 25,
-        "images": [{
+        "images": [
+          {
             "path": "man/body/1.png",
-            "drawingOrder": 300
-        }]
-    }]
-},
-{
+            "drawOrder": 300
+          }
+        ]
+      }
+    ]
+  },
+  {
     "name": "Mouth",
-    "parts": 
-    [{
+    "parts": [
+      {
         "name": "Grin",
-        "images": [{
+        "images": [
+          {
             "path": "man/mouth/0.png",
-            "drawingOrder": 400
-        }]
-    }, {
+            "drawOrder": 400
+          }
+        ]
+      },
+      {
         "name": "Chewing",
-        "images": [{
+        "images": [
+          {
             "path": "man/mouth/1.png",
-            "drawingOrder": 400
-        }]
-    }, {
+            "drawOrder": 400
+          }
+        ]
+      },
+      {
         "name": "Smile",
-        "images": [{
+        "images": [
+          {
             "path": "man/mouth/2.png",
-            "drawingOrder": 400
-        }]
-    }, {
+            "drawOrder": 400
+          }
+        ]
+      },
+      {
         "name": "Frown",
-        "images": [{
+        "images": [
+          {
             "path": "man/mouth/3.png",
-            "drawingOrder": 400
-        }]
-    }, {
+            "drawOrder": 400
+          }
+        ]
+      },
+      {
         "name": "Closed",
-        "images": [{
+        "images": [
+          {
             "path": "man/mouth/4.png",
-            "drawingOrder": 400
-        }]
-    }, {
+            "drawOrder": 400
+          }
+        ]
+      },
+      {
         "name": "Relaxed",
-        "images": [{
+        "images": [
+          {
             "path": "man/mouth/5.png",
-            "drawingOrder": 400
-        }]
-    }, {
+            "drawOrder": 400
+          }
+        ]
+      },
+      {
         "name": "Not Bad",
-        "images": [{
+        "images": [
+          {
             "path": "man/mouth/6.png",
-            "drawingOrder": 400
-        }]
-    }, {
+            "drawOrder": 400
+          }
+        ]
+      },
+      {
         "name": "Growl",
-        "images": [{
+        "images": [
+          {
             "path": "man/mouth/7.png",
-            "drawingOrder": 400
-        }]
-    }, {
+            "drawOrder": 400
+          }
+        ]
+      },
+      {
         "name": "Happy",
-        "images": [{
+        "images": [
+          {
             "path": "man/mouth/8.png",
-            "drawingOrder": 400
-        }]
-    }, {
+            "drawOrder": 400
+          }
+        ]
+      },
+      {
         "name": "Fun",
-        "images": [{
+        "images": [
+          {
             "path": "man/mouth/9.png",
-            "drawingOrder": 400
-        }]
-    }, {
+            "drawOrder": 400
+          }
+        ]
+      },
+      {
         "name": "Serious",
-        "images": [{
+        "images": [
+          {
             "path": "man/mouth/10.png",
-            "drawingOrder": 400
-        }]
-    }, {
+            "drawOrder": 400
+          }
+        ]
+      },
+      {
         "name": "Kid",
-        "images": [{
+        "images": [
+          {
             "path": "man/mouth/11.png",
-            "drawingOrder": 400
-        }]
-    }, {
+            "drawOrder": 400
+          }
+        ]
+      },
+      {
         "name": "Open",
-        "images": [{
+        "images": [
+          {
             "path": "man/mouth/12.png",
-            "drawingOrder": 400
-        }]
-    }]
-},
-{
+            "drawOrder": 400
+          }
+        ]
+      }
+    ]
+  },
+  {
     "name": "Eye",
-    "parts": 
-    [{
+    "parts": [
+      {
         "name": "Gold Chill",
-        "images": [{
+        "images": [
+          {
             "path": "man/eye/0.png",
-            "drawingOrder": 500
-        }]
-    }, {
+            "drawOrder": 500
+          }
+        ]
+      },
+      {
         "name": "Blue Chill",
-        "images": [{
+        "images": [
+          {
             "path": "man/eye/1.png",
-            "drawingOrder": 500
-        }]
-    }, {
+            "drawOrder": 500
+          }
+        ]
+      },
+      {
         "name": "Gold Striking",
-        "images": [{
+        "images": [
+          {
             "path": "man/eye/2.png",
-            "drawingOrder": 500
-        }]
-    }, {
+            "drawOrder": 500
+          }
+        ]
+      },
+      {
         "name": "Blue Striking",
-        "images": [{
+        "images": [
+          {
             "path": "man/eye/3.png",
-            "drawingOrder": 500
-        }]
-    }, {
+            "drawOrder": 500
+          }
+        ]
+      },
+      {
         "name": "Odd Eyes",
-        "images": [{
+        "images": [
+          {
             "path": "man/eye/4.png",
-            "drawingOrder": 500
-        }]
-    }, {
+            "drawOrder": 500
+          }
+        ]
+      },
+      {
         "name": "Dark Gold",
-        "images": [{
+        "images": [
+          {
             "path": "man/eye/5.png",
-            "drawingOrder": 500
-        }]
-    }, {
+            "drawOrder": 500
+          }
+        ]
+      },
+      {
         "name": "Gold Stare",
-        "images": [{
+        "images": [
+          {
             "path": "man/eye/6.png",
-            "drawingOrder": 500
-        }]
-    }, {
+            "drawOrder": 500
+          }
+        ]
+      },
+      {
         "name": "Blue Stare",
-        "images": [{
+        "images": [
+          {
             "path": "man/eye/7.png",
-            "drawingOrder": 500
-        }]
-    }, {
+            "drawOrder": 500
+          }
+        ]
+      },
+      {
         "name": "Blue Serious",
-        "images": [{
+        "images": [
+          {
             "path": "man/eye/8.png",
-            "drawingOrder": 500
-        }]
-    }, {
+            "drawOrder": 500
+          }
+        ]
+      },
+      {
         "name": "Gold Serious",
-        "images": [{
+        "images": [
+          {
             "path": "man/eye/9.png",
-            "drawingOrder": 500
-        }]
-    }, {
+            "drawOrder": 500
+          }
+        ]
+      },
+      {
         "name": "Ghost",
-        "images": [{
+        "images": [
+          {
             "path": "man/eye/10.png",
-            "drawingOrder": 500
-        }]
-    }, {
+            "drawOrder": 500
+          }
+        ]
+      },
+      {
         "name": "White",
-        "images": [{
+        "images": [
+          {
             "path": "man/eye/11.png",
-            "drawingOrder": 500
-        }]
-    }, {
+            "drawOrder": 500
+          }
+        ]
+      },
+      {
         "name": "Closed",
-        "images": [{
+        "images": [
+          {
             "path": "man/eye/12.png",
-            "drawingOrder": 500
-        }]
-    }, {
+            "drawOrder": 500
+          }
+        ]
+      },
+      {
         "name": "White Closed",
-        "images": [{
+        "images": [
+          {
             "path": "man/eye/13.png",
-            "drawingOrder": 500
-        }]
-    }, {
+            "drawOrder": 500
+          }
+        ]
+      },
+      {
         "name": "Fox Eyes",
-        "images": [{
+        "images": [
+          {
             "path": "man/eye/14.png",
-            "drawingOrder": 500
-        }]
-    }, {
+            "drawOrder": 500
+          }
+        ]
+      },
+      {
         "name": "White Fox Eyes",
-        "images": [{
+        "images": [
+          {
             "path": "man/eye/15.png",
-            "drawingOrder": 500
-        }]
-    }, {
+            "drawOrder": 500
+          }
+        ]
+      },
+      {
         "name": "Gold Vampire",
-        "images": [{
+        "images": [
+          {
             "path": "man/eye/16.png",
-            "drawingOrder": 500
-        }]
-    }, {
+            "drawOrder": 500
+          }
+        ]
+      },
+      {
         "name": "Blue Vampire",
-        "images": [{
+        "images": [
+          {
             "path": "man/eye/17.png",
-            "drawingOrder": 500
-        }]
-    }, {
+            "drawOrder": 500
+          }
+        ]
+      },
+      {
         "name": "Blue Demon",
-        "images": [{
+        "images": [
+          {
             "path": "man/eye/18.png",
-            "drawingOrder": 500
-        }]
-    }, {
+            "drawOrder": 500
+          }
+        ]
+      },
+      {
         "name": "Gold Demon",
-        "images": [{
+        "images": [
+          {
             "path": "man/eye/19.png",
-            "drawingOrder": 500
-        }]
-    }]
-},
-{
+            "drawOrder": 500
+          }
+        ]
+      }
+    ]
+  },
+  {
     "name": "Onepiece",
-    "parts": 
-    [{
+    "parts": [
+      {
         "name": "Dark Royal",
-        "images": [{
+        "images": [
+          {
             "path": "man/onepiece/0.png",
-            "drawingOrder": 600
-        }]
-    }, {
+            "drawOrder": 600
+          }
+        ]
+      },
+      {
         "name": "Light Royal",
-        "images": [{
+        "images": [
+          {
             "path": "man/onepiece/1.png",
-            "drawingOrder": 600
-        }]
-    }, {
+            "drawOrder": 600
+          }
+        ]
+      },
+      {
         "name": "Tuxedo",
-        "images": [{
+        "images": [
+          {
             "path": "man/onepiece/2.png",
-            "drawingOrder": 600
-        }]
-    }, {
+            "drawOrder": 600
+          }
+        ]
+      },
+      {
         "name": "Gothic",
-        "images": [{
+        "images": [
+          {
             "path": "man/onepiece/3.png",
-            "drawingOrder": 600
-        }]
-    }, {
+            "drawOrder": 600
+          }
+        ]
+      },
+      {
         "name": "Gold Oriental",
-        "images": [{
+        "images": [
+          {
             "path": "man/onepiece/4.png",
-            "drawingOrder": 600
-        }]
-    }, {
+            "drawOrder": 600
+          }
+        ]
+      },
+      {
         "name": "Blue Oriental",
-        "images": [{
+        "images": [
+          {
             "path": "man/onepiece/5.png",
-            "drawingOrder": 600
-        }]
-    }, {
+            "drawOrder": 600
+          }
+        ]
+      },
+      {
         "name": "None",
-        "images": [{
+        "images": [
+          {
             "path": "man/inner/0.png",
-            "drawingOrder": 600
-        }]
-    }, {
+            "drawOrder": 600
+          }
+        ]
+      },
+      {
         "name": "White Holder Neck",
-        "images": [{
+        "images": [
+          {
             "path": "man/inner/1.png",
-            "drawingOrder": 600
-        }]
-    }, {
+            "drawOrder": 600
+          }
+        ]
+      },
+      {
         "name": "Black Holder Neck",
-        "images": [{
+        "images": [
+          {
             "path": "man/inner/2.png",
-            "drawingOrder": 600
-        }]
-    }, {
+            "drawOrder": 600
+          }
+        ]
+      },
+      {
         "name": "Black Top",
-        "images": [{
+        "images": [
+          {
             "path": "man/inner/3.png",
-            "drawingOrder": 600
-        }]
-    }, {
+            "drawOrder": 600
+          }
+        ]
+      },
+      {
         "name": "Tatoo",
-        "images": [{
+        "images": [
+          {
             "path": "man/inner/4.png",
-            "drawingOrder": 600
-        }]
-    }, {
+            "drawOrder": 600
+          }
+        ]
+      },
+      {
         "name": "Oriental",
-        "images": [{
+        "images": [
+          {
             "path": "man/inner/5.png",
-            "drawingOrder": 600
-        }]
-    }, {
+            "drawOrder": 600
+          }
+        ]
+      },
+      {
         "name": "Blue Layered",
-        "images": [{
+        "images": [
+          {
             "path": "man/inner/6.png",
-            "drawingOrder": 600
-        }]
-    }, {
+            "drawOrder": 600
+          }
+        ]
+      },
+      {
         "name": "Gold Layered",
-        "images": [{
+        "images": [
+          {
             "path": "man/inner/7.png",
-            "drawingOrder": 600
-        }]
-    }, {
+            "drawOrder": 600
+          }
+        ]
+      },
+      {
         "name": "Armor",
-        "images": [{
+        "images": [
+          {
             "path": "man/inner/8.png",
-            "drawingOrder": 600
-        }]
-    }, {
+            "drawOrder": 600
+          }
+        ]
+      },
+      {
         "name": "Blue Suit",
-        "images": [{
+        "images": [
+          {
             "path": "man/inner/9.png",
-            "drawingOrder": 600
-        }]
-    }]
-},
-{
+            "drawOrder": 600
+          }
+        ]
+      }
+    ]
+  },
+  {
     "name": "Outer",
-    "parts": 
-    [{
+    "parts": [
+      {
         "name": "None",
         "percent": 60
-    }, {
+      },
+      {
         "name": "Himation",
         "condition": {
-            "part": "Onepiece",
-            "values": ["None", "White Holder Neck", "Black Holder Neck", "Black Top", "Tatoo", "Oriental", "Blue Layered", "Gold Layered", "Armor", "Blue Suit"]
+          "part": "Onepiece",
+          "values": [
+            "None",
+            "White Holder Neck",
+            "Black Holder Neck",
+            "Black Top",
+            "Tatoo",
+            "Oriental",
+            "Blue Layered",
+            "Gold Layered",
+            "Armor",
+            "Blue Suit"
+          ]
         },
-        "images": [{
+        "images": [
+          {
             "path": "man/outer/0.png",
-            "drawingOrder": 700
-        }]
-    }, {
+            "drawOrder": 700
+          }
+        ]
+      },
+      {
         "name": "Cape",
         "condition": {
-            "part": "Onepiece",
-            "values": ["None", "White Holder Neck", "Black Holder Neck", "Black Top", "Tatoo", "Oriental", "Blue Layered", "Gold Layered", "Armor", "Blue Suit"]
+          "part": "Onepiece",
+          "values": [
+            "None",
+            "White Holder Neck",
+            "Black Holder Neck",
+            "Black Top",
+            "Tatoo",
+            "Oriental",
+            "Blue Layered",
+            "Gold Layered",
+            "Armor",
+            "Blue Suit"
+          ]
         },
-        "images": [{
+        "images": [
+          {
             "path": "man/outer/1.png",
-            "drawingOrder": 700
-        }]
-    }, {
+            "drawOrder": 700
+          }
+        ]
+      },
+      {
         "name": "Coat",
         "condition": {
-            "part": "Onepiece",
-            "values": ["None", "White Holder Neck", "Black Holder Neck", "Black Top", "Tatoo", "Oriental", "Blue Layered", "Gold Layered", "Armor", "Blue Suit"]
+          "part": "Onepiece",
+          "values": [
+            "None",
+            "White Holder Neck",
+            "Black Holder Neck",
+            "Black Top",
+            "Tatoo",
+            "Oriental",
+            "Blue Layered",
+            "Gold Layered",
+            "Armor",
+            "Blue Suit"
+          ]
         },
-        "images": [{
+        "images": [
+          {
             "path": "man/outer/2.png",
-            "drawingOrder": 700
-        }]
-    }, {
+            "drawOrder": 700
+          }
+        ]
+      },
+      {
         "name": "Gold King",
         "condition": {
-            "part": "Onepiece",
-            "values": ["None", "White Holder Neck", "Black Holder Neck", "Black Top", "Tatoo", "Oriental", "Blue Layered", "Gold Layered", "Armor", "Blue Suit"]
+          "part": "Onepiece",
+          "values": [
+            "None",
+            "White Holder Neck",
+            "Black Holder Neck",
+            "Black Top",
+            "Tatoo",
+            "Oriental",
+            "Blue Layered",
+            "Gold Layered",
+            "Armor",
+            "Blue Suit"
+          ]
         },
-        "images": [{
+        "images": [
+          {
             "path": "man/outer/3.png",
-            "drawingOrder": 700
-        }]
-    }, {
+            "drawOrder": 700
+          }
+        ]
+      },
+      {
         "name": "Dark Cloak",
         "condition": {
-            "part": "Onepiece",
-            "values": ["None", "White Holder Neck", "Black Holder Neck", "Black Top", "Tatoo", "Oriental", "Blue Layered", "Gold Layered", "Armor", "Blue Suit"]
+          "part": "Onepiece",
+          "values": [
+            "None",
+            "White Holder Neck",
+            "Black Holder Neck",
+            "Black Top",
+            "Tatoo",
+            "Oriental",
+            "Blue Layered",
+            "Gold Layered",
+            "Armor",
+            "Blue Suit"
+          ]
         },
-        "images": [{
+        "images": [
+          {
             "path": "man/outer/4.png",
-            "drawingOrder": 700
-        }]
-    }, {
+            "drawOrder": 700
+          }
+        ]
+      },
+      {
         "name": "Light Cloak",
         "condition": {
-            "part": "Onepiece",
-            "values": ["None", "White Holder Neck", "Black Holder Neck", "Black Top", "Tatoo", "Oriental", "Blue Layered", "Gold Layered", "Armor", "Blue Suit"]
+          "part": "Onepiece",
+          "values": [
+            "None",
+            "White Holder Neck",
+            "Black Holder Neck",
+            "Black Top",
+            "Tatoo",
+            "Oriental",
+            "Blue Layered",
+            "Gold Layered",
+            "Armor",
+            "Blue Suit"
+          ]
         },
-        "images": [{
+        "images": [
+          {
             "path": "man/outer/5.png",
-            "drawingOrder": 700
-        }]
-    }, {
+            "drawOrder": 700
+          }
+        ]
+      },
+      {
         "name": "Chiton",
         "condition": {
-            "part": "Onepiece",
-            "values": ["None", "White Holder Neck", "Black Holder Neck", "Black Top", "Tatoo", "Oriental", "Blue Layered", "Gold Layered", "Armor", "Blue Suit"]
+          "part": "Onepiece",
+          "values": [
+            "None",
+            "White Holder Neck",
+            "Black Holder Neck",
+            "Black Top",
+            "Tatoo",
+            "Oriental",
+            "Blue Layered",
+            "Gold Layered",
+            "Armor",
+            "Blue Suit"
+          ]
         },
-        "images": [{
+        "images": [
+          {
             "path": "man/outer/6.png",
-            "drawingOrder": 700
-        }]
-    }, {
+            "drawOrder": 700
+          }
+        ]
+      },
+      {
         "name": "Tunic",
         "condition": {
-            "part": "Onepiece",
-            "values": ["None", "White Holder Neck", "Black Holder Neck", "Black Top", "Tatoo", "Oriental", "Blue Layered", "Gold Layered", "Armor", "Blue Suit"]
+          "part": "Onepiece",
+          "values": [
+            "None",
+            "White Holder Neck",
+            "Black Holder Neck",
+            "Black Top",
+            "Tatoo",
+            "Oriental",
+            "Blue Layered",
+            "Gold Layered",
+            "Armor",
+            "Blue Suit"
+          ]
         },
-        "images": [{
+        "images": [
+          {
             "path": "man/outer/7.png",
-            "drawingOrder": 700
-        }]
-    }, {
+            "drawOrder": 700
+          }
+        ]
+      },
+      {
         "name": "Neck Guard",
         "condition": {
-            "part": "Onepiece",
-            "values": ["None", "White Holder Neck", "Black Holder Neck", "Black Top", "Tatoo", "Oriental", "Blue Layered", "Gold Layered", "Armor", "Blue Suit"]
+          "part": "Onepiece",
+          "values": [
+            "None",
+            "White Holder Neck",
+            "Black Holder Neck",
+            "Black Top",
+            "Tatoo",
+            "Oriental",
+            "Blue Layered",
+            "Gold Layered",
+            "Armor",
+            "Blue Suit"
+          ]
         },
-        "images": [{
+        "images": [
+          {
             "path": "man/outer/8.png",
-            "drawingOrder": 700
-        }]
-    }, {
+            "drawOrder": 700
+          }
+        ]
+      },
+      {
         "name": "Dark Long Coat",
         "condition": {
-            "part": "Onepiece",
-            "values": ["None", "White Holder Neck", "Black Holder Neck", "Black Top", "Tatoo", "Oriental", "Blue Layered", "Gold Layered", "Armor", "Blue Suit"]
+          "part": "Onepiece",
+          "values": [
+            "None",
+            "White Holder Neck",
+            "Black Holder Neck",
+            "Black Top",
+            "Tatoo",
+            "Oriental",
+            "Blue Layered",
+            "Gold Layered",
+            "Armor",
+            "Blue Suit"
+          ]
         },
-        "images": [{
+        "images": [
+          {
             "path": "man/outer/9.png",
-            "drawingOrder": 700
-        }]
-    }, {
+            "drawOrder": 700
+          }
+        ]
+      },
+      {
         "name": "Light Long Coat",
         "condition": {
-            "part": "Onepiece",
-            "values": ["None", "White Holder Neck", "Black Holder Neck", "Black Top", "Tatoo", "Oriental", "Blue Layered", "Gold Layered", "Armor", "Blue Suit"]
+          "part": "Onepiece",
+          "values": [
+            "None",
+            "White Holder Neck",
+            "Black Holder Neck",
+            "Black Top",
+            "Tatoo",
+            "Oriental",
+            "Blue Layered",
+            "Gold Layered",
+            "Armor",
+            "Blue Suit"
+          ]
         },
-        "images": [{
+        "images": [
+          {
             "path": "man/outer/10.png",
-            "drawingOrder": 700
-        }]
-    }]
-},
-{
+            "drawOrder": 700
+          }
+        ]
+      }
+    ]
+  },
+  {
     "name": "Hair",
-    "parts": 
-    [{
+    "parts": [
+      {
         "name": "Black Hair",
-        "images": [{
+        "images": [
+          {
             "path": "man/hair/black/0.png",
-            "drawingOrder": 800
-        }]
-    }, {
+            "drawOrder": 800
+          }
+        ]
+      },
+      {
         "name": "White Hair",
-        "images": [{
+        "images": [
+          {
             "path": "man/hair/white/0.png",
-            "drawingOrder": 800
-        }]
-    }, {
+            "drawOrder": 800
+          }
+        ]
+      },
+      {
         "name": "Half Hair",
-        "images": [{
+        "images": [
+          {
             "path": "man/hair/half/0.png",
-            "drawingOrder": 800
-        }]
-    }, {
+            "drawOrder": 800
+          }
+        ]
+      },
+      {
         "name": "None",
-        "images": [{
+        "images": [
+          {
             "path": "man/hair/whole/0.png",
-            "drawingOrder": 800
-        }]
-    }, {
+            "drawOrder": 800
+          }
+        ]
+      },
+      {
         "name": "Light Dandy",
-        "images": [{
+        "images": [
+          {
             "path": "man/hair/whole/1.png",
-            "drawingOrder": 800
-        }]
-    }, {
+            "drawOrder": 800
+          }
+        ]
+      },
+      {
         "name": "Dark Dandy",
-        "images": [{
+        "images": [
+          {
             "path": "man/hair/whole/2.png",
-            "drawingOrder": 800
-        }]
-    }, {
+            "drawOrder": 800
+          }
+        ]
+      },
+      {
         "name": "Light Short Cut",
-        "images": [{
+        "images": [
+          {
             "path": "man/hair/whole/3.png",
-            "drawingOrder": 800
-        }]
-    }, {
+            "drawOrder": 800
+          }
+        ]
+      },
+      {
         "name": "Dark Short Cut",
-        "images": [{
+        "images": [
+          {
             "path": "man/hair/whole/4.png",
-            "drawingOrder": 800
-        }]
-    }, {
+            "drawOrder": 800
+          }
+        ]
+      },
+      {
         "name": "Light Shaggy",
-        "images": [{
+        "images": [
+          {
             "path": "man/hair/whole/5.png",
-            "drawingOrder": 800
-        }]
-    }, {
+            "drawOrder": 800
+          }
+        ]
+      },
+      {
         "name": "Dark Shaggy",
-        "images": [{
+        "images": [
+          {
             "path": "man/hair/whole/6.png",
-            "drawingOrder": 800
-        }]
-    }, {
+            "drawOrder": 800
+          }
+        ]
+      },
+      {
         "name": "Soldier",
-        "images": [{
+        "images": [
+          {
             "path": "man/hair/whole/7.png",
-            "drawingOrder": 800
-        }]
-    }, {
+            "drawOrder": 800
+          }
+        ]
+      },
+      {
         "name": "Light All Back",
-        "images": [{
+        "images": [
+          {
             "path": "man/hair/whole/8.png",
-            "drawingOrder": 800
-        }]
-    }, {
+            "drawOrder": 800
+          }
+        ]
+      },
+      {
         "name": "Dark All Back",
-        "images": [{
+        "images": [
+          {
             "path": "man/hair/whole/9.png",
-            "drawingOrder": 800
-        }]
-    }, {
+            "drawOrder": 800
+          }
+        ]
+      },
+      {
         "name": "Light Cool",
-        "images": [{
+        "images": [
+          {
             "path": "man/hair/whole/10.png",
-            "drawingOrder": 800
-        }]
-    }, {
+            "drawOrder": 800
+          }
+        ]
+      },
+      {
         "name": "Dark Cool",
-        "images": [{
+        "images": [
+          {
             "path": "man/hair/whole/11.png",
-            "drawingOrder": 800
-        }]
-    }, {
+            "drawOrder": 800
+          }
+        ]
+      },
+      {
         "name": "Light Shaved",
-        "images": [{
+        "images": [
+          {
             "path": "man/hair/whole/12.png",
-            "drawingOrder": 800
-        }]
-    }, {
+            "drawOrder": 800
+          }
+        ]
+      },
+      {
         "name": "Dark Shaved",
-        "images": [{
+        "images": [
+          {
             "path": "man/hair/whole/13.png",
-            "drawingOrder": 800
-        }]
-    }, {
+            "drawOrder": 800
+          }
+        ]
+      },
+      {
         "name": "Barcode",
-        "images": [{
+        "images": [
+          {
             "path": "man/hair/whole/14.png",
-            "drawingOrder": 800
-        }]
-    }, {
+            "drawOrder": 800
+          }
+        ]
+      },
+      {
         "name": "Light Layered",
-        "images": [{
+        "images": [
+          {
             "path": "man/hair/whole/15.png",
-            "drawingOrder": 800
-        }]
-    }, {
+            "drawOrder": 800
+          }
+        ]
+      },
+      {
         "name": "Dark Layered",
-        "images": [{
+        "images": [
+          {
             "path": "man/hair/whole/16.png",
-            "drawingOrder": 800
-        }]
-    }, {
+            "drawOrder": 800
+          }
+        ]
+      },
+      {
         "name": "Light Reggae",
-        "images": [{
+        "images": [
+          {
             "path": "man/hair/whole/17.png",
-            "drawingOrder": 800
-        }]
-    }, {
+            "drawOrder": 800
+          }
+        ]
+      },
+      {
         "name": "Dark Reggae",
-        "images": [{
+        "images": [
+          {
             "path": "man/hair/whole/18.png",
-            "drawingOrder": 800
-        }]
-    }, {
+            "drawOrder": 800
+          }
+        ]
+      },
+      {
         "name": "Light Punk",
-        "images": [{
+        "images": [
+          {
             "path": "man/hair/whole/19.png",
-            "drawingOrder": 800
-        }]
-    }, {
+            "drawOrder": 800
+          }
+        ]
+      },
+      {
         "name": "Dark Punk",
-        "images": [{
+        "images": [
+          {
             "path": "man/hair/whole/20.png",
-            "drawingOrder": 800
-        }]
-    }, {
+            "drawOrder": 800
+          }
+        ]
+      },
+      {
         "name": "Light Pomade",
-        "images": [{
+        "images": [
+          {
             "path": "man/hair/whole/21.png",
-            "drawingOrder": 800
-        }]
-    }, {
+            "drawOrder": 800
+          }
+        ]
+      },
+      {
         "name": "Dark Pomade",
-        "images": [{
+        "images": [
+          {
             "path": "man/hair/whole/22.png",
-            "drawingOrder": 800
-        }]
-    }, {
+            "drawOrder": 800
+          }
+        ]
+      },
+      {
         "name": "Rider",
-        "images": [{
+        "images": [
+          {
             "path": "man/hair/whole/23.png",
-            "drawingOrder": 800
-        }]
-    }, {
+            "drawOrder": 800
+          }
+        ]
+      },
+      {
         "name": "Light Nobility",
-        "images": [{
+        "images": [
+          {
             "path": "man/hair/whole/24.png",
-            "drawingOrder": 800
-        }]
-    }, {
+            "drawOrder": 800
+          }
+        ]
+      },
+      {
         "name": "Dark Nobility",
-        "images": [{
+        "images": [
+          {
             "path": "man/hair/whole/25.png",
-            "drawingOrder": 800
-        }]
-    }, {
+            "drawOrder": 800
+          }
+        ]
+      },
+      {
         "name": "Light Short",
-        "images": [{
+        "images": [
+          {
             "path": "man/hair/whole/26.png",
-            "drawingOrder": 800
-        }]
-    }, {
+            "drawOrder": 800
+          }
+        ]
+      },
+      {
         "name": "Dark Short",
-        "images": [{
+        "images": [
+          {
             "path": "man/hair/whole/27.png",
-            "drawingOrder": 800
-        }]
-    }]
-}, 
-{
+            "drawOrder": 800
+          }
+        ]
+      }
+    ]
+  },
+  {
     "name": "Back Hair",
-    "parts": 
-    [{
+    "parts": [
+      {
         "name": "Black Back Hair",
         "condition": {
-            "part": "Hair",
-            "values": ["Black Hair"]
+          "part": "Hair",
+          "values": [
+            "Black Hair"
+          ]
         },
-        "images": [{
+        "images": [
+          {
             "path": "man/back_hair/black/0.png",
-            "drawingOrder": 200
-        }]
-    }, {
+            "drawOrder": 200
+          }
+        ]
+      },
+      {
         "name": "White Back Hair",
         "condition": {
-            "part": "Hair",
-            "values": ["White Hair"]
+          "part": "Hair",
+          "values": [
+            "White Hair"
+          ]
         },
-        "images": [{
+        "images": [
+          {
             "path": "man/back_hair/white/0.png",
-            "drawingOrder": 200
-        }]
-    }, {
+            "drawOrder": 200
+          }
+        ]
+      },
+      {
         "name": "Half Back Hair",
         "condition": {
-            "part": "Hair",
-            "values": ["Half Hair"]
+          "part": "Hair",
+          "values": [
+            "Half Hair"
+          ]
         },
-        "images": [{
+        "images": [
+          {
             "path": "man/back_hair/half/0.png",
-            "drawingOrder": 200
-        }]
-    }]
-}, 
-{
+            "drawOrder": 200
+          }
+        ]
+      }
+    ]
+  },
+  {
     "name": "Accessory",
-    "parts": 
-    [{"name":"None", "percent": 70}, {
+    "parts": [
+      {
+        "name": "None",
+        "percent": 70
+      },
+      {
         "name": "Hair Chain",
-        "images": [{
+        "images": [
+          {
             "path": "man/acce/0.png",
-            "drawingOrder": 900
-        }]
-    }, {
+            "drawOrder": 900
+          }
+        ]
+      },
+      {
         "name": "Helm",
-        "images": [{
+        "images": [
+          {
             "path": "man/acce/1.png",
-            "drawingOrder": 900
-        }]
-    }, {
+            "drawOrder": 900
+          }
+        ]
+      },
+      {
         "name": "Blue Horn",
-        "images": [{
+        "images": [
+          {
             "path": "man/acce/2.png",
-            "drawingOrder": 900
-        }]
-    }, {
+            "drawOrder": 900
+          }
+        ]
+      },
+      {
         "name": "Crown",
-        "images": [{
+        "images": [
+          {
             "path": "man/acce/3.png",
-            "drawingOrder": 900
-        }]
-    }, {
+            "drawOrder": 900
+          }
+        ]
+      },
+      {
         "name": "Gold Horn",
-        "images": [{
+        "images": [
+          {
             "path": "man/acce/4.png",
-            "drawingOrder": 900
-        }]
-    }, {
+            "drawOrder": 900
+          }
+        ]
+      },
+      {
         "name": "Head Band",
-        "images": [{
+        "images": [
+          {
             "path": "man/acce/5.png",
-            "drawingOrder": 900
-        }]
-    }, {
+            "drawOrder": 900
+          }
+        ]
+      },
+      {
         "name": "Laurel Wreath",
-        "images": [{
+        "images": [
+          {
             "path": "man/acce/6.png",
-            "drawingOrder": 900
-        }]
-    }, {
+            "drawOrder": 900
+          }
+        ]
+      },
+      {
         "name": "Flower Crown",
-        "images": [{
+        "images": [
+          {
             "path": "man/acce/7.png",
-            "drawingOrder": 900
-        }]
-    }, {
+            "drawOrder": 900
+          }
+        ]
+      },
+      {
         "name": "Glasses",
-        "images": [{
+        "images": [
+          {
             "path": "man/acce/8.png",
-            "drawingOrder": 900
-        }]
-    }, {
+            "drawOrder": 900
+          }
+        ]
+      },
+      {
         "name": "Wing Crown",
-        "images": [{
+        "images": [
+          {
             "path": "man/acce/9.png",
-            "drawingOrder": 900
-        }]
-    }, {
+            "drawOrder": 900
+          }
+        ]
+      },
+      {
         "name": "Mask",
-        "images": [{
+        "images": [
+          {
             "path": "man/acce/10.png",
-            "drawingOrder": 750
-        }]
-    }, {
+            "drawOrder": 750
+          }
+        ]
+      },
+      {
         "name": "Moon Earrings",
-        "images": [{
+        "images": [
+          {
             "path": "man/acce/11.png",
-            "drawingOrder": 900
-        }]
-    }, {
+            "drawOrder": 900
+          }
+        ]
+      },
+      {
         "name": "Drop Earrings",
-        "images": [{
+        "images": [
+          {
             "path": "man/acce/12.png",
-            "drawingOrder": 900
-        }]
-    }, {
+            "drawOrder": 900
+          }
+        ]
+      },
+      {
         "name": "Earrings",
-        "images": [{
+        "images": [
+          {
             "path": "man/acce/13.png",
-            "drawingOrder": 900
-        }]
-    }, {
+            "drawOrder": 900
+          }
+        ]
+      },
+      {
         "name": "Eye Patch",
-        "images": [{
+        "images": [
+          {
             "path": "man/acce/14.png",
-            "drawingOrder": 750
-        }]
-    }, {
+            "drawOrder": 750
+          }
+        ]
+      },
+      {
         "name": "Dancer Mask",
-        "images": [{
+        "images": [
+          {
             "path": "man/acce/15.png",
-            "drawingOrder": 750
-        }]
-    }, {
+            "drawOrder": 750
+          }
+        ]
+      },
+      {
         "name": "Opera Mask",
-        "images": [{
+        "images": [
+          {
             "path": "man/acce/16.png",
-            "drawingOrder": 750
-        }]
-    }, {
+            "drawOrder": 750
+          }
+        ]
+      },
+      {
         "name": "Scar",
-        "images": [{
+        "images": [
+          {
             "path": "man/acce/17.png",
-            "drawingOrder": 750
-        }]
-    }, {
+            "drawOrder": 750
+          }
+        ]
+      },
+      {
         "name": "Wukong Ring",
-        "images": [{
+        "images": [
+          {
             "path": "man/acce/18.png",
-            "drawingOrder": 750
-        }]
-    }]
-}]
+            "drawOrder": 750
+          }
+        ]
+      }
+    ]
+  }
+]

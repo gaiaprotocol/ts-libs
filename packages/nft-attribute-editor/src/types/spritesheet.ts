@@ -1,4 +1,4 @@
-type SpritesheetData = {
+export type SpritesheetData = {
   frames: {
     [frame: string]: {
       frame: {
