@@ -1,5 +1,5 @@
 {
-  "name": "gaiaprotocol-common",
+  "name": "gaiaprotocol-ts-libs",
   "private": true,
   "workspaces": [
     "packages/*"
