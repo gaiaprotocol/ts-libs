@@ -139,11 +139,11 @@ export async function createNftAttributeEditor(options: NftAttributeEditorOption
 
       try {
         const pd = makePreviewData();
-        const { categories: previewCategories } = getPartCategoriesAndFrames(
+        const { categories: previewCategories, keyToFrameFlat } = getPartCategoriesAndFrames(
           partOptions, keyToFrame, pd.traits
         );
         const thumbPreview = createPreview(
-          previewCategories, keyToFrame, pd, spritesheet, spritesheetImagePath
+          previewCategories, keyToFrameFlat, pd, spritesheet, spritesheetImagePath
         );
         thumbPreview.attachToDom(thumbContainer);
       } catch { /* 썸네일 실패는 무시 */ }
