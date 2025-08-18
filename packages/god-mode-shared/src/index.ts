@@ -5,8 +5,8 @@ import stoneWomanParts from '../src/parts-jsons/stone-woman-parts.json' assert {
 import waterManParts from '../src/parts-jsons/water-man-parts.json' assert { type: 'json' };
 import waterWomanParts from '../src/parts-jsons/water-woman-parts.json' assert { type: 'json' };
 
-type ElementType = 'Stone' | 'Fire' | 'Water';
-type GenderType = 'Man' | 'Woman';
+export type ElementType = 'Stone' | 'Fire' | 'Water';
+export type GenderType = 'Man' | 'Woman';
 
 const partsData: Record<ElementType, Record<GenderType, PartCategory[]>> = {
   Stone: { Man: stoneManParts, Woman: stoneWomanParts },
