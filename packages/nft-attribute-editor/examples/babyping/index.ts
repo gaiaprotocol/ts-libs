@@ -30,6 +30,10 @@ const editor = await createNftAttributeEditor({
     'https://api.matedevdao.workers.dev/babyping/spritesheet/spritesheet.png',
 });
 
+editor.on('dataChanged', (data) => {
+  console.log(data);
+});
+
 document.body.appendChild(el(
   'ion-app.babyping-view',
   //new BabypingDisplay(testData.parts),

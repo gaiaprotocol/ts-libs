@@ -97,42 +97,8 @@ export async function createNftAttributeEditor(options: NftAttributeEditorOption
   const selectorsCol = el('div', { class: 'nft-selectors' });
   const previewCol = el('div', { class: 'nft-preview-col' });
 
-  // 우측 프리뷰 카드
-  const previewMount = el('div', { class: 'nft-preview-mount' });
-  previewCol.append(
-    el('ion-card',
-      el('ion-card-header', el('ion-card-title', 'Preview')),
-      el('ion-card-content', previewMount)
-    )
-  );
-
   layout.append(selectorsCol, previewCol);
   editor.append(layout);
-
-  // ---- 프리뷰 제어
-  let currentPreview: DomGameObject | null = null;
-
-  function mountPreview(previewObj: DomGameObject) {
-    previewMount.innerHTML = '';
-    previewObj.attachToDom(previewMount);
-    currentPreview = previewObj;
-  }
-
-  function updatePreview(previewData: NftData) {
-    const { categories: catsForPreview } = getPartCategoriesAndFrames(
-      partOptions,
-      keyToFrame,
-      previewData.traits
-    );
-    const p = createPreview(
-      catsForPreview,
-      keyToFrame,
-      previewData,
-      spritesheet,
-      spritesheetImagePath
-    );
-    mountPreview(p);
-  }
 
   // ---- 선택기(칩) 생성
   function createAttributeSelector<T extends string | number>(
@@ -201,7 +167,6 @@ export async function createNftAttributeEditor(options: NftAttributeEditorOption
       // 클릭 시 선택 토글 반영
       chip.addEventListener('click', () => {
         onSelect(value);
-        updatePreview(data);
       });
 
       content.append(chip);
@@ -235,7 +200,6 @@ export async function createNftAttributeEditor(options: NftAttributeEditorOption
             data = cleanData(next, partOptions, keyToFrame);
 
             render();
-            updatePreview(data);
             component.emit('dataChanged', data);
           }
         );
@@ -268,7 +232,6 @@ export async function createNftAttributeEditor(options: NftAttributeEditorOption
           next.parts[cat.name] = val;
           data = cleanData(next, partOptions, keyToFrame);
           render();
-          updatePreview(data);
           component.emit('dataChanged', data);
         }
       );
@@ -278,7 +241,6 @@ export async function createNftAttributeEditor(options: NftAttributeEditorOption
 
   // 초기 페인트
   render();
-  updatePreview(data);
 
   const component = new EditorComponent(editor, data, () => editor.remove());
   return component;

@@ -10,7 +10,7 @@
 /* 레이아웃: 좌(리스트)/우(프리뷰) */
 .nft-attribute-editor .nft-editor-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 420px;
+  grid-template-columns: minmax(0, 1fr);
   gap: 16px;
   padding-bottom: env(safe-area-inset-bottom, 0);
   /* iOS 하단 홈바 여유 */
@@ -20,21 +20,6 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
-}
-
-.nft-attribute-editor .nft-preview-col {
-  position: sticky;
-  top: 12px;
-  height: fit-content;
-}
-
-/* 우측 큰 프리뷰 */
-.nft-attribute-editor .nft-preview-mount {
-  width: 100%;
-  height: 420px;
-  display: grid;
-  place-items: center;
-  overflow: hidden;
 }
 
 /* ===== 선택 그리드 & 타일 ===== */
