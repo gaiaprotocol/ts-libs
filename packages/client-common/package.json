@@ -1,6 +1,6 @@
 {
   "name": "@gaiaprotocol/client-common",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "types": "./dist/index.d.ts",
   "main": "./dist/index.js",
   "dependencies": {
@@ -9,6 +9,7 @@
     "@shoelace-style/shoelace": "^2.20.1",
     "@tanstack/react-query": "^5.85.0",
     "@webtaku/el": "^0.0.17",
+    "@webtaku/event-emitter": "^0.0.1",
     "color": "^5.0.0",
     "mersenne-twister": "^1.1.0",
     "react": "^19.1.1",

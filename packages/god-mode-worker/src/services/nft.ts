@@ -1,13 +1,11 @@
-import { createPublicClient, http, parseAbi } from 'viem';
-import { mainnet } from 'viem/chains';
-
-const client = createPublicClient({ chain: mainnet, transport: http() });
+import { parseAbi } from 'viem';
+import { client } from '../client';
 
 const erc721Abi = parseAbi([
   'function balanceOf(address owner) view returns (uint256)'
 ]);
 
-async function isHolder(address: `0x${string}`, contract: `0x${string}`): Promise<boolean> {
+export async function isHolder(address: `0x${string}`, contract: `0x${string}`): Promise<boolean> {
   const balance = await client.readContract({
     address: contract,
     abi: erc721Abi,
@@ -16,5 +14,3 @@ async function isHolder(address: `0x${string}`, contract: `0x${string}`): Promis
   });
   return balance > 0n;
 }
-
-export { isHolder };

@@ -1,12 +1,20 @@
+import { EventEmitter } from '@webtaku/event-emitter';
 import { getAddress } from 'viem';
 
-class TokenManager {
+class TokenManager extends EventEmitter<{
+  signedIn: (address: string) => void;
+  signedOut: () => void;
+}> {
   readonly TOKEN_KEY = 'token';
   readonly ADDRESS_KEY = 'token_address';
 
+  constructor() { super(); }
+
   set(token: string, address: `0x${string}`) {
     localStorage.setItem(this.TOKEN_KEY, token);
-    localStorage.setItem(this.ADDRESS_KEY, getAddress(address));
+    const addr = getAddress(address);
+    localStorage.setItem(this.ADDRESS_KEY, addr);
+    this.emit('signedIn', addr);
   }
 
   getToken(): string | undefined {
@@ -20,6 +28,7 @@ class TokenManager {
   clear() {
     localStorage.removeItem(this.TOKEN_KEY);
     localStorage.removeItem(this.ADDRESS_KEY);
+    this.emit('signedOut');
   }
 
   has(): boolean {
