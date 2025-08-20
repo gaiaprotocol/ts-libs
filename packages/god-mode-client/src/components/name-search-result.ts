@@ -70,7 +70,7 @@ async function createNameSearchResultContent(query: string): Promise<HTMLElement
         el('ion-item', {
           button: true,
           color: 'success',
-          onclick: () => location.href = `/${availableName}/register`,
+          onclick: () => location.href = `/${availableName}`,
         },
           el('ion-label', availableName),
           el('sl-icon', {
