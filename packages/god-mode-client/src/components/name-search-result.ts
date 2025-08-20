@@ -3,7 +3,7 @@ import '@shoelace-style/shoelace';
 import { el } from '@webtaku/el';
 import '../../src/components/name-search-result.css';
 
-declare const API_BASE_URL: string;
+declare const GAIA_API_BASE_URI: string;
 
 const BLACKLIST_NAMES = ['gaia', 'gaiaprotocol', 'admin', 'null', 'root'];
 
@@ -27,7 +27,7 @@ async function createNameSearchResultContent(query: string): Promise<HTMLElement
   let availableName: string | undefined;
 
   try {
-    const res = await fetch(`${API_BASE_URL}/search-names`, {
+    const res = await fetch(`${GAIA_API_BASE_URI}/search-names`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ query }),
