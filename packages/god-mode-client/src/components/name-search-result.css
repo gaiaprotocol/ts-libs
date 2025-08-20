@@ -1,53 +1,149 @@
 .name-search-result-content {
-  padding: 1rem;
+  /* ----- Theme tokens ----- */
+  --surface-0: rgba(18, 18, 18, 0.92);
+  /* 패널 배경 */
+  --surface-1: rgba(34, 34, 34, 0.95);
+  /* 리스트/카드 */
+  --surface-1-hover: rgba(42, 42, 42, 0.98);
+  --border: color-mix(in oklab, #ffffff, transparent 85%);
+  --text-muted: color-mix(in oklab, #ffffff, transparent 42%);
+  --accent: #f6c546;
+  /* GAIA Gold */
+  --success: #69f0ae;
+  /* 네온민트(낮은 채도) */
+
+  padding: 10px;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  max-height: 60vh;
+  gap: 10px;
+  max-height: min(60vh, 560px);
   overflow-y: auto;
 
-  ion-list {
-    border-top: 1px solid var(--sl-color-neutral-200);
-    padding-top: 1rem;
-  }
+  background: var(--surface-0);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+}
 
-  ion-item {
-    --padding-start: 12px;
-    --inner-padding-end: 12px;
-    border-radius: 6px;
-    margin-bottom: 0.5rem;
-    transition: background 0.2s ease;
+/* 가는 상단 구분선 */
+.result-separator {
+  height: 1px;
+  background: var(--border);
+  margin: 6px 4px 2px;
+}
 
-    &:hover {
-      background: rgba(255, 255, 255, 0.02);
-    }
-  }
+/* 리스트 */
+.result-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
 
-  .available-name {
-    border: 1px solid var(--sl-color-success);
-    padding: 1rem;
-    border-radius: 8px;
-    background-color: rgba(0, 255, 0, 0.05);
+/* 행 버튼 */
+.list-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  width: 100%;
+  text-align: left;
+  padding: 14px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--surface-1);
+  transition: transform 120ms ease, background 120ms ease, border-color 120ms ease;
+  cursor: pointer;
+}
 
-    ion-item {
-      --background: transparent;
-      --color: var(--sl-color-success);
-      font-weight: 600;
-    }
+.list-row:hover {
+  background: var(--surface-1-hover);
+  transform: translateY(-1px);
+  border-color: color-mix(in oklab, #ffffff, transparent 75%);
+}
 
-    h4 {
-      font-size: 1rem;
-      margin-bottom: 0.5rem;
-      color: var(--sl-color-success);
-    }
-  }
+.list-row:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent), transparent 55%);
+  border-color: color-mix(in oklab, var(--accent), transparent 35%);
+}
 
-  sl-alert {
-    margin-top: 1rem;
-  }
+/* 타이포 */
+.title {
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 0.1px;
+  margin: 0 0 2px 0;
+}
 
-  sl-spinner {
-    display: block;
-    margin: 2rem auto;
-  }
+.meta {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* 배지는 완전 평면 */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.7rem;
+  padding: 4px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-muted);
+}
+
+/* Available 카드: 얇은 dashed + 그린 포커스 */
+.available-name {
+  border: 1px dashed color-mix(in oklab, var(--success), transparent 55%);
+  padding: 10px;
+  border-radius: 14px;
+  background: transparent;
+}
+
+.available-name h4 {
+  font-size: 0.9rem;
+  margin: 0 0 8px 2px;
+  color: var(--success);
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+.available-name .list-row {
+  color: var(--success);
+  border-color: color-mix(in oklab, var(--success), transparent 65%);
+  background: transparent;
+}
+
+.available-name .list-row:hover {
+  background: color-mix(in oklab, var(--success), transparent 93%);
+  border-color: color-mix(in oklab, var(--success), transparent 45%);
+}
+
+/* Shoelace 기본 요소 여백 */
+sl-alert {
+  margin-top: 6px;
+}
+
+sl-spinner {
+  display: block;
+  margin: 16px auto;
+}
+
+/* 스크롤바 */
+.name-search-result-content::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+.name-search-result-content::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.16);
+  border: 3px solid transparent;
+  border-radius: 999px;
+  background-clip: content-box;
+}
+
+.name-search-result-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.26);
+  border-width: 2px;
 }
