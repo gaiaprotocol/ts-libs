@@ -10,12 +10,19 @@
   }
 
   .message-list {
-    flex: 1;
+    /* 여기만 살짝 강화 */
+    flex: 1 1 auto;
+    /* 기존 flex:1 -> flex-basis 명시 */
+    min-height: 0;
+    /* ★ 스크롤 컨테이너에서 중요 */
     overflow-y: auto;
     padding: 16px;
     display: flex;
     flex-direction: column;
     gap: 12px;
+
+    /* 스크롤 점프 방지에 도움 */
+    overscroll-behavior: contain;
   }
 
   .message {
