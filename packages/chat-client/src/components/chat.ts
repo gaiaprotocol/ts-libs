@@ -138,9 +138,9 @@ function createChatComponent({ roomId, myAccount, useAddressAvatar }: Options): 
     }
 
     // 메타
-    const cachedName = chatProfileService.getCached(account)?.nickname || shortenAddress(account);
-    const time = new Date(msg.timestamp).toLocaleTimeString();
-    const meta = el('div.meta', el('span.name', { dataset: { account } }, cachedName), el('time.time', time));
+    const cachedNick = chatProfileService.getCached(account)?.nickname?.trim();
+    const displayName = cachedNick ? (cachedNick.endsWith('.gaia') ? cachedNick : `${cachedNick}.gaia`) : shortenAddress(account);
+    const meta = el('div.meta', el('span.name', { dataset: { account } }, displayName), el('time.time', new Date(msg.timestamp).toLocaleTimeString()));
 
     // 본문
     const body = el('div.msg-body', meta);
@@ -220,7 +220,9 @@ function createChatComponent({ roomId, myAccount, useAddressAvatar }: Options): 
     const { account, profile } = (e as CustomEvent<{ account: `0x${string}`; profile: ChatProfile }>).detail;
 
     list.querySelectorAll<HTMLElement>(`.message .name[data-account="${account}"]`).forEach((node) => {
-      node.textContent = profile.nickname ?? shortenAddress(account);
+      const raw = profile?.nickname?.trim();
+      const display = raw ? (raw.endsWith('.gaia') ? raw : `${raw}.gaia`) : shortenAddress(account);
+      node.textContent = display;
 
       const messageEl = node.closest('.message');
       const avatarContainer = messageEl?.querySelector<HTMLElement>('.avatar-container') ?? null;
