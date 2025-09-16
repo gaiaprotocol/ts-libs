@@ -3,11 +3,10 @@ import { defineCustomElements } from '@ionic/core/loader';
 import '@shoelace-style/shoelace';
 import { el } from '@webtaku/el';
 import { EventEmitter } from '@webtaku/event-emitter';
-import { DomAnimatedSpriteObject, DomGameObject, domPreload } from 'kiwiengine';
+import { DomAnimatedSpriteNode, DomGameObject, domPreload, Frame } from 'kiwiengine';
 import '../src/editor.css';
 import { KeyToFrame } from './types/frame';
 import { NftData, PartCategory, PartOptions } from './types/nft';
-import { SpritesheetData } from './types/spritesheet';
 import { buildDefaultParts, cleanData, cloneData, getPartCategoriesAndFrames, partItemAvailable } from './utils/derive';
 
 defineCustomElements(window);
@@ -17,7 +16,7 @@ type NftAttributeEditorOptions = {
   partOptions: PartOptions;
   baseData: NftData;
   keyToFrame: KeyToFrame;
-  spritesheet: SpritesheetData;
+  frames: Record<string, Frame>;
   spritesheetImagePath: string;
 };
 
@@ -38,10 +37,10 @@ function createPreview(
   categories: PartCategory[],
   keyToFrame: KeyToFrame,
   data: NftData,
-  spritesheet: SpritesheetData,
+  frames: Record<string, Frame>,
   spritesheetImagePath: string,
 ) {
-  const preview = new DomGameObject({ x: 64, y: 64 });
+  const preview = new DomGameObject();
 
   for (const [partName, partValue] of Object.entries(data.parts)) {
     const category = categories.find((cat) => cat.name === partName);
@@ -57,12 +56,19 @@ function createPreview(
       const frame = keyToFrame[image.path];
       if (!frame) continue;
 
-      const sprite = new DomAnimatedSpriteObject({
+      const sprite = new DomAnimatedSpriteNode({
         src: spritesheetImagePath,
-        atlas: { ...spritesheet, animations: { [frame as string]: [frame as string] } },
+        atlas: {
+          frames,
+          animations: {
+            [frame as string]: {
+              frames: [frame as string],
+              fps: 1,
+              loop: false,
+            }
+          }
+        },
         animation: frame as string,
-        fps: 1,
-        loop: false,
         drawOrder: image.drawOrder,
       });
 
@@ -80,7 +86,7 @@ export async function createNftAttributeEditor(options: NftAttributeEditorOption
     partOptions,
     baseData,
     keyToFrame,
-    spritesheet,
+    frames,
     spritesheetImagePath
   } = options;
 
@@ -143,9 +149,9 @@ export async function createNftAttributeEditor(options: NftAttributeEditorOption
           partOptions, keyToFrame, pd.traits
         );
         const thumbPreview = createPreview(
-          previewCategories, keyToFrameFlat, pd, spritesheet, spritesheetImagePath
+          previewCategories, keyToFrameFlat, pd, frames, spritesheetImagePath
         );
-        thumbPreview.attachToDom(thumbContainer);
+        thumbPreview.attachTo(thumbContainer);
       } catch { /* 썸네일 실패는 무시 */ }
 
       // chip 생성부 (핵심만 발췌)
