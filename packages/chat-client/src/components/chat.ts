@@ -15,6 +15,8 @@ interface Options {
   roomId: string;
   myAccount: string;
   useAddressAvatar?: boolean;
+  /** 아바타/이름 클릭 시 호출됩니다. (키보드 Enter/Space 포함) */
+  onProfileClick?: (account: `0x${string}`, profile: ChatProfile, ev?: Event) => void;
 }
 
 /** 모든 하위 img가 로드되면 resolve */
@@ -62,7 +64,29 @@ function replaceWithFallback(img: HTMLImageElement) {
   img.replaceWith(wrapper);
 }
 
-function createChatComponent({ roomId, myAccount, useAddressAvatar }: Options): Component & {
+/** 클릭 + Enter/Space 접근성 액티베이터 */
+function makeActivatable(elm: HTMLElement, onActivate: (ev: Event) => void) {
+  elm.style.cursor = 'pointer';
+  elm.setAttribute('role', 'button');
+  elm.setAttribute('tabindex', '0');
+
+  const handler = (ev: Event) => onActivate(ev);
+  elm.addEventListener('click', handler);
+
+  elm.addEventListener('keydown', (e: KeyboardEvent) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      onActivate(e);
+    }
+  });
+}
+
+function createChatComponent({
+  roomId,
+  myAccount,
+  useAddressAvatar,
+  onProfileClick
+}: Options): Component & {
   scrollToBottom: () => void;
 } {
   // 상태
@@ -128,7 +152,9 @@ function createChatComponent({ roomId, myAccount, useAddressAvatar }: Options): 
       `
     }) as HTMLElement;
 
-    const cachedProfileImage = chatProfileService.getCached(account)?.profileImage;
+    const cachedProfile = chatProfileService.getCached(account);
+    const cachedProfileImage = cachedProfile?.profileImage;
+
     if (cachedProfileImage) {
       avatarContainer.style.backgroundImage = `url("${cachedProfileImage}")`;
     } else {
@@ -138,9 +164,21 @@ function createChatComponent({ roomId, myAccount, useAddressAvatar }: Options): 
     }
 
     // 메타
-    const cachedName = chatProfileService.getCached(account)?.nickname || shortenAddress(account);
+    const cachedName = cachedProfile?.nickname || shortenAddress(account);
     const time = new Date(msg.timestamp).toLocaleTimeString();
-    const meta = el('div.meta', el('span.name', { dataset: { account } }, cachedName), el('time.time', time));
+    const nameEl = el('span.name', { dataset: { account } }, cachedName) as HTMLSpanElement;
+    const meta = el('div.meta', nameEl, el('time.time', time));
+
+    // === 프로필 클릭 핸들러 연결 (옵션 제공 시만) ===
+    if (typeof onProfileClick === 'function') {
+      const activator = (ev: Event) => onProfileClick!(account as `0x${string}`, chatProfileService.getCached(account) ?? {
+        nickname: cachedName,
+        fetchedAt: Date.now(),
+      }, ev);
+      makeActivatable(avatarContainer, activator);
+      makeActivatable(nameEl, activator);
+    }
+    // ================================================
 
     // 본문
     const body = el('div.msg-body', meta);
