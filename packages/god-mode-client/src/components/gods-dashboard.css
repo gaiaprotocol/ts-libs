@@ -1,0 +1,83 @@
+.gods-stats-dash sl-card::part(base) {
+  background: var(--sl-color-neutral-0);
+  border: 1px solid var(--sl-color-neutral-200);
+  border-radius: 12px;
+}
+
+.gs-header {
+  margin-bottom: 12px;
+}
+
+.gs-header h3 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.gs-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* 하나의 컬럼 */
+  gap: 16px;
+}
+
+.gs-left {
+  display: grid;
+  gap: 16px;
+}
+
+.gs-right {
+  display: grid;
+  gap: 16px;
+}
+
+.gs-panel {
+  padding: 12px;
+  border: 1px solid var(--sl-color-neutral-200);
+  border-radius: 12px;
+  background: var(--sl-color-neutral-0);
+}
+
+.gs-section-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--sl-color-neutral-500);
+  font-size: 14px;
+  margin: 0 0 10px 0;
+}
+
+.gs-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.gs-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.gs-stat .value {
+  font-weight: 700;
+  font-size: 22px;
+}
+
+.gs-stat .label {
+  font-size: 12px;
+  color: var(--sl-color-neutral-500);
+}
+
+.gs-sub {
+  font-size: 12px;
+  color: var(--sl-color-neutral-500);
+  margin-top: 8px;
+}
+
+.gs-chart-wrap {
+  width: 100%;
+  height: 360px;
+}
+
+.gs-about {
+  line-height: 1.6;
+}

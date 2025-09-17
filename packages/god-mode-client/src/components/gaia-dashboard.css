@@ -1,0 +1,59 @@
+.gaia-dashboard {
+  padding: 24px 0;
+}
+
+.gaia-dashboard .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+  /* horizontal gutter like top */
+  box-sizing: border-box;
+}
+
+.gaia-dashboard .header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.gaia-dashboard .grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+@media (min-width: 900px) {
+  .gaia-dashboard .grid {
+    grid-template-columns: 1fr;
+    /* keep 1 column; section cards manage inner grids */
+  }
+}
+
+.gaia-dashboard sl-card::part(base) {
+  background: var(--sl-color-neutral-0);
+  border: 1px solid var(--sl-color-neutral-200);
+  border-radius: 12px;
+}
+
+.gaia-dashboard .section-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--sl-color-neutral-500);
+  margin: 0 0 12px 0;
+}
+
+.gaia-dashboard .body {
+  line-height: 1.6;
+}
+
+.gods-section-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+  font-weight: 600;
+  font-size: 15px;
+}
