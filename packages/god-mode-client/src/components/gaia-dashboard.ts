@@ -47,5 +47,5 @@ export function createGaiaProtocolDashboard(): HTMLElement {
     // gaiaTokenCard,
   );
 
-  return el('main.gaia-dashboard', el('div.container', header, grid));
+  return el('main.gaia-dashboard', el('div.container', /*header,*/ grid));
 }
