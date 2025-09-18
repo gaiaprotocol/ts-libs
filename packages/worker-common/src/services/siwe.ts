@@ -18,17 +18,6 @@ export async function validateSiwe(address: `0x${string}`, signature: `0x${strin
 
   const { nonce, issuedAt } = JSON.parse(stored);
 
-  console.log({
-    domain: expectedDomain,
-    address,
-    statement: env.MESSAGE_FOR_WALLET_LOGIN,
-    uri: expectedUri,
-    version: '1',
-    chainId,
-    nonce,
-    issuedAt: new Date(issuedAt),
-  });
-
   const siweMessage = createSiweMessage({
     domain: expectedDomain,
     address,
