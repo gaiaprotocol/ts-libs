@@ -93,7 +93,7 @@ export async function createNftAttributeEditor(options: NftAttributeEditorOption
   await domPreload([spritesheetImagePath]);
 
   // 루트
-  const editor = el('ion-content.nft-attribute-editor', { class: 'ion-padding' });
+  const editor = el('ion-content.nft-attribute-editor');
 
   // ---- 상태
   let data = baseData;

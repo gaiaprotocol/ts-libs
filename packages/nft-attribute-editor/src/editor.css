@@ -5,6 +5,9 @@
   --thumb-size: 128;
   /* 데스크톱 썸네일 한 변 */
   --tile-gap: 12px;
+
+
+
 }
 
 /* 레이아웃: 좌(리스트)/우(프리뷰) */
@@ -52,7 +55,6 @@
   border-radius: 12px;
   background: #0c0c0f;
   overflow: hidden;
-  margin: calc((128px - calc(var(--thumb-size) * 1px)) / -2 + 6px) auto calc((128px - calc(var(--thumb-size) * 1px)) / -2 + 4px);
   transform: scale(calc(var(--thumb-size) / 128));
 }
 
@@ -150,7 +152,7 @@
 /* 작은 폰(<= 420px): 1~2열, 터치 목표 확대 */
 @media (max-width: 420px) {
   .nft-attribute-editor {
-    --tile-width: 130px;
+    --tile-width: 120px;
     --thumb-size: 96;
     --tile-gap: 8px;
   }
@@ -161,5 +163,10 @@
 
   .nft-attribute-editor .nft-preview-mount {
     height: 224px;
+  }
+
+  .nft-attribute-editor ion-card.attribute-selector ion-card-content {
+    padding: 0 10px;
+    padding-bottom: 10px;
   }
 }
