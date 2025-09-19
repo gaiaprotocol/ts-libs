@@ -20,7 +20,7 @@
     "skipLibCheck": true,
     "strict": true,
     "rootDir": "./src",
-    "outDir": "dist",
+    "outDir": "lib",
     "resolveJsonModule": true
   },
   "include": [
@@ -29,6 +29,6 @@
   ],
   "exclude": [
     "node_modules",
-    "**/dist/**"
+    "**/lib/**"
   ],
 }

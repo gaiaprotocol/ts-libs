@@ -1,0 +1,1 @@
+{"version":3,"file":"index.js","sourceRoot":"","sources":["../src/index.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,mBAAmB,EAAE,MAAM,mBAAmB,CAAC;AACxD,OAAO,EAAe,kBAAkB,EAAE,MAAM,yBAAyB,CAAC","sourcesContent":["export { createChatComponent } from \"./components/chat\";\nexport { ChatProfile, chatProfileService } from \"./services/chat-profile\";\n\n"]}

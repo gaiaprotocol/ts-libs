@@ -1,0 +1,1 @@
+{"version":3,"file":"frame.js","sourceRoot":"","sources":["../../src/types/frame.ts"],"names":[],"mappings":"","sourcesContent":["export type KeyToFrame =\n  | { [key: string]: string }\n  | { [trait: string]: { [key: string]: string } }\n  | { [trait1: string]: { [trait2: string]: { [key: string]: string } } };\n"]}

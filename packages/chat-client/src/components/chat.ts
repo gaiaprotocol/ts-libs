@@ -346,6 +346,8 @@ function createChatComponent({
     waitForImages(list)
       .then(() => rafScrollToBottom())
       .catch(() => rafScrollToBottom());
+
+    rafScrollToBottom()
   });
 
   // 전송

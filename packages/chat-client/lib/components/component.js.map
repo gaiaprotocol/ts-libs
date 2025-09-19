@@ -1,0 +1,1 @@
+{"version":3,"file":"component.js","sourceRoot":"","sources":["../../src/components/component.ts"],"names":[],"mappings":"","sourcesContent":["interface Component {\n  el: HTMLElement;\n  remove(): void;\n}\n\nexport { Component };\n"]}
