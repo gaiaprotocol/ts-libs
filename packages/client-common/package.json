@@ -1,6 +1,6 @@
 {
   "name": "@gaiaprotocol/client-common",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "types": "./lib/index.d.ts",
   "main": "./lib/index.js",
   "dependencies": {
@@ -13,7 +13,8 @@
     "color": "^5.0.2",
     "mersenne-twister": "^1.1.0",
     "react": "^19.1.1",
-    "react-dom": "^19.1.1"
+    "react-dom": "^19.1.1",
+    "wagmi": "^2.17.1"
   },
   "devDependencies": {
     "@types/mersenne-twister": "^1.1.7",
