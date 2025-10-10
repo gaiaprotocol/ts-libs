@@ -3,7 +3,7 @@ import { hmacSign, makeCookie } from './utils';
 function b64UrlJson(obj) {
     return btoa(JSON.stringify(obj)).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/g, '');
 }
-export async function handleGoogleLogin(_request, env) {
+export async function handleGoogleLogin(_request, env, redirectUri) {
     const { state, codeVerifier, challenge } = await makePkce();
     // state + code_verifier를 무결성 서명과 함께 쿠키에 저장
     const payload = b64UrlJson({ state, code_verifier: codeVerifier });
@@ -11,7 +11,7 @@ export async function handleGoogleLogin(_request, env) {
     const tmpCookie = makeCookie('oauth_tmp', `${payload}.${sig}`, { maxAge: 600 });
     const redirectTo = googleAuthURL({
         clientId: env.GOOGLE_CLIENT_ID,
-        redirectUri: env.GOOGLE_REDIRECT_URI,
+        redirectUri,
         scope: 'openid email profile', // 필요 시 'openid' 또는 'openid email'로 축소
         codeChallenge: challenge,
         state,

@@ -1,13 +1,14 @@
 import { D1Database } from '@cloudflare/workers-types';
+import { corsHeadersWithOrigin } from '../../services/cors';
 import { readSession } from './utils';
 
 export async function handleGoogleMe(request: Request, env: {
   DB: D1Database;
   COOKIE_SECRET: string;
-}) {
+}, origin?: string) {
   try {
     const me = await readSession(env, request);
-    if (!me?.sub) return Response.json({ error: 'not_logged_in' }, { status: 401 });
+    if (!me?.sub) return Response.json({ error: 'not_logged_in' }, { status: 401, headers: origin ? corsHeadersWithOrigin(origin) : undefined });
 
     const row = await env.DB.prepare(
       `SELECT wallet_address, token, linked_at, email, name, picture
@@ -44,13 +45,13 @@ export async function handleGoogleMe(request: Request, env: {
           picture: row?.picture ?? me.picture ?? null,
         },
       },
-      { status: 200 },
+      { status: 200, headers: origin ? corsHeadersWithOrigin(origin) : undefined },
     );
   } catch (err) {
     console.error(err);
     return Response.json(
       { error: err instanceof Error ? err.message : String(err) },
-      { status: 500 },
+      { status: 500, headers: origin ? corsHeadersWithOrigin(origin) : undefined },
     );
   }
 }

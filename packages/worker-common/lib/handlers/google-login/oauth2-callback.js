@@ -1,7 +1,7 @@
 import { z } from 'zod';
 import { decodeJwtPayload, exchangeCodeForTokens } from './google';
 import { headersWithCookies, hmacVerify, makeCookie, makeSessionCookie, parseCookies } from './utils';
-export async function handleOAuth2Callback(request, env) {
+export async function handleOAuth2Callback(request, env, redirectUri, redirectTo = '/') {
     const url = new URL(request.url);
     const schema = z.object({ code: z.string().min(1), state: z.string().min(1) });
     const params = { code: url.searchParams.get('code'), state: url.searchParams.get('state') };
@@ -26,7 +26,7 @@ export async function handleOAuth2Callback(request, env) {
         code: parsed.data.code,
         clientId: env.GOOGLE_CLIENT_ID,
         clientSecret: env.GOOGLE_CLIENT_SECRET,
-        redirectUri: env.GOOGLE_REDIRECT_URI,
+        redirectUri,
         codeVerifier: tmp.code_verifier,
     }).catch((e) => ({ error: e?.message || 'exchange_failed' }));
     if (token.error) {
@@ -46,7 +46,7 @@ export async function handleOAuth2Callback(request, env) {
     }
     return new Response(null, {
         status: 302,
-        headers: headersWithCookies({ Location: '/' }, [sessionCookie, clearTmp]),
+        headers: headersWithCookies({ Location: redirectTo }, [sessionCookie, clearTmp]),
     });
 }
 //# sourceMappingURL=oauth2-callback.js.map

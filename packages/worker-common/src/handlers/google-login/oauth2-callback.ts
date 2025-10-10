@@ -6,9 +6,8 @@ export async function handleOAuth2Callback(request: Request, env: {
   COOKIE_SECRET: string;
   GOOGLE_CLIENT_ID: string;
   GOOGLE_CLIENT_SECRET: string;
-  GOOGLE_REDIRECT_URI: string;
   SESSION_TTL_DAYS: string;
-}) {
+}, redirectUri: string, redirectTo = '/') {
   const url = new URL(request.url)
   const schema = z.object({ code: z.string().min(1), state: z.string().min(1) })
   const params = { code: url.searchParams.get('code'), state: url.searchParams.get('state') }
@@ -32,7 +31,7 @@ export async function handleOAuth2Callback(request: Request, env: {
     code: parsed.data.code,
     clientId: env.GOOGLE_CLIENT_ID,
     clientSecret: env.GOOGLE_CLIENT_SECRET,
-    redirectUri: env.GOOGLE_REDIRECT_URI,
+    redirectUri,
     codeVerifier: tmp.code_verifier,
   }).catch((e: any) => ({ error: e?.message || 'exchange_failed' }))
   if ((token as any).error) {
@@ -59,6 +58,6 @@ export async function handleOAuth2Callback(request: Request, env: {
 
   return new Response(null, {
     status: 302,
-    headers: headersWithCookies({ Location: '/' }, [sessionCookie, clearTmp]),
+    headers: headersWithCookies({ Location: redirectTo }, [sessionCookie, clearTmp]),
   })
 }

@@ -2,28 +2,30 @@ import { D1Database } from '@cloudflare/workers-types';
 import { getAddress } from 'viem';
 import { verifyToken } from '../../services/jwt';
 import { readSession } from './utils';
+import { corsHeadersWithOrigin } from '../../services/cors';
 
 export async function handleLinkGoogleWeb3Wallet(
   request: Request,
-  env: { DB: D1Database, JWT_SECRET: string, COOKIE_SECRET: string }
+  env: { DB: D1Database, JWT_SECRET: string, COOKIE_SECRET: string },
+  origin?: string
 ): Promise<Response> {
   try {
     const auth = request.headers.get('authorization');
     if (!auth?.startsWith('Bearer ')) {
-      return new Response('Unauthorized', { status: 401 });
+      return new Response('Unauthorized', { status: 401, headers: origin ? corsHeadersWithOrigin(origin) : undefined });
     }
 
     const token = auth.slice(7);
     const payload = await verifyToken(token, env);
     if (!payload?.sub) {
-      return new Response('Unauthorized', { status: 401 });
+      return new Response('Unauthorized', { status: 401, headers: origin ? corsHeadersWithOrigin(origin) : undefined });
     }
 
     const normalizedAddress = getAddress(payload.sub);
 
     const me = await readSession(env, request);
     if (!me?.sub) {
-      return Response.json({ error: 'not_logged_in' }, { status: 401 });
+      return Response.json({ error: 'not_logged_in' }, { status: 401, headers: origin ? corsHeadersWithOrigin(origin) : undefined });
     }
 
     // 0) 선제 정리: 동일 지갑 주소로 기존에 연결된 다른 계정 있으면 삭제
@@ -69,12 +71,12 @@ export async function handleLinkGoogleWeb3Wallet(
         picture: me.picture ?? null,
       },
       linked_at: now,
-    });
+    }, { status: 200, headers: origin ? corsHeadersWithOrigin(origin) : undefined });
   } catch (err) {
     console.error(err);
     return Response.json(
       { error: err instanceof Error ? err.message : String(err) },
-      { status: 500 },
+      { status: 500, headers: origin ? corsHeadersWithOrigin(origin) : undefined },
     );
   }
 }

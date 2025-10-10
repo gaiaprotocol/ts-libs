@@ -7,9 +7,8 @@ function b64UrlJson(obj: any) {
 
 export async function handleGoogleLogin(_request: Request, env: {
   GOOGLE_CLIENT_ID: string
-  GOOGLE_REDIRECT_URI: string
   COOKIE_SECRET: string
-}) {
+}, redirectUri: string) {
   const { state, codeVerifier, challenge } = await makePkce()
 
   // state + code_verifier를 무결성 서명과 함께 쿠키에 저장
@@ -19,7 +18,7 @@ export async function handleGoogleLogin(_request: Request, env: {
 
   const redirectTo = googleAuthURL({
     clientId: env.GOOGLE_CLIENT_ID,
-    redirectUri: env.GOOGLE_REDIRECT_URI,
+    redirectUri,
     scope: 'openid email profile', // 필요 시 'openid' 또는 'openid email'로 축소
     codeChallenge: challenge,
     state,

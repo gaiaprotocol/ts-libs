@@ -1,15 +1,16 @@
 import { getAddress } from 'viem';
+import { corsHeadersWithOrigin } from '../../services/cors';
 import { verifyToken } from '../../services/jwt';
-export async function handleGoogleMeByWallet(request, env) {
+export async function handleGoogleMeByWallet(request, env, origin) {
     try {
         const auth = request.headers.get('authorization');
         if (!auth?.startsWith('Bearer ')) {
-            return new Response('Unauthorized', { status: 401 });
+            return new Response('Unauthorized', { status: 401, headers: origin ? corsHeadersWithOrigin(origin) : undefined });
         }
         const token = auth.slice(7);
         const payload = await verifyToken(token, env);
         if (!payload?.sub) {
-            return new Response('Unauthorized', { status: 401 });
+            return new Response('Unauthorized', { status: 401, headers: origin ? corsHeadersWithOrigin(origin) : undefined });
         }
         const normalizedAddress = getAddress(payload.sub);
         const row = await env.DB.prepare(`SELECT google_sub, wallet_address, token, linked_at, email, name, picture
@@ -18,7 +19,7 @@ export async function handleGoogleMeByWallet(request, env) {
             .bind(normalizedAddress)
             .first();
         if (!row) {
-            return Response.json({ ok: false, error: 'no_account_linked', wallet_address: normalizedAddress }, { status: 404 });
+            return Response.json({ ok: false, error: 'no_account_linked', wallet_address: normalizedAddress }, { status: 404, headers: origin ? corsHeadersWithOrigin(origin) : undefined });
         }
         return Response.json({
             ok: true,
@@ -32,11 +33,11 @@ export async function handleGoogleMeByWallet(request, env) {
                 name: row.name,
                 picture: row.picture,
             },
-        });
+        }, { status: 200, headers: origin ? corsHeadersWithOrigin(origin) : undefined });
     }
     catch (err) {
         console.error(err);
-        return Response.json({ error: err instanceof Error ? err.message : String(err) }, { status: 500 });
+        return Response.json({ error: err instanceof Error ? err.message : String(err) }, { status: 500, headers: origin ? corsHeadersWithOrigin(origin) : undefined });
     }
 }
 //# sourceMappingURL=me-by-wallet.js.map

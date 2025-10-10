@@ -1,9 +1,10 @@
+import { corsHeadersWithOrigin } from '../../services/cors';
 import { readSession } from './utils';
-export async function handleGoogleMe(request, env) {
+export async function handleGoogleMe(request, env, origin) {
     try {
         const me = await readSession(env, request);
         if (!me?.sub)
-            return Response.json({ error: 'not_logged_in' }, { status: 401 });
+            return Response.json({ error: 'not_logged_in' }, { status: 401, headers: origin ? corsHeadersWithOrigin(origin) : undefined });
         const row = await env.DB.prepare(`SELECT wallet_address, token, linked_at, email, name, picture
        FROM google_web3_accounts
        WHERE google_sub = ?`)
@@ -27,11 +28,11 @@ export async function handleGoogleMe(request, env) {
                 name: row?.name ?? me.name ?? null,
                 picture: row?.picture ?? me.picture ?? null,
             },
-        }, { status: 200 });
+        }, { status: 200, headers: origin ? corsHeadersWithOrigin(origin) : undefined });
     }
     catch (err) {
         console.error(err);
-        return Response.json({ error: err instanceof Error ? err.message : String(err) }, { status: 500 });
+        return Response.json({ error: err instanceof Error ? err.message : String(err) }, { status: 500, headers: origin ? corsHeadersWithOrigin(origin) : undefined });
     }
 }
 //# sourceMappingURL=me.js.map

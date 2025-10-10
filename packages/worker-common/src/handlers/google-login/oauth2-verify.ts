@@ -1,6 +1,7 @@
 import { z } from 'zod'
+import { corsHeadersWithOrigin } from '../../services/cors'
 import { decodeJwtPayload } from './google'
-import { makeSessionCookie, headersWithCookies } from './utils'
+import { headersWithCookies, makeSessionCookie } from './utils'
 
 /**
  * Google OpenID Connect JWKS endpoint
@@ -117,12 +118,11 @@ export async function verifyGoogleIdJwt(idToken: string, expectedAud: string, ex
 export async function handleOAuth2Verify(request: Request, env: {
   GOOGLE_CLIENT_ID: string;
   GOOGLE_CLIENT_SECRET: string;
-  GOOGLE_REDIRECT_URI: string;
   SESSION_TTL_DAYS: string;
   COOKIE_SECRET: string;
-}) {
+}, origin?: string) {
   if (request.method !== 'POST') {
-    return Response.json({ error: 'method_not_allowed' }, { status: 405 })
+    return Response.json({ error: 'method_not_allowed' }, { status: 405, headers: origin ? corsHeadersWithOrigin(origin) : undefined })
   }
 
   // zod 스키마
@@ -136,12 +136,12 @@ export async function handleOAuth2Verify(request: Request, env: {
   try {
     body = await request.json()
   } catch {
-    return Response.json({ error: 'invalid_json' }, { status: 400 })
+    return Response.json({ error: 'invalid_json' }, { status: 400, headers: origin ? corsHeadersWithOrigin(origin) : undefined })
   }
 
   const parsed = schema.safeParse(body)
   if (!parsed.success) {
-    return Response.json({ error: parsed.error.message }, { status: 400 })
+    return Response.json({ error: parsed.error.message }, { status: 400, headers: origin ? corsHeadersWithOrigin(origin) : undefined })
   }
 
   const { idToken, nonce } = parsed.data
@@ -151,7 +151,7 @@ export async function handleOAuth2Verify(request: Request, env: {
   try {
     payload = await verifyGoogleIdJwt(idToken, env.GOOGLE_CLIENT_ID, nonce)
   } catch (e: any) {
-    return Response.json({ error: e?.message || 'verify_failed' }, { status: 401 })
+    return Response.json({ error: e?.message || 'verify_failed' }, { status: 401, headers: origin ? corsHeadersWithOrigin(origin) : undefined })
   }
 
   // 사용자 프로필 구성(필요시 확장)
@@ -168,9 +168,12 @@ export async function handleOAuth2Verify(request: Request, env: {
 
   return new Response(JSON.stringify({ ok: true, user }, null, 2), {
     status: 200,
-    headers: headersWithCookies(
-      { 'content-type': 'application/json; charset=UTF-8' },
-      [sessionCookie]
-    )
+    headers: {
+      ...headersWithCookies(
+        { 'content-type': 'application/json; charset=UTF-8' },
+        [sessionCookie]
+      ),
+      ...(origin ? corsHeadersWithOrigin(origin) : {})
+    }
   })
 }

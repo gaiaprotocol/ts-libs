@@ -1,6 +1,7 @@
 import { z } from 'zod';
+import { corsHeadersWithOrigin } from '../../services/cors';
 import { decodeJwtPayload } from './google';
-import { makeSessionCookie, headersWithCookies } from './utils';
+import { headersWithCookies, makeSessionCookie } from './utils';
 /**
  * Google OpenID Connect JWKS endpoint
  * (Google의 OIDC Discovery의 jwks_uri)
@@ -99,9 +100,9 @@ export async function verifyGoogleIdJwt(idToken, expectedAud, expectedNonce) {
     }
     return payload;
 }
-export async function handleOAuth2Verify(request, env) {
+export async function handleOAuth2Verify(request, env, origin) {
     if (request.method !== 'POST') {
-        return Response.json({ error: 'method_not_allowed' }, { status: 405 });
+        return Response.json({ error: 'method_not_allowed' }, { status: 405, headers: origin ? corsHeadersWithOrigin(origin) : undefined });
     }
     // zod 스키마
     const schema = z.object({
@@ -114,11 +115,11 @@ export async function handleOAuth2Verify(request, env) {
         body = await request.json();
     }
     catch {
-        return Response.json({ error: 'invalid_json' }, { status: 400 });
+        return Response.json({ error: 'invalid_json' }, { status: 400, headers: origin ? corsHeadersWithOrigin(origin) : undefined });
     }
     const parsed = schema.safeParse(body);
     if (!parsed.success) {
-        return Response.json({ error: parsed.error.message }, { status: 400 });
+        return Response.json({ error: parsed.error.message }, { status: 400, headers: origin ? corsHeadersWithOrigin(origin) : undefined });
     }
     const { idToken, nonce } = parsed.data;
     // 구글 ID 토큰 검증(서명/클레임)
@@ -127,7 +128,7 @@ export async function handleOAuth2Verify(request, env) {
         payload = await verifyGoogleIdJwt(idToken, env.GOOGLE_CLIENT_ID, nonce);
     }
     catch (e) {
-        return Response.json({ error: e?.message || 'verify_failed' }, { status: 401 });
+        return Response.json({ error: e?.message || 'verify_failed' }, { status: 401, headers: origin ? corsHeadersWithOrigin(origin) : undefined });
     }
     // 사용자 프로필 구성(필요시 확장)
     const user = {
@@ -141,7 +142,10 @@ export async function handleOAuth2Verify(request, env) {
     const sessionCookie = await makeSessionCookie(env, user, request, { sameSite: 'Lax' });
     return new Response(JSON.stringify({ ok: true, user }, null, 2), {
         status: 200,
-        headers: headersWithCookies({ 'content-type': 'application/json; charset=UTF-8' }, [sessionCookie])
+        headers: {
+            ...headersWithCookies({ 'content-type': 'application/json; charset=UTF-8' }, [sessionCookie]),
+            ...(origin ? corsHeadersWithOrigin(origin) : {})
+        }
     });
 }
 //# sourceMappingURL=oauth2-verify.js.map

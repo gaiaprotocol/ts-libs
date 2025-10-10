@@ -4,9 +4,27 @@ export function preflightResponse() {
         headers: corsHeaders()
     });
 }
+export function preflightResponseWithOrigin(origin) {
+    return new Response(null, {
+        status: 204,
+        headers: {
+            ...corsHeadersWithOrigin(origin),
+            'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With',
+            'Vary': 'Origin',
+        }
+    });
+}
 export function corsHeaders() {
     return {
         'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+        'Access-Control-Allow-Headers': '*',
+    };
+}
+export function corsHeadersWithOrigin(origin) {
+    return {
+        'Access-Control-Allow-Origin': origin,
+        'Access-Control-Allow-Credentials': 'true',
         'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
         'Access-Control-Allow-Headers': '*',
     };
