@@ -68,26 +68,28 @@ async function syncNftOwnershipFromEvents(
     .bind('ERC721')
     .first<{ last_synced_block_number: number }>();
 
-  const lastSynced = statusRow ? BigInt(statusRow.last_synced_block_number) : undefined;
-  if (lastSynced === undefined) {
+  const lastSyncedBlockNumber = statusRow
+    ? BigInt(statusRow.last_synced_block_number)
+    : undefined;
+
+  if (lastSyncedBlockNumber === undefined) {
     throw new Error('No previously synced block found for ERC721');
   }
 
+  let toBlock = lastSyncedBlockNumber + BigInt(blockStep);
   const currentBlock = await client.getBlockNumber();
 
-  // from = last + 1, to = min(from + blockStep - 1, current)
-  const fromBlock = lastSynced + 1n;
-  if (fromBlock > currentBlock) {
-    // 이미 최신
-    return;
+  if (toBlock > currentBlock) {
+    toBlock = currentBlock;
   }
-  let toBlock = fromBlock + BigInt(blockStep) - 1n;
-  if (toBlock > currentBlock) toBlock = currentBlock;
 
-  const addresses = Object.keys(tokenRanges).map(getAddress) as `0x${string}`[];
+  let fromBlock = toBlock - BigInt(blockStep) * 2n;
+  if (fromBlock < 0n) {
+    fromBlock = 0n;
+  }
 
   const logs = await client.getLogs({
-    address: addresses,
+    address: Object.keys(tokenRanges) as `0x${string}`[],
     event: ERC721_TRANSFER_EVENT,
     fromBlock,
     toBlock,
