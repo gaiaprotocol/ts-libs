@@ -1,8 +1,9 @@
-import { readSession } from '../utils'
+import { D1Database } from '@cloudflare/workers-types'
+import { readSession } from './utils'
 
 export async function handleUnlinkGoogleWeb3WalletBySession(
   request: Request,
-  env: Env
+  env: { DB: D1Database, COOKIE_SECRET: string }
 ): Promise<Response> {
   try {
     const me = await readSession(env, request)

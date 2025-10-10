@@ -1,11 +1,15 @@
 import { googleAuthURL, makePkce } from './google'
-import { hmacSign, makeCookie } from '../utils'
+import { hmacSign, makeCookie } from './utils'
 
 function b64UrlJson(obj: any) {
   return btoa(JSON.stringify(obj)).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/g, '')
 }
 
-export async function handleGoogleLogin(_request: Request, env: Env) {
+export async function handleGoogleLogin(_request: Request, env: {
+  GOOGLE_CLIENT_ID: string
+  GOOGLE_REDIRECT_URI: string
+  COOKIE_SECRET: string
+}) {
   const { state, codeVerifier, challenge } = await makePkce()
 
   // state + code_verifier를 무결성 서명과 함께 쿠키에 저장

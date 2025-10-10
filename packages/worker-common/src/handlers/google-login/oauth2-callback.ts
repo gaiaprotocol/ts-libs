@@ -1,8 +1,14 @@
-import { z } from 'zod'
-import { decodeJwtPayload, exchangeCodeForTokens } from './google'
-import { hmacVerify, makeCookie, makeSessionCookie, parseCookies, headersWithCookies } from '../utils'
+import { z } from 'zod';
+import { decodeJwtPayload, exchangeCodeForTokens } from './google';
+import { headersWithCookies, hmacVerify, makeCookie, makeSessionCookie, parseCookies } from './utils';
 
-export async function handleOAuth2Callback(request: Request, env: Env) {
+export async function handleOAuth2Callback(request: Request, env: {
+  COOKIE_SECRET: string;
+  GOOGLE_CLIENT_ID: string;
+  GOOGLE_CLIENT_SECRET: string;
+  GOOGLE_REDIRECT_URI: string;
+  SESSION_TTL_DAYS: string;
+}) {
   const url = new URL(request.url)
   const schema = z.object({ code: z.string().min(1), state: z.string().min(1) })
   const params = { code: url.searchParams.get('code'), state: url.searchParams.get('state') }

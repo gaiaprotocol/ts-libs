@@ -1,6 +1,6 @@
-import { clearSessionCookie, headersWithCookies } from '../utils'
+import { clearSessionCookie, headersWithCookies } from './utils'
 
-export async function handleGoogleLogout(_request: Request, _env: Env) {
+export async function handleGoogleLogout(_request: Request) {
   return new Response(null, {
     status: 302,
     headers: headersWithCookies({ Location: '/' }, [clearSessionCookie()]),

@@ -1,9 +1,10 @@
-import { verifyToken } from '@gaiaprotocol/worker-common'
-import { getAddress } from 'viem'
+import { D1Database } from '@cloudflare/workers-types';
+import { getAddress } from 'viem';
+import { verifyToken } from '../../services/jwt';
 
 export async function handleGoogleMeByWallet(
   request: Request,
-  env: Env
+  env: { DB: D1Database; JWT_SECRET: string }
 ): Promise<Response> {
   try {
     const auth = request.headers.get('authorization');

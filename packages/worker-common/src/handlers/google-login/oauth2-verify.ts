@@ -1,6 +1,6 @@
 import { z } from 'zod'
 import { decodeJwtPayload } from './google'
-import { makeSessionCookie, headersWithCookies } from '../utils'
+import { makeSessionCookie, headersWithCookies } from './utils'
 
 /**
  * Google OpenID Connect JWKS endpoint
@@ -34,6 +34,7 @@ async function fetchGoogleJwks(): Promise<any> {
     // @ts-ignore - Cloudflare Workers에서 cf 옵션 사용
     cf: { cacheTtl: 3600, cacheEverything: true }
   })
+  // @ts-ignore - Cloudflare Workers에서 cf 옵션 사용
   const cache = caches.default
   const cached = await cache.match(req)
   if (cached) return cached.json()
@@ -113,7 +114,13 @@ export async function verifyGoogleIdJwt(idToken: string, expectedAud: string, ex
   return payload
 }
 
-export async function handleOAuth2Verify(request: Request, env: Env) {
+export async function handleOAuth2Verify(request: Request, env: {
+  GOOGLE_CLIENT_ID: string;
+  GOOGLE_CLIENT_SECRET: string;
+  GOOGLE_REDIRECT_URI: string;
+  SESSION_TTL_DAYS: string;
+  COOKIE_SECRET: string;
+}) {
   if (request.method !== 'POST') {
     return Response.json({ error: 'method_not_allowed' }, { status: 405 })
   }

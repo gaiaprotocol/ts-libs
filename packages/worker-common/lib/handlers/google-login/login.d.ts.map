@@ -1,0 +1,1 @@
+{"version":3,"file":"login.d.ts","sourceRoot":"","sources":["../../../src/handlers/google-login/login.ts"],"names":[],"mappings":"AAOA,wBAAsB,iBAAiB,CAAC,QAAQ,EAAE,OAAO,EAAE,GAAG,EAAE;IAC9D,gBAAgB,EAAE,MAAM,CAAA;IACxB,mBAAmB,EAAE,MAAM,CAAA;IAC3B,aAAa,EAAE,MAAM,CAAA;CACtB,qBAsBA"}

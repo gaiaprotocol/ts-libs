@@ -1,10 +1,11 @@
-import { verifyToken } from '@gaiaprotocol/worker-common';
+import { D1Database } from '@cloudflare/workers-types';
 import { getAddress } from 'viem';
-import { readSession } from '../utils';
+import { verifyToken } from '../../services/jwt';
+import { readSession } from './utils';
 
 export async function handleLinkGoogleWeb3Wallet(
   request: Request,
-  env: Env
+  env: { DB: D1Database, JWT_SECRET: string, COOKIE_SECRET: string }
 ): Promise<Response> {
   try {
     const auth = request.headers.get('authorization');

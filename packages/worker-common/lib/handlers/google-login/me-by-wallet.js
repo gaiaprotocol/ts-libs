@@ -1,0 +1,42 @@
+import { getAddress } from 'viem';
+import { verifyToken } from '../../services/jwt';
+export async function handleGoogleMeByWallet(request, env) {
+    try {
+        const auth = request.headers.get('authorization');
+        if (!auth?.startsWith('Bearer ')) {
+            return new Response('Unauthorized', { status: 401 });
+        }
+        const token = auth.slice(7);
+        const payload = await verifyToken(token, env);
+        if (!payload?.sub) {
+            return new Response('Unauthorized', { status: 401 });
+        }
+        const normalizedAddress = getAddress(payload.sub);
+        const row = await env.DB.prepare(`SELECT google_sub, wallet_address, token, linked_at, email, name, picture
+       FROM google_web3_accounts
+       WHERE wallet_address = ?`)
+            .bind(normalizedAddress)
+            .first();
+        if (!row) {
+            return Response.json({ ok: false, error: 'no_account_linked', wallet_address: normalizedAddress }, { status: 404 });
+        }
+        return Response.json({
+            ok: true,
+            wallet_address: row.wallet_address,
+            google_sub: row.google_sub,
+            token: row.token,
+            linked_at: row.linked_at,
+            profile: {
+                sub: row.google_sub,
+                email: row.email,
+                name: row.name,
+                picture: row.picture,
+            },
+        });
+    }
+    catch (err) {
+        console.error(err);
+        return Response.json({ error: err instanceof Error ? err.message : String(err) }, { status: 500 });
+    }
+}
+//# sourceMappingURL=me-by-wallet.js.map

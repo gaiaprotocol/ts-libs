@@ -1,4 +1,4 @@
-import { b64urlEncode, sha256 } from '../utils'
+import { b64urlEncode, sha256 } from './utils'
 
 export function googleAuthURL({ clientId, redirectUri, scope, codeChallenge, state, accessType, prompt }: {
   clientId: string
@@ -44,7 +44,7 @@ export async function exchangeCodeForTokens({ code, clientId, clientSecret, redi
     body,
   })
   if (!resp.ok) throw new Error(`token exchange failed: ${resp.status}`)
-  return await resp.json<any>()
+  return await resp.json()
 }
 
 export function decodeJwtPayload(idToken?: string) {

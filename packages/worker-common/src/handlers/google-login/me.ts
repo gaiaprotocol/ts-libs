@@ -1,6 +1,10 @@
-import { readSession } from '../utils'
+import { D1Database } from '@cloudflare/workers-types';
+import { readSession } from './utils';
 
-export async function handleGoogleMe(request: Request, env: Env) {
+export async function handleGoogleMe(request: Request, env: {
+  DB: D1Database;
+  COOKIE_SECRET: string;
+}) {
   try {
     const me = await readSession(env, request);
     if (!me?.sub) return Response.json({ error: 'not_logged_in' }, { status: 401 });
