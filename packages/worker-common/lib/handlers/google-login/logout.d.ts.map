@@ -1,1 +1,1 @@
-{"version":3,"file":"logout.d.ts","sourceRoot":"","sources":["../../../src/handlers/google-login/logout.ts"],"names":[],"mappings":"AAGA,wBAAsB,kBAAkB,CAAC,QAAQ,EAAE,OAAO,EAAE,UAAU,SAAM,EAAE,MAAM,CAAC,EAAE,MAAM,qBAQ5F"}
+{"version":3,"file":"logout.d.ts","sourceRoot":"","sources":["../../../src/handlers/google-login/logout.ts"],"names":[],"mappings":"AAGA,wBAAsB,kBAAkB,CAAC,QAAQ,EAAE,OAAO,EAAE,UAAU,SAAM,EAAE,MAAM,CAAC,EAAE,MAAM,qBAS5F"}

@@ -166,14 +166,14 @@ export async function handleOAuth2Verify(request: Request, env: {
   // 세션 쿠키 발급 (SameSite=Lax로 CSRF 완화)
   const sessionCookie = await makeSessionCookie(env, user, request, { sameSite: 'Lax' })
 
+  const headers = headersWithCookies(
+    { 'content-type': 'application/json; charset=UTF-8' },
+    [sessionCookie]
+  )
+  for (const [k, v] of Object.entries((origin ? corsHeadersWithOrigin(origin) : {}))) headers.set(k, v)
+
   return new Response(JSON.stringify({ ok: true, user }, null, 2), {
     status: 200,
-    headers: {
-      ...headersWithCookies(
-        { 'content-type': 'application/json; charset=UTF-8' },
-        [sessionCookie]
-      ),
-      ...(origin ? corsHeadersWithOrigin(origin) : {})
-    }
+    headers,
   })
 }
