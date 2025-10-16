@@ -1,26 +1,26 @@
 {
   "name": "@gaiaprotocol/client-common",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "types": "./lib/index.d.ts",
   "main": "./lib/index.js",
   "dependencies": {
-    "@ionic/core": "^8.7.4",
-    "@rainbow-me/rainbowkit": "^2.2.8",
+    "@ionic/core": "^8.7.7",
+    "@rainbow-me/rainbowkit": "^2.2.9",
     "@shoelace-style/shoelace": "^2.20.1",
-    "@tanstack/react-query": "^5.89.0",
+    "@tanstack/react-query": "^5.90.3",
     "@webtaku/el": "^0.1.0",
     "@webtaku/event-emitter": "^0.0.2",
     "color": "^5.0.2",
     "mersenne-twister": "^1.1.0",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1",
-    "wagmi": "^2.17.1"
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "wagmi": "^2.18.1"
   },
   "devDependencies": {
     "@types/mersenne-twister": "^1.1.7",
-    "@types/node": "^24.5.2",
-    "@types/react": "^19.1.13",
-    "@types/react-dom": "^19.1.9"
+    "@types/node": "^24.7.2",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2"
   },
   "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }
