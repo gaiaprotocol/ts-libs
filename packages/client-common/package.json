@@ -1,13 +1,13 @@
 {
   "name": "@gaiaprotocol/client-common",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "types": "./lib/index.d.ts",
   "main": "./lib/index.js",
   "dependencies": {
     "@ionic/core": "^8.7.7",
     "@rainbow-me/rainbowkit": "^2.2.9",
     "@shoelace-style/shoelace": "^2.20.1",
-    "@tanstack/react-query": "^5.90.3",
+    "@tanstack/react-query": "^5.90.5",
     "@webtaku/el": "^0.1.0",
     "@webtaku/event-emitter": "^0.0.2",
     "color": "^5.0.2",
@@ -18,7 +18,7 @@
   },
   "devDependencies": {
     "@types/mersenne-twister": "^1.1.7",
-    "@types/node": "^24.7.2",
+    "@types/node": "^24.8.1",
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.2.2"
   },
