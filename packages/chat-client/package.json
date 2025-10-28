@@ -1,6 +1,6 @@
 {
   "name": "@gaiaprotocol/chat-client",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "types": "./lib/index.d.ts",
   "main": "./lib/index.js",
   "dependencies": {
