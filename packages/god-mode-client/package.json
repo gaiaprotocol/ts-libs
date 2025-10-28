@@ -1,22 +1,22 @@
 {
   "name": "@gaiaprotocol/god-mode-client",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "types": "./lib/index.d.ts",
   "main": "./lib/index.js",
   "dependencies": {
     "@rainbow-me/rainbowkit": "^2.2.9",
     "@tanstack/react-query": "^5.90.5",
-    "@webtaku/el": "^0.1.0",
+    "@webtaku/el": "^0.1.1",
     "lightweight-charts": "^5.0.9",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "viem": "^2.38.3",
-    "wagmi": "^2.18.1"
+    "viem": "^2.38.4",
+    "wagmi": "^2.19.0"
   },
   "devDependencies": {
     "@ionic/core": "^8.7.7",
     "@shoelace-style/shoelace": "^2.20.1",
-    "@types/node": "^24.8.1",
+    "@types/node": "^24.9.1",
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.2.2"
   },
