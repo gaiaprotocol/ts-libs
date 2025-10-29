@@ -11,6 +11,7 @@ type ChatProfileBatchFetcher = (accounts: (`0x${string}`)[]) => Promise<Record<`
 declare class ChatProfileService extends EventTarget {
     #private;
     init(fetchFn: ChatProfileBatchFetcher): void;
+    clear(): void;
     preload(accounts: string[]): Promise<void>;
     resolve(account: string): Promise<ChatProfile | undefined>;
     getCached(account: string): ChatProfile | undefined;

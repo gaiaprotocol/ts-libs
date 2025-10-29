@@ -23,6 +23,11 @@ class ChatProfileService extends EventTarget {
     this.#fetchFn = fetchFn;
   }
 
+  clear() {
+    this.#cache.clear();
+    this.#inflight.clear();
+  }
+
   async preload(accounts: string[]) {
     const toFetch = accounts
       .map(a => getAddress(a))

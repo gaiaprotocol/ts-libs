@@ -8,6 +8,10 @@ class ChatProfileService extends EventTarget {
     init(fetchFn) {
         this.#fetchFn = fetchFn;
     }
+    clear() {
+        this.#cache.clear();
+        this.#inflight.clear();
+    }
     async preload(accounts) {
         const toFetch = accounts
             .map(a => getAddress(a))
