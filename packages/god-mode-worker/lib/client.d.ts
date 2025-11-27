@@ -186,6 +186,85 @@ export declare const client: {
         formatters?: undefined;
         serializers?: import("viem").ChainSerializers<undefined, import("viem").TransactionSerializable> | undefined;
     }>) => Promise<import("viem").EstimateGasReturnType>;
+    fillTransaction: <chainOverride extends import("viem").Chain | undefined = undefined, accountOverride extends import("viem").Account | import("viem").Address | undefined = undefined>(args: import("viem").FillTransactionParameters<{
+        blockExplorers: {
+            readonly default: {
+                readonly name: "Etherscan";
+                readonly url: "https://etherscan.io";
+                readonly apiUrl: "https://api.etherscan.io/api";
+            };
+        };
+        blockTime: 12000;
+        contracts: {
+            readonly ensUniversalResolver: {
+                readonly address: "0xeeeeeeee14d718c2b47d9923deab1335e144eeee";
+                readonly blockCreated: 23085558;
+            };
+            readonly multicall3: {
+                readonly address: "0xca11bde05977b3631167028862be2a173976ca11";
+                readonly blockCreated: 14353601;
+            };
+        };
+        ensTlds?: readonly string[] | undefined;
+        id: 1;
+        name: "Ethereum";
+        nativeCurrency: {
+            readonly name: "Ether";
+            readonly symbol: "ETH";
+            readonly decimals: 18;
+        };
+        experimental_preconfirmationTime?: number | undefined | undefined;
+        rpcUrls: {
+            readonly default: {
+                readonly http: readonly ["https://eth.merkle.io"];
+            };
+        };
+        sourceId?: number | undefined | undefined;
+        testnet?: boolean | undefined | undefined;
+        custom?: Record<string, unknown> | undefined;
+        fees?: import("viem").ChainFees<undefined> | undefined;
+        formatters?: undefined;
+        serializers?: import("viem").ChainSerializers<undefined, import("viem").TransactionSerializable> | undefined;
+    }, import("viem").Account | undefined, chainOverride, accountOverride>) => Promise<import("viem").FillTransactionReturnType<{
+        blockExplorers: {
+            readonly default: {
+                readonly name: "Etherscan";
+                readonly url: "https://etherscan.io";
+                readonly apiUrl: "https://api.etherscan.io/api";
+            };
+        };
+        blockTime: 12000;
+        contracts: {
+            readonly ensUniversalResolver: {
+                readonly address: "0xeeeeeeee14d718c2b47d9923deab1335e144eeee";
+                readonly blockCreated: 23085558;
+            };
+            readonly multicall3: {
+                readonly address: "0xca11bde05977b3631167028862be2a173976ca11";
+                readonly blockCreated: 14353601;
+            };
+        };
+        ensTlds?: readonly string[] | undefined;
+        id: 1;
+        name: "Ethereum";
+        nativeCurrency: {
+            readonly name: "Ether";
+            readonly symbol: "ETH";
+            readonly decimals: 18;
+        };
+        experimental_preconfirmationTime?: number | undefined | undefined;
+        rpcUrls: {
+            readonly default: {
+                readonly http: readonly ["https://eth.merkle.io"];
+            };
+        };
+        sourceId?: number | undefined | undefined;
+        testnet?: boolean | undefined | undefined;
+        custom?: Record<string, unknown> | undefined;
+        fees?: import("viem").ChainFees<undefined> | undefined;
+        formatters?: undefined;
+        serializers?: import("viem").ChainSerializers<undefined, import("viem").TransactionSerializable> | undefined;
+    }, chainOverride>>;
     getBalance: (args: import("viem").GetBalanceParameters) => Promise<import("viem").GetBalanceReturnType>;
     getBlobBaseFee: () => Promise<import("viem").GetBlobBaseFeeReturnType>;
     getBlock: <includeTransactions extends boolean = false, blockTag extends import("viem").BlockTag = "latest">(args?: import("viem").GetBlockParameters<includeTransactions, blockTag> | undefined) => Promise<{
@@ -7392,6 +7471,7 @@ export declare const client: {
     }, (request["parameters"] extends readonly import("viem").PrepareTransactionRequestParameterType[] ? request["parameters"][number] : "fees" | "gas" | "nonce" | "blobVersionedHashes" | "chainId" | "type") extends infer T_13 ? T_13 extends (request["parameters"] extends readonly import("viem").PrepareTransactionRequestParameterType[] ? request["parameters"][number] : "fees" | "gas" | "nonce" | "blobVersionedHashes" | "chainId" | "type") ? T_13 extends "fees" ? "gasPrice" | "maxFeePerGas" | "maxPriorityFeePerGas" : T_13 : never : never> & (unknown extends request["kzg"] ? {} : Pick<request, "kzg">))[K]; } : never>;
     readContract: <const abi extends import("viem").Abi | readonly unknown[], functionName extends import("viem").ContractFunctionName<abi, "pure" | "view">, const args extends import("viem").ContractFunctionArgs<abi, "pure" | "view", functionName>>(args: import("viem").ReadContractParameters<abi, functionName, args>) => Promise<import("viem").ReadContractReturnType<abi, functionName, args>>;
     sendRawTransaction: (args: import("viem").SendRawTransactionParameters) => Promise<import("viem").SendRawTransactionReturnType>;
+    sendRawTransactionSync: (args: import("viem").SendRawTransactionSyncParameters) => Promise<import("viem").TransactionReceipt>;
     simulate: <const calls extends readonly unknown[]>(args: import("viem").SimulateBlocksParameters<calls>) => Promise<import("viem").SimulateBlocksReturnType<calls>>;
     simulateBlocks: <const calls extends readonly unknown[]>(args: import("viem").SimulateBlocksParameters<calls>) => Promise<import("viem").SimulateBlocksReturnType<calls>>;
     simulateCalls: <const calls extends readonly unknown[]>(args: import("viem").SimulateCallsParameters<calls>) => Promise<import("viem").SimulateCallsReturnType<calls>>;
