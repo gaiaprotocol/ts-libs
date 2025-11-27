@@ -1,17 +1,15 @@
 import { verifyMessage } from "viem";
 import { createSiweMessage } from "viem/siwe";
-export async function validateSiwe(address, signature, chainId, env) {
-    const expectedDomain = env.ALLOWED_DOMAIN;
-    const expectedUri = env.ALLOWED_URI;
+export async function validateSiwe(address, signature, chainId, env, domain, uri) {
     const stored = await env.SIWE_NONCES.get(`nonce:${address}`);
     if (!stored)
         return false;
     const { nonce, issuedAt } = JSON.parse(stored);
     const siweMessage = createSiweMessage({
-        domain: expectedDomain,
+        domain,
         address,
         statement: env.MESSAGE_FOR_WALLET_LOGIN,
-        uri: expectedUri,
+        uri,
         version: '1',
         chainId,
         nonce,
