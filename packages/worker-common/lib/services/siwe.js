@@ -1,6 +1,6 @@
 import { verifyMessage } from "viem";
 import { createSiweMessage } from "viem/siwe";
-export async function validateSiwe(address, signature, chainId, env, domain, uri) {
+export async function validateSiwe(address, signature, chainId, env, domain, uri, messageForWalletLogin) {
     const stored = await env.SIWE_NONCES.get(`nonce:${address}`);
     if (!stored)
         return false;
@@ -8,7 +8,7 @@ export async function validateSiwe(address, signature, chainId, env, domain, uri
     const siweMessage = createSiweMessage({
         domain,
         address,
-        statement: env.MESSAGE_FOR_WALLET_LOGIN,
+        statement: messageForWalletLogin,
         uri,
         version: '1',
         chainId,

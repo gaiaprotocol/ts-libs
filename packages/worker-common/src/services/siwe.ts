@@ -3,11 +3,10 @@ import { verifyMessage } from "viem";
 import { createSiweMessage } from "viem/siwe";
 
 type Env = {
-  MESSAGE_FOR_WALLET_LOGIN: string;
   SIWE_NONCES: KVNamespace;
 };
 
-export async function validateSiwe(address: `0x${string}`, signature: `0x${string}`, chainId: number, env: Env, domain: string, uri: string) {
+export async function validateSiwe(address: `0x${string}`, signature: `0x${string}`, chainId: number, env: Env, domain: string, uri: string, messageForWalletLogin: string) {
   const stored = await env.SIWE_NONCES.get(`nonce:${address}`);
   if (!stored) return false;
 
@@ -16,7 +15,7 @@ export async function validateSiwe(address: `0x${string}`, signature: `0x${strin
   const siweMessage = createSiweMessage({
     domain,
     address,
-    statement: env.MESSAGE_FOR_WALLET_LOGIN,
+    statement: messageForWalletLogin,
     uri,
     version: '1',
     chainId,

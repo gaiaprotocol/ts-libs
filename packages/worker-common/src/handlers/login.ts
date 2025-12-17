@@ -6,12 +6,11 @@ import { generateToken } from '../services/jwt';
 import { validateSiwe } from '../services/siwe';
 
 type Env = {
-  MESSAGE_FOR_WALLET_LOGIN: string;
   SIWE_NONCES: KVNamespace;
   JWT_SECRET: string;
 };
 
-export async function handleLogin(request: Request, chainId: number, env: Env, domain: string, uri: string) {
+export async function handleLogin(request: Request, chainId: number, env: Env, domain: string, uri: string, messageForWalletLogin: string) {
   const schema = z.object({
     address: z.string().regex(/^0x[a-fA-F0-9]{40}$/, 'Invalid Ethereum address'),
     signature: z.string().regex(/^0x[a-fA-F0-9]+$/, 'Invalid signature'),
@@ -27,7 +26,8 @@ export async function handleLogin(request: Request, chainId: number, env: Env, d
     chainId,
     env,
     domain,
-    uri
+    uri,
+    messageForWalletLogin
   );
 
   if (!valid) {
